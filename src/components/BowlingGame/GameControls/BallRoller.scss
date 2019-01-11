@@ -1,0 +1,33 @@
+
+.buttonContainer {
+    border: thin solid whitesmoke;
+    display: flex; 
+    align-items: center;
+    margin: 6px;
+    width: 25em;
+    flex-direction: column;
+}
+
+.pinSelector {
+    display: flex; 
+    flex: 1;  
+    align-items: center;
+    justify-content: center;
+}
+
+.pinButton {
+    margin-right: 2px;
+}
+
+.pinBox {
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
+
+
+.title {
+    display: flex; 
+    flex: 1;  
+    align-items: center;
+    justify-content: center;
+}

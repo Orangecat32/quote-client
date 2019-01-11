@@ -1,0 +1,70 @@
+.frameBox {
+  border-top: thin solid ;
+  border-bottom: thin solid ;
+  border-left: thin solid ;
+  display: grid; 
+  grid-template-rows: .8fr 1fr 1.7fr;
+  background-color: #B9D4EC ;
+  font-size: 2vw;
+  height:12vw;
+  width:10vw;
+}
+
+
+.shadow {
+  box-shadow: inset 0 0 2vw whitesmoke;
+}
+
+
+.tenth {
+  border: thin solid ;
+}
+
+
+.frameNumber {
+  display:flex;
+  justify-content: center;
+  border-bottom: thin solid;
+  align-items: center;
+  font-size: .9em;
+  min-height: 11px;
+}
+
+.unSelectedBk {
+  background-color: #7BB3E5;
+}
+
+.markArea {
+  display:flex;
+  flex:1;
+  justify-content: flex-end;
+  flex-direction: row;
+  font-family: sans-serif;
+  font-size: 1.4em;
+  height: 3.5vw;
+}
+
+.scoreBox {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.markTenth {
+  border-bottom: thin solid ;
+}
+
+.mark{
+  border-bottom: thin  solid;
+  border-left: thin solid;
+}
+
+.totalScore  {  
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  font-weight: bold;
+  font-size: 2.2em;
+}

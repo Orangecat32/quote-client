@@ -1,0 +1,41 @@
+
+  .gameBoardContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex: 1 1;
+    justify-content: center;
+  }
+
+  .gameBoard {
+    display: grid; 
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: .15rem;
+    margin: 2vmin;
+    width: 100%;
+  }
+
+  .memoryCard {
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: deepskyblue;
+    display: flex;
+    width: 13vmin;
+    height: 13vmin;
+  }
+
+  .flipped {
+    background-color: rgb(201, 201, 103);
+  }
+
+ .matched {
+    background-color: lightgray;
+    color:whitesmoke;
+  }
+
+  .cardIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }

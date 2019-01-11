@@ -1,0 +1,30 @@
+
+// .container {
+//   display: flex;
+//   flex: 1 1;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   width: 100%;
+//   //background-color: tan;
+//   min-width: 300px;    
+// }
+
+
+.container {
+  background-color: pink;
+  display: flex;
+// align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content {
+  background-color: lightslategrey;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;  
+  min-height: calc(100vh - 50px);
+}
+
+

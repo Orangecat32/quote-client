@@ -1,0 +1,30 @@
+
+.container {
+    height: 100px;
+    width: 300px;
+    background-color: gray;
+    border: thin solid black;
+    margin: 3px;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.topLine {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name {
+    font-weight: 700;
+}
+
+.other {
+    display:flex;
+    justify-content: space-between;
+    width: 110px;
+}
+
+
+.songList {
+    margin-top: 5px;
+}

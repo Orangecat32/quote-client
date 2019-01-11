@@ -1,0 +1,26 @@
+.container {
+    margin: 2vmin;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .heading {
+    margin: 3px;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .btnContainer {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+

@@ -1,0 +1,46 @@
+.container {
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content {
+  background-color: lightslategrey;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;  
+  min-height: calc(100vh - 50px);
+}
+
+.dataArea {
+  height: calc(100vh - 50px);
+  display: flex;
+  min-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rulesContainer {
+  margin-left: 10%;
+  display: flex;
+  width: 90%;
+}
+
+.gameOver {
+  font-size: calc(15px + 2vmin);
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  margin: 6px;
+  align-items: center;
+}
+
+.infoIcon {
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
