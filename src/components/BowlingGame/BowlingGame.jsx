@@ -11,15 +11,13 @@ export class BowlingGame extends React.Component {
   render(){
     return(
       <div  className={styles.container}>
-       <div  className={styles.content}>
-          <Rules 
-            content={gameDescription()} 
-            show={this.props.showRules} 
-            onClick={() => this.props.appActions.bowlingToggleRules()}
-          />
-          <GameControl {...this.props} />
-          <Scorecard {...this.props} /> 
-        </div>
+        <Rules 
+          content={gameDescription()} 
+          show={this.props.showRules} 
+          onClick={() => this.props.appActions.bowlingToggleRules()}
+        />
+        <GameControl {...this.props} />
+        <Scorecard {...this.props} /> 
       </div>
     )
   }

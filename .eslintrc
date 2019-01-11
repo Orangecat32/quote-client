@@ -21,6 +21,7 @@
         "plugin:react/recommended"
     ],    
     "rules": {
+        "no-unused-vars": 1,
         "no-console": "off"
     },
     "settings": {

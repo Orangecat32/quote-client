@@ -1,20 +1,5 @@
+
 .container {
-  background-color: pink;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.content {
-  background-color: lightslategrey;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;  
-  min-height: calc(100vh - 50px);
-}
-
-.dataArea {
   height: calc(100vh - 50px);
   display: flex;
   min-height: 200px;

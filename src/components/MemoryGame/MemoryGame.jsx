@@ -13,25 +13,21 @@ import {ScorePanel} from './ScorePanel/ScorePanel'
 export class MemoryGame extends React.Component {
   render(){
     return(
-      <div className={styles.container} >
-        <div className={styles.content} >
-          <div className={styles.dataArea}>
-            <div className={styles.rulesContainer}>
-              <Rules content={gameDescription()} show={this.props.showRules} onClick={() => this.props.appActions.memoryToggleRules()}/>   
-            </div>
-            {  isGameComplete(this.props.cards)  &&
-            <div className={styles.gameOver} >
-              <div>GAME OVER!</div>
-              <Popover content={ScorePanel(this.props.history)} minimal >
-                <Icon icon="info-sign"  iconSize={'calc(.65em)'} className={styles.infoIcon} />
-              </Popover>
-            </div>
-            }
-            <GameControl {...this.props} />
-            <Gameboard {...this.props} />
-          </div>
+      <div className={styles.container}>
+        <div className={styles.rulesContainer}>
+          <Rules content={gameDescription()} show={this.props.showRules} onClick={() => this.props.appActions.memoryToggleRules()}/>   
         </div>
-    </div>
+        {  isGameComplete(this.props.cards)  &&
+        <div className={styles.gameOver} >
+          <div>GAME OVER!</div>
+          <Popover content={ScorePanel(this.props.history)} minimal >
+            <Icon icon="info-sign"  iconSize={'calc(.65em)'} className={styles.infoIcon} />
+          </Popover>
+        </div>
+        }
+        <GameControl {...this.props} />
+        <Gameboard {...this.props} />
+      </div>
   );
 }
 }
