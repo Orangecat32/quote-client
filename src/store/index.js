@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 
 import * as memoryGame from './memory';
+import * as portfolio from './portfolio';
 import * as bowlingGame from './bowling';
 import * as appConstants from '../components/App/constants';
 import * as rappers from './rappers';
@@ -10,9 +11,10 @@ import * as rappers from './rappers';
 import reducer from "../reducers";
 
 export const initialState = {
-    selectedGame: appConstants.MEMORY_GAME,
+    selectedModule: appConstants.PORTFOLIO,
     memoryGame: memoryGame.init(),
     bowlingGame: bowlingGame.init(),
+    portfolio: portfolio.init(),
     rappers: rappers.init()
   };
 

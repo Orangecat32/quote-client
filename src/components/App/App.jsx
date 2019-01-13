@@ -10,6 +10,7 @@ import * as constants from './constants.js';
 import MemoryGameContainer from '../../containers/memory';
 import BowlingGameContainer from '../../containers/bowling';
 import RappersContainer from '../../containers/rappers';
+import PortfolioContainer from '../../containers/portfolio';
 import * as util from '../../shared/utils';
 
 class App extends Component {
@@ -21,7 +22,7 @@ class App extends Component {
           <Button 
             key={g}
             className={Classes.MINIMAL} 
-            active={this.props.selectedGame === g}
+            active={this.props.selectedModule === g}
             text={g} 
             onClick={()=> this.props.appActions.selectGame(g)} />
         ))
@@ -46,17 +47,20 @@ class App extends Component {
           </div>
         }
         <div className={styles.gameContainer}>
-          {this.props.selectedGame === constants.MEMORY_GAME &&
+        {this.props.selectedModule === constants.PORTFOLIO &&
+            <PortfolioContainer />
+          }
+          {this.props.selectedModule === constants.MEMORY_GAME &&
             <MemoryGameContainer />
           }
-          {this.props.selectedGame === constants.BOWLING_GAME &&
+          {this.props.selectedModule === constants.BOWLING_GAME &&
             <BowlingGameContainer />
           }
-          {this.props.selectedGame === constants.RAPPERS_DB &&
+          {this.props.selectedModule === constants.RAPPERS_DB &&
             <RappersContainer />
           }
-          {this.props.selectedGame === constants.MAZE_GAME &&
-            <UnderConstruction text={`${this.props.selectedGame} is under construction`} />
+          {this.props.selectedModule === constants.MAZE_GAME &&
+            <UnderConstruction text={`${this.props.selectedModule} is under construction`} />
           } 
         </div>   
         { !util.isNullOrWhitespace(this.props.error) && !this.props.isLoading &&
@@ -80,12 +84,12 @@ App.propTypes = {
   text: PropTypes.string,
   error: PropTypes.string,
   isLoading: PropTypes.bool,
-  selectedGame: PropTypes.string
+  selectedModule: PropTypes.string
 };
 
 function mapStateToProps(state) {
   return {
-    selectedGame: state.selectedGame
+    selectedModule: state.selectedModule
   };
 }
 
