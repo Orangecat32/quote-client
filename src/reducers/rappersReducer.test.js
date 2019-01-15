@@ -1,6 +1,9 @@
+import {expect} from 'jest';
+
 import {filteredArtistsEx, allArtists, getSortMode, getFilters} from './rappersReducer';
 import {initialState} from '../store';
-import { SORT_NAME_DEC, SORT_NAME_ASC,  SORT_AGE_DEC, SORT_AGE_ASC } from '../components/Rappers/constants';
+import { SORT_NAME_DEC, SORT_NAME_ASC} from '../components/Rappers/constants';
+
 
 import data from '../mock/rappers.json'
 

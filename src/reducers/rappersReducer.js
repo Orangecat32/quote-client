@@ -33,41 +33,38 @@ export default rappersReducer;
 
 // selector helpers
 
-  export const getData = (state) => (state.rappers.data);
-  export const getSortMode = (state) => (state.rappers.sortMode);
-  
-  export const getFilters = (state) => ({
-    search: state.rappers.searchFilter, 
-    ageHigh: state.rappers.ageHigh, 
-    ageLow: state.rappers.ageLow, 
-    zodiac: state.rappers.zodiac,
-    active: state.rappers.showActive
-  });
+export const getData = (state) => (state.rappers.data);
+export const getSortMode = (state) => (state.rappers.sortMode);
+
+export const getFilters = (state) => ({
+  search: state.rappers.searchFilter, 
+  active: state.rappers.showActive
+});
 
 
-  const enrichData = (d) => ({...d, 
-    birthDate: new Date(d.birthday),
-    search: `${d.name} ${ d.songs.join(' ')}`.toLowerCase()});
+const enrichData = (d) => ({...d, 
+  birthDate: new Date(d.birthday),
+  search: `${d.name} ${ d.songs.join(' ')}`.toLowerCase()});
 
-  const filterArtist = (a, f) => {
-    return (isNullOrWhitespace(f.search) ? true : a.search.includes(f.search)) &&
-      (isNullOrWhitespace(f.sign) ? true : a.sign === f.sign) &&
-      activeFilter(f.active, a.active);
-  };
+const filterArtist = (a, f) => {
+  return (isNullOrWhitespace(f.search) ? true : a.search.includes(f.search)) &&
+    (isNullOrWhitespace(f.sign) ? true : a.sign === f.sign) &&
+    activeFilter(f.active, a.active);
+};
 
-  export const filteredArtistsEx = (enrichedArtists, filters, sortMode) => {
-    const filteredArtists = (enrichedArtists || []).filter(i => filterArtist(i,filters));
-    return filteredArtists.sort((a, b) => sortArtists(a, b, sortMode));
-  }
+export const filteredArtistsEx = (enrichedArtists, filters, sortMode) => {
+  const filteredArtists = (enrichedArtists || []).filter(i => filterArtist(i,filters));
+  return filteredArtists.sort((a, b) => sortArtists(a, b, sortMode));
+}
 
 // selectors
-  
-  export const allArtists = createSelector([getData], items => {
-    return (items || []).map(i => enrichData(i));
-  });
 
-  export const filteredArtists = createSelector([allArtists, getFilters, getSortMode], (enrichedArtists, filters, sortMode) => {
-    return filteredArtistsEx(enrichedArtists, filters, sortMode);
-  });
+export const allArtists = createSelector([getData], items => {
+  return (items || []).map(i => enrichData(i));
+});
 
- 
+export const filteredArtists = createSelector([allArtists, getFilters, getSortMode], (enrichedArtists, filters, sortMode) => {
+  return filteredArtistsEx(enrichedArtists, filters, sortMode);
+});
+
+

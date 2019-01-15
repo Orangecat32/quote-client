@@ -8,9 +8,9 @@ import * as myActions from "../../actions/index";
 import styles from './App.scss';
 import * as constants from './constants.js';
 import MemoryGameContainer from '../../containers/memory';
-import BowlingGameContainer from '../../containers/bowling';
 import RappersContainer from '../../containers/rappers';
 import PortfolioContainer from '../../containers/portfolio';
+import LivePage from '../LivePage/LivePage';
 import * as util from '../../shared/utils';
 
 class App extends Component {
@@ -50,11 +50,11 @@ class App extends Component {
         {this.props.selectedModule === constants.PORTFOLIO &&
             <PortfolioContainer />
           }
+          {this.props.selectedModule === constants.LIVE_PAGE &&
+            <LivePage />
+          }
           {this.props.selectedModule === constants.MEMORY_GAME &&
             <MemoryGameContainer />
-          }
-          {this.props.selectedModule === constants.BOWLING_GAME &&
-            <BowlingGameContainer />
           }
           {this.props.selectedModule === constants.RAPPERS_DB &&
             <RappersContainer />

@@ -1,3 +1,5 @@
+import {expect} from 'jest';
+
 import {mapStateToProps} from "./rappers";
 import {initialState} from '../store';
 import data from '../mock/rappers.json'

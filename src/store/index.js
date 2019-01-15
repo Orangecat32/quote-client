@@ -4,7 +4,7 @@ import { createLogger } from 'redux-logger'
 
 import * as memoryGame from './memory';
 import * as portfolio from './portfolio';
-import * as bowlingGame from './bowling';
+import * as liveView from './liveView';
 import * as appConstants from '../components/App/constants';
 import * as rappers from './rappers';
 
@@ -13,7 +13,7 @@ import reducer from "../reducers";
 export const initialState = {
     selectedModule: appConstants.PORTFOLIO,
     memoryGame: memoryGame.init(),
-    bowlingGame: bowlingGame.init(),
+    liveView: liveView.init(),
     portfolio: portfolio.init(),
     rappers: rappers.init()
   };

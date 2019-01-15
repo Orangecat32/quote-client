@@ -34,36 +34,36 @@ export default portfolioReducer;
 
 // selector helpers
 
-  export const getData = (state) => (state.portfolio.data);
-  export const getSortMode = (state) => (state.portfolio.sortMode);
-  
-  export const getFilters = (state) => ({
-    search: state.portfolio.searchFilter, 
-    sector: state.portfolio.sector, 
-  });
+export const getData = (state) => (state.portfolio.data);
+export const getSortMode = (state) => (state.portfolio.sortMode);
+
+export const getFilters = (state) => ({
+  search: state.portfolio.searchFilter, 
+  sector: state.portfolio.sector, 
+});
 
 
-  const enrichData = (d) => ({...d, 
-    search: `${d.name} ${ d.sector}`});
+const enrichData = (d) => ({...d, 
+  search: `${d.name} ${ d.sector}`});
 
-    const filterTicker = (a, f) => {
-      return (isNullOrWhitespace(f.search) ? true : a.search.includes(f.search)) &&
-        (isNullOrWhitespace(f.sign) ? true : a.sign === f.sign);
-    };
-  
-    export const filteredTickersEx = (enrichedArtists, filters, sortMode) => {
-      const filteredArtists = (enrichedArtists || []).filter(i => filterTicker(i,filters));
-      return filteredArtists.sort((a, b) => sortArtists(a, b, sortMode));
-    }
+const filterTicker = (a, f) => {
+  return (isNullOrWhitespace(f.search) ? true : a.search.includes(f.search)) &&
+    (isNullOrWhitespace(f.sign) ? true : a.sign === f.sign);
+};
+
+export const filteredTickersEx = (enrichedArtists, filters, sortMode) => {
+  const filteredArtists = (enrichedArtists || []).filter(i => filterTicker(i,filters));
+  return filteredArtists.sort((a, b) => sortArtists(a, b, sortMode));
+}
 
 // selectors
-  
-  export const allTickers = createSelector([getData], items => {
-    return (items || []).map(i => enrichData(i));
-  });
 
-  export const filteredTickers = createSelector([allTickers, getFilters, getSortMode], (enrichedData, filters, sortMode) => {
-    return filteredTickersEx(enrichedData, filters, sortMode);
-  });
+export const allTickers = createSelector([getData], items => {
+  return (items || []).map(i => enrichData(i));
+});
+
+export const filteredTickers = createSelector([allTickers, getFilters, getSortMode], (enrichedData, filters, sortMode) => {
+  return filteredTickersEx(enrichedData, filters, sortMode);
+});
 
  

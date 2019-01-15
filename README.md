@@ -1,4 +1,4 @@
-# Roy's game room
+# Sample Quote Client
 
 React Components for stock market simulation
 
@@ -17,20 +17,13 @@ React Components for stock market simulation
     - run on port 3020
 
 - Future features: 
-    - Add more games
-    - multi-player mode
     - auto-play with statistics collection
     - dashboard for statistics display
     - Add some tests
     - etc...
 
 
-
-- Bowling Game Screen 
-
-    ![Screen Shot](/documentation/bowling.png?raw=true "Screen Shot")
-
-
+http://localhost:4000/sectors
 
 
 - Memory Game Screen 
