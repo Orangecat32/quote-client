@@ -4,7 +4,14 @@
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
+  "devDependencies": {
+  },
   "dependencies": {
+    "cors": "^2.8.5",
+    "debug": "2.6.6",
+    "express": "4.15.2",
+    "morgan": "1.8.1",
+    "nodemon": "^1.12.1",
     "@babel/core": "7.1.6",
     "@blueprintjs/core": "^3.9.0",
     "@blueprintjs/docs-theme": "^3.0.3",
@@ -71,8 +78,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "server": "set DEBUG=app & nodemon ./server/app.js",
+    "serverd": "set DEBUG=app & nodemon --inspect ./server/app.js",
+    "serverx": "DEBUG=app nodemon app.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
