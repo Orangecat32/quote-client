@@ -1,5 +1,5 @@
-const sectors = require('./public/mock/sectors.json');
-const allTickers = require('./public/mock/spx-2019-01-02.json');
+const sectors = require('./mock/sectors.json');
+const allTickers = require('./mock/spx-2019-01-02.json');
 
 const randomSign = () => (Math.floor(Math.random() * 2) % 2 ? 1 : -1);
 

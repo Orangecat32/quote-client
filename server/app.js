@@ -9,7 +9,7 @@ const socketIO = require('socket.io');
 const utils = require('./utils');
 const cors = require('cors');
 
-const portfolio = require('./public/mock/spx-2019-01-02.json');
+const portfolio = require('./mock/spx-2019-01-02.json');
 
 const port = process.env.PORT || 4000; // html page port
 const wsport = 3002; // websocket port
@@ -34,10 +34,13 @@ socketioServer.listen(sioport);
 console.log('sio listening on port ', sioport);
 
 socketioServer.on('connection', (client) => {
-  client.on('subscribe', (interval) => {
-    console.log('client is subscribing to timer with interval ', interval);
+  client.on('subscribe', (msg) => {
+    const interval = msg.interval > 0 ? msg.interval : 1000;
+    console.log('subscribe interval ', msg);
+    let tickData;
     setInterval(() => {
-      client.emit('timer', new Date());
+      tickData = utils.buildTickUpdate(msg, tickData);
+      client.emit('tickers', JSON.stringify(tickData));
     }, interval);
   });
 });

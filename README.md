@@ -9,23 +9,19 @@ React Components for stock market simulation
 
  - Framework History:
     - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-    - Webpack was modified webpack for locally scoped css class names.
+    - Webpack modified to create css modules.
     - Redux added.
     - Component layer added. Store shaped for multiple components.
     - Redux-Saga middleware added
-    - gh-pages deployment
-    - run on port 3020
+    - client runs on port 3020
 
 - Future features: 
-    - auto-play with statistics collection
-    - dashboard for statistics display
-    - Add some tests
+    - more charts
     - etc...
 
-
-http://localhost:4000/sectors
-
-
-- Memory Game Screen 
-
-    ![Screen Shot](/documentation/memory.png?raw=true "Screen Shot")
+## Server Notes
+- To run the server, open a command window in the repository directory and execute 'yarn server' (or npm server)
+- socket.io listening on port 8005
+- REST data served by express on port 4000
+  - http://localhost:4000/spx  returns S&P 500 reference info as of Jan, 2 2019
+  - http://localhost:4000/sectors  returns GICS sectors of spx names

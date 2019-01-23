@@ -7,6 +7,20 @@ const socketType = 'websocket';
 const wsParams = {protocol: 'ws', hostname: 'localhost', port: 3002, interval: 1000};
 const sioParams = {protocol: 'http', hostname: 'localhost', port: 8005, interval: 1000};
 
+
+export const ioConnect = () => {
+  const url = `${sioParams.protocol}://${sioParams.hostname}:${sioParams.port}`;
+  console.log("socket.io connecting to: " + url);
+  try {
+    const socket = sio(url);
+    return socket;
+  } catch (ex) {
+    console.error('threw inside open connection');
+    console.error(ex);
+    throw new Error(ex);
+  }
+}
+
 const  openSioConnection = () => {
   const url = `${sioParams.protocol}://${sioParams.hostname}:${sioParams.port}`;
   console.log("socket.io connecting to: " + url);
