@@ -33,7 +33,7 @@ const buildMenu = (p, actions) => {
       </MenuItem>
      */}
       <MenuDivider />
-      <MenuItem icon="refresh" text="Refresh" onClick={() => actions.requestPortfolio()}/>
+      <MenuItem icon="refresh" text="Refresh" onClick={() => actions.refreshPortfolio()}/>
   </Menu>
   );
   

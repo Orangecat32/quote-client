@@ -20,10 +20,12 @@ export const portfolioFetch = () => ({type: PORTFOLIO_FETCH});
 export const portfolioResult = () => ({type: PORTFOLIO_RESULT});
 
 export const portfolioFailed = () => ({type: PORTFOLIO_FAILED});
+export const refreshPortfolio = () => ({type: PORTFOLIO_FETCH});
 
 
 // export const requestPortfolio = () => (dispatch, getState) => {
 //   const s = getState().portfolio;
+
 //   if(s.isLoading === true) {
 //     return;
 //   }

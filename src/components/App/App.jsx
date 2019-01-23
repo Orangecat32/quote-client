@@ -8,10 +8,10 @@ import * as myActions from "../../actions/index";
 import styles from './App.scss';
 import * as constants from './constants.js';
 
-import RappersContainer from '../../containers/rappers';
+import ChartContainer from '../../containers/chart';
 import PortfolioContainer from '../../containers/portfolio';
 import LiveViewContainer from '../../containers/liveView';
-import LivePage from '../LivePage/LivePage';
+
 import * as util from '../../shared/utils';
 
 class App extends Component {
@@ -51,11 +51,8 @@ class App extends Component {
         {this.props.selectedModule === constants.PORTFOLIO &&
             <PortfolioContainer />
           }
-          {this.props.selectedModule === constants.LIVE_PAGE &&
-            <LivePage />
-          }
-          {this.props.selectedModule === constants.RAPPERS_DB &&
-            <RappersContainer />
+          {this.props.selectedModule === constants.CHART_VIEW &&
+            <ChartContainer />
           }
           {this.props.selectedModule === constants.LIVE_VIEW &&
             <LiveViewContainer />

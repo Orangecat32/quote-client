@@ -1,44 +1,44 @@
 
 import {createSelector} from 'reselect';
 import {isNullOrWhitespace} from '../shared/utils';
-import {activeFilter, sortArtists} from '../components/Rappers/util';
+import {activeFilter, sortArtists} from '../components/Chart/util';
 
-import * as RA from "../actions/rappersActions";
+import * as RA from "../actions/chartActions";
 
-export function rappersReducer(state, action) {
+export function chartReducer(state, action) {
   switch(action.type) {
-    case RA.RAPPERS_ARTISTS_BEGIN:
+    case RA.CHART_BEGIN:
       return Object.assign(state, {isLoading: action.payload, error: null }); 
-    case RA.RAPPERS_ARTISTS_FAILED:
+    case RA.CHART_FAILED:
     {
       const message = action.payload && action.payload.message ? action.payload.message : 'error fetching data';
       return Object.assign(state, {error: message , artists: [], isLoading: false }); 
     }
-    case RA.RAPPERS_ARTISTS_SUCCESS:
+    case RA.CHART_SUCCESS:
       return Object.assign(state, {data: action.payload, error: null, isLoading: false }); 
-    case RA.RAPPERS_TOGGLE_ACTIVE:
+    case RA.CHART_TOGGLE_ACTIVE:
       return Object.assign({}, state, {showActive: !state.showActive});
-    case RA.RAPPERS_SEARCH:
+    case RA.CHART_SEARCH:
       return Object.assign({}, state, {searchFilter: action.payload});
-    case RA.RAPPERS_SORT_MODE:
+    case RA.CHART_SORT_MODE:
       return Object.assign({}, state, {sortMode: action.payload});
-      case RA.RAPPERS_VIEW_MODE:
+      case RA.CHART_VIEW_MODE:
       return Object.assign({}, state, {viewMode: action.payload});
     default: 
       return state;
   }
 }
 
-export default rappersReducer;
+export default chartReducer;
 
 // selector helpers
 
-export const getData = (state) => (state.rappers.data);
-export const getSortMode = (state) => (state.rappers.sortMode);
+export const getData = (state) => (state.chart.data);
+export const getSortMode = (state) => (state.chart.sortMode);
 
 export const getFilters = (state) => ({
-  search: state.rappers.searchFilter, 
-  active: state.rappers.showActive
+  search: state.chart.searchFilter, 
+  active: state.chart.showActive
 });
 
 
@@ -46,25 +46,25 @@ const enrichData = (d) => ({...d,
   birthDate: new Date(d.birthday),
   search: `${d.name} ${ d.songs.join(' ')}`.toLowerCase()});
 
-const filterArtist = (a, f) => {
+const filterFirm = (a, f) => {
   return (isNullOrWhitespace(f.search) ? true : a.search.includes(f.search)) &&
     (isNullOrWhitespace(f.sign) ? true : a.sign === f.sign) &&
     activeFilter(f.active, a.active);
 };
 
-export const filteredArtistsEx = (enrichedArtists, filters, sortMode) => {
-  const filteredArtists = (enrichedArtists || []).filter(i => filterArtist(i,filters));
+export const filteredFirmsEx = (enrichedArtists, filters, sortMode) => {
+  const filteredArtists = (enrichedArtists || []).filter(i => filterFirm(i,filters));
   return filteredArtists.sort((a, b) => sortArtists(a, b, sortMode));
 }
 
 // selectors
 
-export const allArtists = createSelector([getData], items => {
+export const allFirms = createSelector([getData], items => {
   return (items || []).map(i => enrichData(i));
 });
 
-export const filteredArtists = createSelector([allArtists, getFilters, getSortMode], (enrichedArtists, filters, sortMode) => {
-  return filteredArtistsEx(enrichedArtists, filters, sortMode);
+export const filteredFirms = createSelector([allFirms, getFilters, getSortMode], (firms, filters, sortMode) => {
+  return filteredFirmsEx(firms, filters, sortMode);
 });
 
 

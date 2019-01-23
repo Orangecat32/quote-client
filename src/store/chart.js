@@ -1,4 +1,4 @@
-import {SORT_NAME_DEC, VIEW_CARDS} from '../components/Rappers/constants';
+import {SORT_NAME_DEC, VIEW_CARDS} from '../components/Chart/constants';
 
 export const init = () => (
     { 

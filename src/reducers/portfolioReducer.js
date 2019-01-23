@@ -8,6 +8,8 @@ import * as RA from "../actions/portfolioActions";
 export function portfolioReducer(state, action) {
   console.log('reducted action', action.type );
   switch(action.type) {
+    // case RA.PORTFOLIO_SUCCESS:
+    //   return Object.assign(state, {data: action.payload, error: null, isLoading: false }); 
     case RA.PORTFOLIO_RESULT:
       console.log('PORTFOLIO_RESULT',action.payload);
       return Object.assign(state, {data: action.payload, error: null, isLoading: false }); 
@@ -18,8 +20,6 @@ export function portfolioReducer(state, action) {
       const message = action.payload && action.payload.message ? action.payload.message : 'error fetching data';
       return Object.assign(state, {error: message , artists: [], isLoading: false }); 
     }
-    case RA.PORTFOLIO_SUCCESS:
-      return Object.assign(state, {data: action.payload, error: null, isLoading: false }); 
     case RA.PORTFOLIO_SECTOR:
       return Object.assign({}, state, {sector: !state.sector});
     case RA.PORTFOLIO_SEARCH:
@@ -47,10 +47,10 @@ export const getFilters = (state) => ({
 
 
 const enrichData = (d) => ({...d, 
-  search: `${d.name} ${ d.sector}`});
+  search: `${d.symbol.toLowerCase()} ${ d.sector.toLowerCase()} ${ d.company.toLowerCase()}`});
 
 const filterTicker = (a, f) => {
-  return (isNullOrWhitespace(f.search) ? true : a.search.includes(f.search)) &&
+  return (isNullOrWhitespace(f.search) ? true : a.search.includes(f.search.toLowerCase())) &&
     (isNullOrWhitespace(f.sign) ? true : a.sign === f.sign);
 };
 

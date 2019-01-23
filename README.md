@@ -10,9 +10,9 @@ React Components for stock market simulation
  - Framework History:
     - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
     - Webpack was modified webpack for locally scoped css class names.
-    - Redux added. 
+    - Redux added.
     - Component layer added. Store shaped for multiple components.
-    - Thunk middleware addedS
+    - Redux-Saga middleware added
     - gh-pages deployment
     - run on port 3020
 
