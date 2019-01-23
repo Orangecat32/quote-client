@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {requestUpdates} from '../../api/liveApi';
+import {requestUpdates} from '../../api/simpleApi';
 import PropTypes from 'prop-types'; 
 import styles from './livePage.scss';
 import TickerRow from './TickerRow';
@@ -12,22 +12,29 @@ export class LivePage extends Component {
   }
 
   componentDidMount() {
+    console.log('LivePage: componentDidMount');
     requestUpdates(this.updateCallback);
   }
 
+  componentWillUnmount() {
+    console.log('LivePage: componentWillUnmount');
+  }
+
   updateCallback(data) {
+    console.log('Update LivePage');
     if(!data) {
       console.log('no data LivePage');
       return;
     }
 
     if(data['tickers']) {
-      console.log('updateCallback', data['tickers']);
+    //  console.log('updateCallback', data['tickers']);
       this.setState({tickers: data['tickers']});    
     }
   }
 
   render() {
+
     return (
         <div className={styles.container}>
           <div className={styles.content}>

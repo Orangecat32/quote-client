@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {requestUpdates} from '../../api/liveApi';
 import PropTypes from 'prop-types'; 
 import styles from './liveView.scss';
 import LiveRow from './LiveRow';
@@ -8,26 +7,19 @@ export class LiveView extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.updateCallback = this.updateCallback.bind(this);
   }
 
   componentDidMount() {
-    requestUpdates(this.updateCallback);
+    console.log('LiveView: Mount');
+    this.props.appActions.connect();
   }
 
-  updateCallback(data) {
-    if(!data) {
-      console.log('no data LivePage');
-      return;
-    }
-
-    if(data['tickers']) {
-      console.log('updateCallback', data['tickers']);
-      this.setState({tickers: data['tickers']});    
-    }
+  componentWillUnmount() {
+    console.log('LiveView: unmount'); 
   }
 
   render() {
+    console.log('Render LiveView');
     return (
         <div className={styles.container}>
           <div className={styles.content}>
@@ -39,7 +31,7 @@ export class LiveView extends Component {
               <div className={styles.colHdr}>Ask</div>
             </header>
             <div className={styles.dataArea}>  
-              { (this.state.tickers || []).map(t => (<div className={styles.tickerRow} key={t.symbol}><LiveRow {...t}/></div>)) }
+              { (this.props.tickers || []).map(t => (<div className={styles.tickerRow} key={t.symbol}><LiveRow {...t}/></div>)) }
             </div>
           </div>
         </div>
@@ -47,6 +39,19 @@ export class LiveView extends Component {
     ) ;
   }
 }
+
+
+
+LiveView.propTypes = {
+  tickers: PropTypes.array,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+  viewMode: PropTypes.any,
+  appActions: PropTypes.object,
+  filteresTickers: PropTypes.array
+};
+
+
 
 export default LiveView;
 

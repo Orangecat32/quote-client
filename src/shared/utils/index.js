@@ -28,3 +28,13 @@ export const isNullOrWhitespace = ( input ) => {
 
 export const isValidDate = (d) => (d instanceof Date && !isNaN(d));
 
+export const makeActionCreator = (type, ...argNames) => {
+  return function(...args) {
+      let action = { type };
+      argNames.forEach((arg, index) => {
+          action[argNames[index]] = args[index]
+      });
+      return action
+  }
+};
+

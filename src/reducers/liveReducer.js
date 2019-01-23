@@ -1,12 +1,14 @@
 
 import {createSelector} from 'reselect';
 import {isNullOrWhitespace} from '../shared/utils';
-import {LIVE_VIEW_SETTINGS, LIVE_VIEW_REFRESH} from "../actions/liveView";
+import * as LV from "../actions/liveViewActions";
 
 export function liveReducer(state, action) {
   switch(action.type) {
-    case LIVE_VIEW_REFRESH:
-    case LIVE_VIEW_SETTINGS:
+    case LV.LIVE_VIEW_UPDATE:
+    //console.log('live reducer', action.payload)
+      return Object.assign(state, {isLoading: false, error: null, tickers: action.payload.tickers }); 
+    case LV.LIVE_VIEW_SETTINGS:
     default:
       return state;
   }
@@ -41,7 +43,7 @@ export const allTickers = createSelector([getTickers], items => {
   return (items || []).map(i => enrichData(i));
 });
 
-export const filteredArtists = createSelector([allTickers, getFilters], (enrichedData, filters) => {
+export const filteredTickers = createSelector([allTickers, getFilters], (enrichedData, filters) => {
   return filteredArtistsEx(enrichedData, filters);
 });
 

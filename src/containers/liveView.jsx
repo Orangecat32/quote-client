@@ -2,7 +2,7 @@
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 
-import * as myActions from "../actions/liveView.js";
+import * as myActions from "../actions/liveViewActions";
 import {LiveView} from "../components/LiveView/LiveView";
 import {filteredTickers} from "../reducers/liveReducer";
 

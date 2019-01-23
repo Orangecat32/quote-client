@@ -7,9 +7,10 @@ import { Alignment, Classes, Spinner, Navbar, NavbarDivider, NavbarGroup,  Navba
 import * as myActions from "../../actions/index";
 import styles from './App.scss';
 import * as constants from './constants.js';
-import MemoryGameContainer from '../../containers/memory';
+
 import RappersContainer from '../../containers/rappers';
 import PortfolioContainer from '../../containers/portfolio';
+import LiveViewContainer from '../../containers/liveView';
 import LivePage from '../LivePage/LivePage';
 import * as util from '../../shared/utils';
 
@@ -18,13 +19,13 @@ class App extends Component {
     return (
       <div> 
       {
-        constants.AvailableGames.map(g => (
+        constants.AvailablePages.map(g => (
           <Button 
             key={g}
             className={Classes.MINIMAL} 
             active={this.props.selectedModule === g}
             text={g} 
-            onClick={()=> this.props.appActions.selectGame(g)} />
+            onClick={()=> this.props.appActions.selectPage(g)} />
         ))
       }
       </div>
@@ -53,14 +54,11 @@ class App extends Component {
           {this.props.selectedModule === constants.LIVE_PAGE &&
             <LivePage />
           }
-          {this.props.selectedModule === constants.MEMORY_GAME &&
-            <MemoryGameContainer />
-          }
           {this.props.selectedModule === constants.RAPPERS_DB &&
             <RappersContainer />
           }
-          {this.props.selectedModule === constants.MAZE_GAME &&
-            <UnderConstruction text={`${this.props.selectedModule} is under construction`} />
+          {this.props.selectedModule === constants.LIVE_VIEW &&
+            <LiveViewContainer />
           } 
         </div>   
         { !util.isNullOrWhitespace(this.props.error) && !this.props.isLoading &&

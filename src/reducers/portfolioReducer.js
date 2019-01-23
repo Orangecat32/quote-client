@@ -8,6 +8,9 @@ import * as RA from "../actions/portfolioActions";
 export function portfolioReducer(state, action) {
   console.log('reducted action', action.type );
   switch(action.type) {
+    case RA.PORTFOLIO_RESULT:
+      console.log('PORTFOLIO_RESULT',action.payload);
+      return Object.assign(state, {data: action.payload, error: null, isLoading: false }); 
     case RA.PORTFOLIO_BEGIN:
       return Object.assign(state, {isLoading: true, error: null }); 
     case RA.PORTFOLIO_FAILED:

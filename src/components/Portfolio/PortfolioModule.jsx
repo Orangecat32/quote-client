@@ -11,7 +11,8 @@ import Filters from './Filters/Filters';
 
 export class PortfolioModule extends Component {
   componentDidMount() {
-    this.props.appActions.requestPortfolio();
+   // this.props.appActions.requestPortfolio();
+    this.props.appActions.portfolioFetch();
   }
 
   render() {
