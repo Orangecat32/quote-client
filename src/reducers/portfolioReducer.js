@@ -11,7 +11,6 @@ export function portfolioReducer(state, action) {
     // case RA.PORTFOLIO_SUCCESS:
     //   return Object.assign(state, {data: action.payload, error: null, isLoading: false }); 
     case RA.PORTFOLIO_RESULT:
-      console.log('PORTFOLIO_RESULT',action.payload);
       return Object.assign(state, {data: action.payload, error: null, isLoading: false }); 
     case RA.PORTFOLIO_BEGIN:
       return Object.assign(state, {isLoading: true, error: null }); 

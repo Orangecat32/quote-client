@@ -8,6 +8,8 @@ import {update, refresh, errorOccured,
 import {openWSConnection, ioConnect} from '../api/liveApi';
 import { portfolioRequestAll} from '../api/portfolioApi';
 
+const UPDATE_RATE = 3000;
+
 export function* liveSagas() {
   yield take(LIVE_VIEW_CONNECT);
   const socket = yield call(ioConnect);
@@ -34,7 +36,7 @@ export function* portfolioFetch(socket) {
 export function* liveUpdates(socket) {
   const chan = new eventChannel(emit =>
     {
-      socket.emit('subscribe', JSON.stringify({interval: 1500}));
+      socket.emit('subscribe', JSON.stringify({interval: UPDATE_RATE}));
       socket.on('tickers', (data) => emit( JSON.parse(data)));
       socket.on('timer', (t) => { console.log('on.timer', t)});
     

@@ -14,14 +14,11 @@ export function liveReducer(state, action) {
     {
     //console.log('live reducer', action.payload)
     //overlay price update onto portfolio
-      const x = action.payload.tickers;
-      console.log('reducer.1',x);
-      const t = Object.assign(state.portfolio, x);
-      console.log('reducer.2', t);
+      const tickers = Object.assign(state.portfolio, action.payload.tickers);
       return Object.assign(state, 
         { isLoading: false, 
           error: null, 
-          tickers: t
+          tickers
         });
     }
     case LV.LIVE_VIEW_SETTINGS:
