@@ -38,7 +38,7 @@ ChartModule.propTypes = {
   error: PropTypes.string,
   viewMode: PropTypes.any,
   appActions: PropTypes.any,
-  filteresArtists: PropTypes.array
+  filteredFirms: PropTypes.array
 };
 
 

@@ -3,8 +3,8 @@ import { Spinner} from "@blueprintjs/core";
 import PropTypes from 'prop-types'; 
 
 import styles from './PortfolioModule.scss';
-// import ArtistList from './ArtistList/ArtistList';
-// import ArtistTable from './ArtistTable/ArtistTable';
+import ViewList from './ViewList/ViewList';
+import ViewTable from './ViewTable/ViewTable';
 import {isNullOrWhitespace} from '../../shared/utils';
 import Filters from './Filters/Filters';
 // import {VIEW_CARDS, VIEW_TABLE} from './constants';
@@ -31,7 +31,7 @@ export class PortfolioModule extends Component {
               <Filters {...this.props}/>
             </div>
             <div className={styles.dataArea}>
-              {this.props.filteredTickers.map(t => (<div key={t.symbol}>{ t.symbol}</div>))}
+              <ViewTable {...this.props}/>
             </div>
           </div>    
         }
@@ -57,3 +57,5 @@ PortfolioModule.propTypes = {
 
 
 export default PortfolioModule;
+
+//     {this.props.filteredTickers.map(t => (<div key={t.symbol}>{ t.symbol}</div>))}</div>

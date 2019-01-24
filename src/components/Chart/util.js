@@ -2,10 +2,10 @@ import moment from 'moment';
 import {isValidDate} from '../../shared/utils';
 import { SORT_NAME_DEC, SORT_NAME_ASC,  SORT_AGE_DEC, SORT_AGE_ASC } from './constants';
 
-// return false for inactive artist, if filter is false
-export const activeFilter = (f, isArtistActive) => !(isArtistActive === false && f === true);
+// // return false for inactive firm, if filter is false
+// export const activeFilter = (f, isActive) => !(isActive === false && f === true);
 
-export const sortArtists = (a, b, sortMode) => {
+export const sortFirmss = (a, b, sortMode) => {
   switch(sortMode) {
     case SORT_NAME_DEC:
       return a.name.localeCompare(b.name);

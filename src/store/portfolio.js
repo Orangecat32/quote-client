@@ -9,5 +9,5 @@ export const init = () => (
     viewMode: VIEW_CARDS,
     sortMode: SORT_NAME_DEC,
     sector: '', 
-    tickers: []
+    filteredFirms: []
   });

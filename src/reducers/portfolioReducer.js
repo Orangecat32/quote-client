@@ -1,7 +1,7 @@
 
 import {createSelector} from 'reselect';
 import {isNullOrWhitespace} from '../shared/utils';
-import {sortArtists} from '../components/Portfolio/util';
+import {sortFirms} from '../components/Portfolio/util';
 
 import * as RA from "../actions/portfolioActions";
 
@@ -53,9 +53,9 @@ const filterTicker = (a, f) => {
     (isNullOrWhitespace(f.sign) ? true : a.sign === f.sign);
 };
 
-export const filteredTickersEx = (enrichedArtists, filters, sortMode) => {
-  const filteredArtists = (enrichedArtists || []).filter(i => filterTicker(i,filters));
-  return filteredArtists.sort((a, b) => sortArtists(a, b, sortMode));
+export const filteredTickersEx = (enrichedFirms, filters, sortMode) => {
+  const filteredFirms = (enrichedFirms || []).filter(i => filterTicker(i,filters));
+  return filteredFirms.sort((a, b) => sortFirms(a, b, sortMode));
 }
 
 // selectors

@@ -1,0 +1,28 @@
+
+  .container {
+    display: flex;
+    flex: 1 1;
+    padding: 6px;
+    align-items: center;
+    min-width: 300px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+table th,
+table td{
+  border: 1px solid rgba(51, 53, 49, 0.26);
+  padding: .5em 1em;
+  text-align: left;
+}
+
+table th{ background: darkgray; }
+
+tr:nth-child(even) {background: rgb(124, 121, 121)}
+tr:nth-child(odd) {background: rgb(130, 130, 140)}

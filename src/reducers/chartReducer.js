@@ -1,7 +1,7 @@
 
 import {createSelector} from 'reselect';
 import {isNullOrWhitespace} from '../shared/utils';
-import {activeFilter, sortArtists} from '../components/Chart/util';
+
 
 import * as RA from "../actions/chartActions";
 
@@ -48,13 +48,13 @@ const enrichData = (d) => ({...d,
 
 const filterFirm = (a, f) => {
   return (isNullOrWhitespace(f.search) ? true : a.search.includes(f.search)) &&
-    (isNullOrWhitespace(f.sign) ? true : a.sign === f.sign) &&
-    activeFilter(f.active, a.active);
+    (isNullOrWhitespace(f.sign) ? true : a.sign === f.sign) 
 };
 
-export const filteredFirmsEx = (enrichedArtists, filters, sortMode) => {
-  const filteredArtists = (enrichedArtists || []).filter(i => filterFirm(i,filters));
-  return filteredArtists.sort((a, b) => sortArtists(a, b, sortMode));
+export const filteredFirmsEx = (enrichedFirms, filters, sortMode) => {
+  const filteredFirms = (enrichedFirms || []).filter(i => filterFirm(i,filters));
+ // add other filters here:  return filteredFirms.sort((a, b) => sortFirms(a, b, sortMode));
+ return filteredFirms;
 }
 
 // selectors

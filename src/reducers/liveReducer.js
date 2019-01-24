@@ -46,7 +46,7 @@ const filterTicker = (a, f) => {
   return (isNullOrWhitespace(f.search) ? true : a.search.includes(f.search)) ;
 };
 
-export const filteredArtistsEx = (enrichedData, filters) => {
+export const filteredFirmsEx = (enrichedData, filters) => {
   return (enrichedData || []).filter(i => filterTicker(i,filters));
 }
 
@@ -57,7 +57,7 @@ export const allTickers = createSelector([getTickers], items => {
 });
 
 export const filteredTickers = createSelector([allTickers, getFilters], (enrichedData, filters) => {
-  return filteredArtistsEx(enrichedData, filters);
+  return filteredFirmsEx(enrichedData, filters);
 });
 
 

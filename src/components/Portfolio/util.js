@@ -1,6 +1,6 @@
 import { SORT_NAME_DEC, SORT_NAME_ASC,  SORT_AGE_DEC, SORT_AGE_ASC } from './constants';
 
-export const sortArtists = (a, b, sortMode) => {
+export const sortFirms = (a, b, sortMode) => {
   switch(sortMode) {
     case SORT_NAME_DEC:
       return a.symbol.localeCompare(b.symbol);
