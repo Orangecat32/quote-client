@@ -1,5 +1,3 @@
-import {portfolioRequest} from '../api/portfolioApi';
-
 export const PORTFOLIO_BEGIN = 'PORTFOLIO_BEGIN';
 export const PORTFOLIO_FAILED = 'PORTFOLIO_FAILED';
 export const PORTFOLIO_SUCCESS = 'PORTFOLIO_SUCCESS';

@@ -17,12 +17,19 @@ export const LIVE_VIEW_LOGIN = 'LIVE_VIEW_LOGIN';
 export const LIVE_VIEW_ERROR = 'LIVE_VIEW_ERROR';
 export const LIVE_VIEW_UPDATE = 'LIVE_VIEW_UPDATE';
 
+export const LIVE_VIEW_PORTFOLIO_REQUEST = 'LIVE_VIEW_PORTFOLIO_REQUEST';
+export const LIVE_VIEW_PORTFOLIO_SUCCESS = 'LIVE_VIEW_PORTFOLIO_SUCCESS';
+export const LIVE_VIEW_PORTFOLIO_FAILED = 'LIVE_VIEW_PORTFOLIO_FAILED';
+
 export const refresh = () => ({type: LIVE_VIEW_REFRESH});
 export const changeSettings = () => ({type: LIVE_VIEW_SETTINGS});
 export const connect = () => ({type: LIVE_VIEW_CONNECT});
 export const disconnect = () => ({type: LIVE_VIEW_END});
 export const getIndex = () => ({type: LIVE_VIEW_GET_INDEX});
 export const update = (data) => ({type: LIVE_VIEW_UPDATE, payload: data});
+export const getPortfolio = () => ({type: LIVE_VIEW_PORTFOLIO_REQUEST});
+
+
 
 export const login = () => ({type: LIVE_VIEW_LOGIN});
 

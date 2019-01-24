@@ -31,21 +31,40 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist'))
 const socketioServer = socketIO(server);
 
 socketioServer.listen(sioport);
-console.log('sio listening on port ', sioport);
+console.log('io listening on port ', sioport);
 
 socketioServer.on('connection', (client) => {
-  client.on('subscribe', (msg) => {
-    const interval = msg.interval > 0 ? msg.interval : 1000;
-    console.log('subscribe interval ', msg);
+  const t = JSON.stringify(new Date());
+  console.log('io connection made:', t);
+  client.emit('ready', t);
+
+  let timerId;
+  client.on('subscribe', (m) => {
+    console.log('got subscribe',m);
+
+    if(timerId) {
+      clearInterval(timerId);
+    }
+
+    const msg = JSON.parse(m);
+    const interval = msg && msg.interval > 0 ? msg.interval : 1000;
+    const {sector} = msg;
+    console.log('updating subscribe with:',interval, sector);
     let tickData;
-    setInterval(() => {
-      tickData = utils.buildTickUpdate(msg, tickData);
+    timerId = setInterval(() => {
+      tickData = utils.buildTickUpdate(sector, tickData);
       client.emit('tickers', JSON.stringify(tickData));
     }, interval);
   });
+
+  client.on('unsubscribe', () => {
+    if(timerId) {
+      clearInterval(timerId);
+    }
+  });
 });
 
-// websocket related  -----------------------------------------------------------------------------
+// plain websocket related  -----------------------------------------------------------------------------
 
 const websocketServer = new websocket.Server({ server });
 

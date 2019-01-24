@@ -5,9 +5,25 @@ import * as LV from "../actions/liveViewActions";
 
 export function liveReducer(state, action) {
   switch(action.type) {
+    case LV.LIVE_VIEW_PORTFOLIO_SUCCESS:
+      return Object.assign(state, {portfolio: action.payload }); 
+    case LV.LIVE_VIEW_ERROR:
+      console.log('live reducer:', action.payload)
+      return Object.assign(state, {error: action.payload }); 
     case LV.LIVE_VIEW_UPDATE:
+    {
     //console.log('live reducer', action.payload)
-      return Object.assign(state, {isLoading: false, error: null, tickers: action.payload.tickers }); 
+    //overlay price update onto portfolio
+      const x = action.payload.tickers;
+      console.log('reducer.1',x);
+      const t = Object.assign(state.portfolio, x);
+      console.log('reducer.2', t);
+      return Object.assign(state, 
+        { isLoading: false, 
+          error: null, 
+          tickers: t
+        });
+    }
     case LV.LIVE_VIEW_SETTINGS:
     default:
       return state;

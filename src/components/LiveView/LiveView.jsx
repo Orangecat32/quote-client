@@ -19,7 +19,7 @@ export class LiveView extends Component {
   }
 
   render() {
-    console.log('Render LiveView');
+    console.log('Render LiveView', this.props.tickers.length);
     return (
         <div className={styles.container}>
           <div className={styles.content}>

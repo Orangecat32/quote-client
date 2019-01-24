@@ -23,9 +23,9 @@ export const buildStore = () => {
   let middlewares = [sagaMiddleware];
 
   // turn off the noise here
-  if (process.env.NODE_ENV !== 'production') {
-    middlewares.push(createLogger())
-  }
+  // if (process.env.NODE_ENV !== 'production') {
+  //   middlewares.push(createLogger())
+  // }
 
   const s = createStore(reducer,  applyMiddleware(...middlewares));
   initSagas(sagaMiddleware);
