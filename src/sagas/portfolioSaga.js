@@ -8,8 +8,6 @@ export function* portfolioFetch(action) {
      const response = yield call(portfolioRequestAll);
 
      const json= yield response.json();
-     console.log('portfolio fetch', json);
-
      yield put({type: TYPES.PORTFOLIO_RESULT, payload: json});
   } catch (e) {
       console.log(e)

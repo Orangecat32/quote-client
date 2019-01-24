@@ -8,7 +8,7 @@ export class ViewTable extends React.Component {
 
   render() {
     const p = this.props;
-    console.log('ViewTable:', p.filteredTickers );
+  
     return (
       <div className={styles.container}>
         <table className={styles.fixed_header}>
