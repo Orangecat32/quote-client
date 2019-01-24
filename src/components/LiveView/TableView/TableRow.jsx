@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import styles from './liveView.scss';
+import styles from './tableView.scss';
 
-export class LiveRow extends Component {
+export class TableRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,5 +37,5 @@ export class LiveRow extends Component {
 }
 
 
-export default LiveRow;
+export default TableRow;
 

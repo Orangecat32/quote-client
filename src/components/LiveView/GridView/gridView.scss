@@ -1,0 +1,66 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;  
+  height: calc(100vh - 50px);
+}
+
+.dataArea {
+  height: calc(100vh - 50px);
+  display: block;
+  min-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.filters {
+  height: 50px;
+  display: flex;
+  width: 100%; 
+  background-color:dimgray; 
+  align-content: center;
+}
+
+
+
+.spinner {
+  display:flex;
+  min-height: 100vh;
+  color: white;
+  justify-content: center
+}
+
+.header {
+  display: flex; 
+  background-color: lightslategray;
+  width: calc(100%);
+  height: 1.5em;
+}
+
+
+.tickerList {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  overflow-y: auto;
+  height: calc(100vh - 1.5em);
+}
+
+.rowItem {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+
+
