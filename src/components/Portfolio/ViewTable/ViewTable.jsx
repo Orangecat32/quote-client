@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'; 
 import styles from './ViewTable.scss';
 
+const ONE_MILLION = 1000000;
+
 export class ViewTable extends React.Component {
 
   render() {
@@ -9,13 +11,13 @@ export class ViewTable extends React.Component {
     console.log('ViewTable:', p.filteredTickers );
     return (
       <div className={styles.container}>
-        <table className={styles.artistTable}>
+        <table className={styles.fixed_header}>
           <thead>
             <tr>
               <th>Firm</th>
-              <th>Volume50d</th>
+              <th>Avg Volume</th>
               <th>MktCap</th>
-              <th>Volotity 50d</th>           
+              <th>Volatility</th>           
               <th>Sector</th>
               <th>Sub Industry</th>
               <th>PE</th>
@@ -28,16 +30,17 @@ export class ViewTable extends React.Component {
               p.filteredTickers.map(a => (
                 <tr key={a.symbol}>
                   <td className={styles.name}>{a.symbol}</td>
-                  <td className={styles.active}>{`${a.avgVol50d}`}</td>
-                  <td className={styles.active}>{`${a.mktCap}`}</td>
-                  <td className={styles.active}>{`${a.volPct50d}`}</td>
-                  <td className={styles.active}>{`${a.sector}`}</td>
-                  <td className={styles.active}>{`${a.subIndustry}`}</td>
-                  <td className={styles.active}>{`${a.PEttm}`}</td>
-                  <td className={styles.active}>{`${a.Location}`}</td>
-                  <td className={styles.active}>{`${a.company}`}</td>
-
-                 
+                  <td className={styles.numeric}>{`${a.avgVol50d.toLocaleString()}`}</td>
+                  <td className={styles.numeric}>
+                    {
+                      `${(a.mktCap/ONE_MILLION).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`
+                    }</td>
+                  <td className={styles.numeric}>{`${a.volPct50d}`}</td>
+                  <td className={styles.name}>{`${a.sector}`}</td>
+                  <td className={styles.name}>{`${a.subIndustry}`}</td>
+                  <td className={styles.numeric}>{`${a.PEttm}`}</td>
+                  <td className={styles.name}>{`${a.Location}`}</td>
+                  <td className={styles.name}>{`${a.company}`}</td> 
                 </tr>
               ))
             }

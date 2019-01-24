@@ -362,7 +362,7 @@
     "close": 89.44,
     "avgVol50d": 496984,
     "volPct50d": 0.27,
-    "company": "Assurant�Inc.",
+    "company": "Assurant Inc.",
     "sector": "Financials",
     "subIndustry": "Multi-line Insurance",
     "Location": "New York, New York"
@@ -685,7 +685,7 @@
     "company": "Aon plc",
     "sector": "Financials",
     "subIndustry": "Insurance Brokers",
-    "Location": "London,�United Kingdom"
+    "Location": "London, United Kingdom"
   },
   {
     "symbol": "AOS",
@@ -698,7 +698,7 @@
     "close": 42.7,
     "avgVol50d": 2291013,
     "volPct50d": 0.34,
-    "company": "A.O. Smith�Corp",
+    "company": "A.O. Smith Corp",
     "sector": "Industrials",
     "subIndustry": "Building Products",
     "Location": "Milwaukee, Wisconsin"
@@ -781,7 +781,7 @@
     "company": "Aptiv Plc",
     "sector": "Consumer Discretionary",
     "subIndustry": "Auto Parts & Equipment",
-    "Location": "Gillingham, Kent,�United Kingdom"
+    "Location": "Gillingham, Kent, United Kingdom"
   },
   {
     "symbol": "ARE",
@@ -794,7 +794,7 @@
     "close": 115.24,
     "avgVol50d": 692162,
     "volPct50d": 0.26,
-    "company": "Alexandria Real Estate Equities�Inc",
+    "company": "Alexandria Real Estate Equities Inc",
     "sector": "Real Estate",
     "subIndustry": "Office REITs",
     "Location": "Pasadena, California"
@@ -2058,7 +2058,7 @@
     "close": 49.9,
     "avgVol50d": 7029563,
     "volPct50d": 0.33,
-    "company": "Delta Air Lines�Inc.",
+    "company": "Delta Air Lines Inc.",
     "sector": "Industrials",
     "subIndustry": "Airlines",
     "Location": "Atlanta, Georgia"
@@ -2186,7 +2186,7 @@
     "close": 24.74,
     "avgVol50d": 4670158,
     "volPct50d": 0.44,
-    "company": "Discovery Inc.�Class A",
+    "company": "Discovery Inc. Class A",
     "sector": "Communication Services",
     "subIndustry": "Broadcasting",
     "Location": "Silver Spring, Maryland"
@@ -2202,7 +2202,7 @@
     "close": 23.08,
     "avgVol50d": 3323220,
     "volPct50d": 0.43,
-    "company": "Discovery Inc.�Class C",
+    "company": "Discovery Inc. Class C",
     "sector": "Communication Services",
     "subIndustry": "Broadcasting",
     "Location": "Silver Spring, Maryland"
@@ -2234,7 +2234,7 @@
     "close": 106.55,
     "avgVol50d": 1536749,
     "volPct50d": 0.34,
-    "company": "Digital Realty�Trust Inc",
+    "company": "Digital Realty Trust Inc",
     "sector": "Real Estate",
     "subIndustry": "Specialized REITs",
     "Location": "San Francisco, California"
@@ -2282,7 +2282,7 @@
     "close": 25.9,
     "avgVol50d": 2109817,
     "volPct50d": 0.27,
-    "company": "Duke Realty�Corp",
+    "company": "Duke Realty Corp",
     "sector": "Real Estate",
     "subIndustry": "Industrial REITs",
     "Location": "Indianapolis, Indiana"
@@ -2314,7 +2314,7 @@
     "close": 110.3,
     "avgVol50d": 1358455,
     "volPct50d": 0.23,
-    "company": "DTE Energy�Co.",
+    "company": "DTE Energy Co.",
     "sector": "Utilities",
     "subIndustry": "Multi-Utilities",
     "Location": "Detroit, Michigan"
@@ -2346,7 +2346,7 @@
     "close": 51.46,
     "avgVol50d": 1870605,
     "volPct50d": 0.46,
-    "company": "DaVita�Inc.",
+    "company": "DaVita Inc.",
     "sector": "Health Care",
     "subIndustry": "Health Care Facilities",
     "Location": "Denver, Colorado"
@@ -2362,7 +2362,7 @@
     "close": 22.54,
     "avgVol50d": 8435798,
     "volPct50d": 0.49,
-    "company": "Devon Energy�Corp.",
+    "company": "Devon Energy Corp.",
     "sector": "Energy",
     "subIndustry": "Oil & Gas Exploration & Production",
     "Location": "Oklahoma City, Oklahoma"
@@ -2426,7 +2426,7 @@
     "close": 28.07,
     "avgVol50d": 14751077,
     "volPct50d": 0.38,
-    "company": "eBay�Inc.",
+    "company": "eBay Inc.",
     "sector": "Consumer Discretionary",
     "subIndustry": "Internet & Direct Marketing Retail",
     "Location": "San Jose, California"
@@ -2442,7 +2442,7 @@
     "close": 147.35,
     "avgVol50d": 1294426,
     "volPct50d": 0.23,
-    "company": "Ecolab�Inc.",
+    "company": "Ecolab Inc.",
     "sector": "Materials",
     "subIndustry": "Specialty Chemicals",
     "Location": "St. Paul, Minnesota"
@@ -3101,7 +3101,7 @@
     "company": "TechnipFMC",
     "sector": "Energy",
     "subIndustry": "Oil & Gas Equipment & Services",
-    "Location": "London,�United Kingdom"
+    "Location": "London, United Kingdom"
   },
   {
     "symbol": "FTNT",
@@ -3562,7 +3562,7 @@
     "close": 71.8,
     "avgVol50d": 3952151,
     "volPct50d": 0.36,
-    "company": "Hilton Worldwide�Holdings Inc",
+    "company": "Hilton Worldwide Holdings Inc",
     "sector": "Consumer Discretionary",
     "subIndustry": "Hotels, Resorts & Cruise Lines",
     "Location": "Tysons Corner, Virginia"
@@ -3885,7 +3885,7 @@
     "company": "IHS Markit Ltd.",
     "sector": "Industrials",
     "subIndustry": "Research & Consulting Services",
-    "Location": "London,�United Kingdom"
+    "Location": "London, United Kingdom"
   },
   {
     "symbol": "INTC",
@@ -3914,7 +3914,7 @@
     "close": 196.85,
     "avgVol50d": 1841020,
     "volPct50d": 0.38,
-    "company": "Intuit�Inc.",
+    "company": "Intuit Inc.",
     "sector": "Information Technology",
     "subIndustry": "Internet Software & Services",
     "Location": "Mountain View, California"
@@ -3978,7 +3978,7 @@
     "close": 116.17,
     "avgVol50d": 1520591,
     "volPct50d": 0.34,
-    "company": "IQVIA�Holdings Inc.",
+    "company": "IQVIA Holdings Inc.",
     "sector": "Health Care",
     "subIndustry": "Life Sciences Tools & Service",
     "Location": "Durham, North Carolina"
@@ -4282,7 +4282,7 @@
     "close": 43.04,
     "avgVol50d": 7211484,
     "volPct50d": 0.32,
-    "company": "Kraft Heinz�Co",
+    "company": "Kraft Heinz Co",
     "sector": "Consumer Staples",
     "subIndustry": "Packaged Foods & Meats",
     "Location": "Pittsburgh, Pennsylvania"
@@ -4378,7 +4378,7 @@
     "close": 47.35,
     "avgVol50d": 15300801,
     "volPct50d": 0.18,
-    "company": "Coca-Cola Company�(The)",
+    "company": "Coca-Cola Company",
     "sector": "Consumer Staples",
     "subIndustry": "Soft Drinks",
     "Location": "Atlanta, Georgia"
@@ -4426,7 +4426,7 @@
     "close": 66.34,
     "avgVol50d": 4071623,
     "volPct50d": 0.49,
-    "company": "Kohl's�Corp.",
+    "company": "Kohl's Corp.",
     "sector": "Consumer Discretionary",
     "subIndustry": "General Merchandise Stores",
     "Location": "Menomonee Falls, Wisconsin"
@@ -4909,7 +4909,7 @@
     "company": "Medtronic plc",
     "sector": "Health Care",
     "subIndustry": "Health Care Equipment",
-    "Location": "Dublin,�Ireland"
+    "Location": "Dublin, Ireland"
   },
   {
     "symbol": "MET",
@@ -5245,7 +5245,7 @@
     "company": "Mylan N.V.",
     "sector": "Health Care",
     "subIndustry": "Pharmaceuticals",
-    "Location": "Amsterdam,�Netherlands"
+    "Location": "Amsterdam, Netherlands"
   },
   {
     "symbol": "NBL",
@@ -5978,7 +5978,7 @@
     "close": 37.78,
     "avgVol50d": 1666324,
     "volPct50d": 0.24,
-    "company": "Pentair�plc",
+    "company": "Pentair plc",
     "sector": "Industrials",
     "subIndustry": "Industrial Machinery",
     "Location": "Worsley, UK"
@@ -6218,7 +6218,7 @@
     "close": 217.76,
     "avgVol50d": 305098,
     "volPct50d": 0.26,
-    "company": "Everest Re�Group Ltd.",
+    "company": "Everest Re Group Ltd.",
     "sector": "Financials",
     "subIndustry": "Reinsurance",
     "Location": "Hamilton, Bermuda"
@@ -6589,7 +6589,7 @@
     "company": "Schlumberger Ltd.",
     "sector": "Energy",
     "subIndustry": "Oil & Gas Equipment & Services",
-    "Location": "Cura�ao,�Kingdom of the Netherlands"
+    "Location": "Curaao, Kingdom of the Netherlands"
   },
   {
     "symbol": "SLG",
@@ -7210,7 +7210,7 @@
     "close": 16.17,
     "avgVol50d": 3616432,
     "volPct50d": 0.7,
-    "company": "Under Armour�Class C",
+    "company": "Under Armour Class C",
     "sector": "Consumer Discretionary",
     "subIndustry": "Apparel, Accessories & Luxury Goods",
     "Location": "Baltimore, Maryland"
@@ -7226,7 +7226,7 @@
     "close": 17.67,
     "avgVol50d": 6356749,
     "volPct50d": 0.74,
-    "company": "Under Armour�Class A",
+    "company": "Under Armour Class A",
     "sector": "Consumer Discretionary",
     "subIndustry": "Apparel, Accessories & Luxury Goods",
     "Location": "Baltimore, Maryland"
@@ -7850,7 +7850,7 @@
     "close": 98.91,
     "avgVol50d": 3388056,
     "volPct50d": 0.7,
-    "company": "Wynn Resorts�Ltd",
+    "company": "Wynn Resorts Ltd",
     "sector": "Consumer Discretionary",
     "subIndustry": "Casinos & Gaming",
     "Location": "Paradise, Nevada"
