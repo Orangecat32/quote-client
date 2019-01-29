@@ -14,15 +14,6 @@ export class GridView extends Component {
       columnDefs: columnDef
     };
   }
-
-  componentDidMount() {
-    console.log('GridView: Mount');
-  }
-
-  componentWillUnmount() {
-    console.log('GridView: unmount'); 
-  }
-
   
   componentWillReceiveProps(nextProps) {
     console.log('GridView: componentWillReceiveProps'); 

@@ -9,12 +9,7 @@ import {isNullOrWhitespace} from '../../shared/utils';
 import Filters from './Filters/Filters';
 // import {VIEW_CARDS, VIEW_TABLE} from './constants';
 
-export class PortfolioModule extends Component {
-  componentDidMount() {
-   // this.props.appActions.requestPortfolio();
-    this.props.appActions.portfolioFetch();
-  }
-
+export class PortfolioModule extends React.PureComponent {
   render() {
     console.log('load:', this.props.tickers);
     return (
