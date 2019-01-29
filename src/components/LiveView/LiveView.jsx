@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'; 
 import styles from './liveView.scss';
-import TableView from './TableView/TableView';
+import LiveTable from './LiveTable/LiveTable';
 import GridView from './GridView/GridView';
 
 export class LiveView extends Component {
@@ -10,15 +10,6 @@ export class LiveView extends Component {
 
     this.state = {};
   }
-
-  componentDidMount() {
-    console.log('LiveView: Mount');
-  }
-
-  componentWillUnmount() {
-    console.log('LiveView: unmount'); 
-  }
-
 
   render() {
     console.log('Render LiveView', this.props.tickers.length);

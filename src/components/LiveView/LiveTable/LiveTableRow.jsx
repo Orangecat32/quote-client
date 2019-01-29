@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import styles from './PortfolioModule.scss';
+import styles from './liveTable.scss';
 
-export class DataRow extends Component {
+export class LiveTableRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,5 +37,5 @@ export class DataRow extends Component {
 }
 
 
-export default DataRow;
+export default LiveTableRow;
 

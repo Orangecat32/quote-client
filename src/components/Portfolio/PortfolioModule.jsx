@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Spinner} from "@blueprintjs/core";
 import PropTypes from 'prop-types'; 
 
 import styles from './PortfolioModule.scss';
-import ViewList from './ViewList/ViewList';
 import ViewTable from './ViewTable/ViewTable';
+
 import {isNullOrWhitespace} from '../../shared/utils';
 import Filters from './Filters/Filters';
 // import {VIEW_CARDS, VIEW_TABLE} from './constants';
 
-export class PortfolioModule extends React.PureComponent {
+export class PortfolioModule extends PureComponent {
   render() {
     console.log('load:', this.props.tickers);
     return (
@@ -53,4 +53,3 @@ PortfolioModule.propTypes = {
 
 export default PortfolioModule;
 
-//     {this.props.filteredTickers.map(t => (<div key={t.symbol}>{ t.symbol}</div>))}</div>

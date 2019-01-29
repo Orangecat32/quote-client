@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'; 
-import styles from './tableView.scss';
-import TableRow from './TableRow';
+import styles from './liveTable.scss';
+import TableRow from './LiveTableRow';
 
-export class TableView extends Component {
+export class LiveTable extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -41,8 +41,7 @@ export class TableView extends Component {
 }
 
 
-
-TableView.propTypes = {
+LiveTable.propTypes = {
   tickers: PropTypes.array,
   isLoading: PropTypes.bool,
   error: PropTypes.string,
@@ -53,5 +52,5 @@ TableView.propTypes = {
 
 
 
-export default TableView;
+export default LiveTable;
 
