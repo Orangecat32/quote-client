@@ -1,4 +1,6 @@
 
+const ONE_MILLION = 1000000;
+
 // usage to sleep for two seconds: await sleep(2000);  
 export const sleep = (ms) => (new Promise(resolve => setTimeout(resolve, ms)));
 
@@ -57,4 +59,19 @@ export const fmtPrice = (n) => {
 
     return n.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}); 
 }
+
+
+export const fmtMktCap = (n) => {
+    if (n === null || n === undefined) {
+        return '';
+    }
+
+    return (n / ONE_MILLION).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}); 
+}
+
+
+export const fmtShares = (n) => (n === null || n === undefined) 
+        ? ''
+        : (n / ONE_MILLION).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}); 
+
 

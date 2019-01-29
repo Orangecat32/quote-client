@@ -1,4 +1,4 @@
-import {fmtPercent, fmtPrice} from '../../../shared/utils';
+import {fmtPercent, fmtPrice, fmtShares, fmtMktCap} from '../../../shared/utils';
 
 export const columnDef = [
   {
@@ -40,6 +40,22 @@ export const columnDef = [
     cellStyle: {'text-align': 'right'},
     field: "ask"
   },
+  {
+    headerName: "Shares", 
+    sortable: true,
+    width: 90,
+    cellStyle: {'text-align': 'right'},
+    cellRenderer: (params) => fmtShares(params.value),
+    field: "sharesOut"
+  }, 
+  {
+    headerName: "MktCap", 
+    sortable: true,
+    width: 90,
+    cellStyle: {'text-align': 'right'},
+    cellRenderer: (params) => fmtMktCap(params.value),
+    field: "mktCap"
+  }, 
   {
     headerName: "Location", 
     sortable: true,
