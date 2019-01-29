@@ -4528,22 +4528,6 @@
     "Location": "Burlington, North Carolina"
   },
   {
-    "symbol": "LIN",
-    "ShortName": "Linde Plc",
-    "high52wk": 166.85,
-    "low52wk": 145.95,
-    "mktCap": 44873980000,
-    "sharesOut": 287580000,
-    "PEttm": 24.46,
-    "close": 156.04,
-    "avgVol50d": "N/A",
-    "volPct50d": "N/A",
-    "company": "Linde plc",
-    "sector": "Materials",
-    "subIndustry": "Industrial Gases",
-    "Location": "Guildford, Surrey, United Kingdom"
-  },
-  {
     "symbol": "LKQ",
     "ShortName": "LKQ Corp",
     "high52wk": 43.86,
