@@ -5,8 +5,6 @@ React Components for stock market simulation
 ## About this repro
  - This is a work in progress, created purely for my own amusement. 
 
- - [Click here to run the application](https://orangecat32.github.io/quote-client/)
-
  - Framework History:
     - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
     - Webpack modified to create css modules.
