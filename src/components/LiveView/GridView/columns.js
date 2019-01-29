@@ -11,7 +11,8 @@ export const columnDef = [
   {
     headerName: "Last", 
     cellRenderer: (params) => fmtPrice(params.value),
-    width: 90,
+    width: 80,
+    cellStyle: {'text-align': 'right'},
     sortable: true,
     field: "last"
   },
@@ -19,21 +20,24 @@ export const columnDef = [
     headerName: "Chng", 
     cellRenderer: (params) => fmtPercent(params.value),
     width: 90,
+    cellStyle: {'text-align': 'right'},
     sortable: true,
     field: "pc"
   },
   {
     headerName: "Bid", 
     field: "bid",
-    width: 90,
+    width: 80,
+    cellStyle: {'text-align': 'right'},
     sortable: true,
     cellRenderer: (params) => fmtPrice(params.value)
   },
-  {
+  { 
     headerName: "Ask", 
     cellRenderer: (params) => fmtPrice(params.value),
-    width: 90,
+    width: 80,
     sortable: true,
+    cellStyle: {'text-align': 'right'},
     field: "ask"
   },
   {
