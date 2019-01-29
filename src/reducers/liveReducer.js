@@ -3,22 +3,24 @@ import {createSelector} from 'reselect';
 import {isNullOrWhitespace} from '../shared/utils';
 import * as LV from "../actions/liveViewActions";
 
+
+
+
 export function liveReducer(state, action) {
   switch(action.type) {
     case LV.LIVE_VIEW_PORTFOLIO_SUCCESS:
-      return Object.assign(state, {portfolio: action.payload }); 
+      return Object.assign(state, {portfolio: action.payload, tickers: action.payload, timer: 0 }); 
     case LV.LIVE_VIEW_ERROR:
-      console.log('live reducer:', action.payload)
+      console.log('live reducer error:', action.payload)
       return Object.assign(state, {error: action.payload }); 
     case LV.LIVE_VIEW_UPDATE:
     {
-    //console.log('live reducer', action.payload)
-    //overlay price update onto portfolio
-      const tickers = Object.assign(state.portfolio, action.payload.tickers);
       return Object.assign(state, 
-        { isLoading: false, 
+        { 
+          isLoading: false, 
+          timer: action.payload.timer,
           error: null, 
-          tickers
+          tickers: mergeUpdate(state.tickers, action.payload.tickers)
         });
     }
     case LV.LIVE_VIEW_SETTINGS:
@@ -60,10 +62,14 @@ export const filteredTickers = createSelector([allTickers, getFilters], (enriche
   return filteredFirmsEx(enrichedData, filters);
 });
 
+//  helper function
+function mergeUpdate(portfolio, updates) {
+  // build map of updates. Note that not every ticker will have an update
+  const keyedUpdates = updates.reduce((acc, u) => Object.assign(acc, {[u.symbol]: u}), {});
 
-
-
-
-// return Object.assign({}, state, {showRules: !state.showRules});
-//       return  Object.assign({}, state, {frames: updateFrames(state.frames, action.payload) });
+  return  portfolio.map((item) => {
+    const u = keyedUpdates[item.symbol];
+    return u ? Object.assign(item, {bid: u.bid, ask: u.ask, last: u.last, pc: u.pc}) : item;
+  });
+}
  

@@ -50,7 +50,8 @@ socketioServer.on('connection', (client) => {
     const interval = msg && msg.interval > 0 ? msg.interval : 1000;
     const {sector} = msg;
     console.log('updating subscribe with:',interval, sector);
-    let tickData;
+    let tickData = utils.buildTickUpdate(sector);
+    client.emit('tickers', JSON.stringify(tickData));
     timerId = setInterval(() => {
       tickData = utils.buildTickUpdate(sector, tickData);
       client.emit('tickers', JSON.stringify(tickData));

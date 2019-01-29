@@ -11,7 +11,7 @@ import {initSagas } from './initSagas';
 import reducer from "../reducers";
 
 export const initialState = {
-    selectedModule: appConstants.PORTFOLIO,
+    selectedModule: appConstants.LIVE_VIEW,
     liveView: liveView.init(),
     portfolio: portfolio.init(),
     chart: chart.init()
