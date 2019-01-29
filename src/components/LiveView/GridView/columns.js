@@ -1,27 +1,61 @@
+import {fmtPercent, fmtPrice} from '../../../shared/utils';
 
 export const columnDef = [
   {
     headerName: "Symbol", 
-    field: "symbol"
+    field: "symbol",
+    width: 90,
+    pinned: 'left',
+    sortable: true
+  },
+  {
+    headerName: "Last", 
+    cellRenderer: (params) => fmtPrice(params.value),
+    width: 90,
+    sortable: true,
+    field: "last"
+  },
+  {
+    headerName: "Chng", 
+    cellRenderer: (params) => fmtPercent(params.value),
+    width: 90,
+    sortable: true,
+    field: "pc"
   },
   {
     headerName: "Bid", 
     field: "bid",
-    cellRenderer: (params) => (params.value ? params.value.toFixed(2) : '')
+    width: 90,
+    sortable: true,
+    cellRenderer: (params) => fmtPrice(params.value)
   },
   {
     headerName: "Ask", 
-    cellRenderer: (params) => (params.value ? params.value.toFixed(2) : ''),
+    cellRenderer: (params) => fmtPrice(params.value),
+    width: 90,
+    sortable: true,
     field: "ask"
   },
   {
     headerName: "Location", 
+    sortable: true,
     field: "Location"
   },
   {
+    headerName: "Sector", 
+    sortable: true,
+    field: "sector"
+  },
+  {
     headerName: "Sub-Industry", 
+    sortable: true,
     field: "subIndustry"
-  }
+  }, 
+  {
+    headerName: "Company", 
+    sortable: true,
+    field: "company"
+  },
 ];
 
 /*

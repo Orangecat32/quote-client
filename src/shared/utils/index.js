@@ -38,3 +38,23 @@ export const makeActionCreator = (type, ...argNames) => {
   }
 };
 
+export const fmtPercent = (n) => {
+    if (n === null || n === undefined) {
+        return '0.0%';
+    }
+
+    const pcSign = n >= 0 ? '+' : '';
+    const pc = n ? n * 100 : 0; 
+    return `${pcSign}${pc.toFixed(2)}%`; 
+}
+
+
+
+export const fmtPrice = (n) => {
+    if (n === null || n === undefined) {
+        return '';
+    }
+
+    return n.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}); 
+}
+

@@ -18,7 +18,8 @@ export class GridView extends Component {
   componentWillReceiveProps(nextProps) {
     console.log('GridView: componentWillReceiveProps'); 
     if(this.gridApi) {
-      this.gridApi.setRowData(nextProps.tickers);
+      //  to keep grid from updating during an update
+      setTimeout(() => this.gridApi.setRowData(nextProps.tickers),0);
     }
   }
 
