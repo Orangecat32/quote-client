@@ -11,11 +11,17 @@ React Components for stock market simulation
     - Redux added.
     - Component layer added. Store shaped for multiple components.
     - Redux-Saga middleware added
-    - client runs on port 3020
+    - ag-grid added
+    - echarts added
+   
 
 - Future features: 
     - more charts
     - etc...
+
+## Client Notes
+     - client runs on port 3020
+     - start the server before starting the client
 
 ## Server Notes
 - To run the server, open a command window in the repository directory and execute 'yarn server' (or npm server)
