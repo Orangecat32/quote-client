@@ -24,14 +24,11 @@ export class LiveView extends Component {
 
     console.log('live:', this.props.viewMode);
     return (
-      <div className={styles.container}>
-        <div className={styles.content}>
+     
           <div className={styles.dataArea}>
             {view}
           </div>
-        </div>    
-    
-    </div>
+
     ) ;
   }
 }

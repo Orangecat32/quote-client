@@ -2,7 +2,8 @@
 .container {
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
+  width: 100%;
 }
 
 .content {
@@ -11,16 +12,9 @@
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;  
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 100px);
 }
 
-.filters {
-  height: 50px;
-  display: flex;
-  width: 100%; 
-  background-color:dimgray; 
-  align-content: center;
-}
 
 .dataArea {
   height: calc(100vh - 100px);
@@ -29,22 +23,3 @@
   overflow-y: auto;
   width: 100%;
 }
-
-.spinner {
-  display:flex;
-  min-height: 100vh;
-  color: white;
-  justify-content: center
-}
-
-
-.error {
-  display: flex;
-  min-height: 100vh;
-  color: red;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin:10px;
-  font-size: 2em;
-}
-
