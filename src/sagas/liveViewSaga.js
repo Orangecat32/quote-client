@@ -2,33 +2,33 @@
 import { eventChannel } from 'redux-saga';
 import { take, call, put } from 'redux-saga/effects';
 import {update, refresh, errorOccured, 
-  LIVE_VIEW_CONNECT, LIVE_VIEW_PORTFOLIO_SUCCESS, LIVE_VIEW_REFRESH ,LIVE_VIEW_PORTFOLIO_FAILED, LIVE_VIEW_PORTFOLIO_REQUEST
-} from '../actions/liveViewActions';
+  DATA_CONNECT, DATA_PORTFOLIO_SUCCESS, DATA_REFRESH ,DATA_PORTFOLIO_FAILED, DATA_PORTFOLIO_REQUEST
+} from '../actions/dataActions';
 
 import {openWSConnection, ioConnect} from '../api/liveApi';
 import { portfolioRequestAll} from '../api/portfolioApi';
 
-const UPDATE_RATE = 3000;
+const UPDATE_RATE = 1000;
 
 export function* liveSagas() {
-  yield take(LIVE_VIEW_CONNECT);
+  yield take(DATA_CONNECT);
   const socket = yield call(ioConnect);
   yield call(portfolioFetch, socket);
-  yield take(LIVE_VIEW_REFRESH, liveUpdates(socket));
+  yield take(DATA_REFRESH, liveUpdates(socket));
 }
 
 
 export function* portfolioFetch(socket) {
   try {
-    yield put({type: LIVE_VIEW_PORTFOLIO_REQUEST});
+    yield put({type: DATA_PORTFOLIO_REQUEST});
     const response = yield call(portfolioRequestAll);
     const json= yield response.json();
-    yield put({type: LIVE_VIEW_PORTFOLIO_SUCCESS, payload: json});
+    yield put({type: DATA_PORTFOLIO_SUCCESS, payload: json});
 
     yield liveUpdates(socket);
   } catch (e) {
       console.log(e)
-      yield put({type: LIVE_VIEW_PORTFOLIO_FAILED, payload:e});
+      yield put({type: DATA_PORTFOLIO_FAILED, payload:e});
   }
 }
 
@@ -50,6 +50,9 @@ export function* liveUpdates(socket) {
   );
 
   while (true){
+    if(!chan) {
+      console.log('null channel')
+    }
     const message = yield take(chan);
     yield put(update(message));
   }
@@ -59,7 +62,7 @@ export function* liveUpdates(socket) {
 
 // plain websocket version of basic requests. -------------------------------------------------------------------------
 export function* liveSagasWS() {
-  yield take (LIVE_VIEW_CONNECT);
+  yield take (DATA_CONNECT);
   const socket= yield call(openWSConnection);
 
   const chan = new eventChannel(emit =>

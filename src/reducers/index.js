@@ -1,16 +1,18 @@
 import {initialState} from '../store';
 import { liveReducer } from "./liveReducer";
 import { chartReducer } from "./chartReducer";
-import {SELECT_GAME} from "../actions/index";
-import portfolioReducer from './portfolioReducer';
+import { filterReducer } from "./filterReducer";
+import { dataReducer } from "./dataReducer";
+import {SELECT_PAGE} from "../actions/index";
 
   export function rootReducer(state = initialState, action) {
     return {
       ...state,
+      filters: filterReducer(state.filters, action),
       chart: chartReducer(state.chart, action),
-      portfolio: portfolioReducer(state.portfolio, action),
       liveView: liveReducer(state.liveView, action),
-      selectedModule: action.type === SELECT_GAME ? action.payload : state.selectedModule
+      data: dataReducer(state.data, action),
+      selectedPage: action.type === SELECT_PAGE ? action.payload : state.selectedPage
     }
   }
   

@@ -1,12 +1,6 @@
-import {SORT_NAME_DEC, VIEW_CARDS} from '../components/Chart/constants';
+import {SORT_NAME_DEC, VIEW_SECTOR} from '../components/Chart/constants';
 
 export const init = () => (
     { 
-        error: null,
-        isLoading: false,
-        showActive: false,
-        zodiacFilter: '',
-        searchFilter: '',
-        viewMode: VIEW_CARDS,
-        sortMode: SORT_NAME_DEC
+        viewMode: VIEW_SECTOR
     });

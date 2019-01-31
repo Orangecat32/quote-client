@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 import * as myActions from "../actions/liveViewActions";
 import {LiveView} from "../components/LiveView/LiveView";
-import {filteredTickers} from "../reducers/liveReducer";
+import {filteredTickers} from "../reducers/dataReducer";
 
 export function mapStateToProps(state) {
     return { ...state.liveView, filteredTickers: filteredTickers(state)};
