@@ -1,17 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types'; 
 import { InputGroup,  Button,  Menu, MenuItem ,  Popover, MenuDivider} from "@blueprintjs/core";
 import { handleStringChange } from "@blueprintjs/docs-theme";
-//import * as FF from "../constants";
 
-import styles from './Filters.scss';
+import * as GC from "../LiveView/constants";
 
-
-const buildMenu = (p, actions) => {
+export const buildMenu = (p, actions) => {
   return (
     <Menu>
       <MenuItem text=""  disabled={true} />
-      <MenuItem icon="filter" text="Corp. Filter">
+      <MenuItem icon="list-columns" text="View">
+        <MenuItem text="Grid" onClick={() => actions.liveViewMode(GC.VIEW_GRID)} active={p.liveViewMode === GC.VIEW_GRID } />
+        <MenuItem text="Table" onClick={() => actions.liveViewMode(GC.VIEW_TABLE)} active={p.liveViewMode === GC.VIEW_TABLE }/>
+        <MenuItem text="Static" onClick={() => actions.liveViewMode(GC.VIEW_STATIC)} active={p.liveViewMode === GC.VIEW_STATIC }/>
+      </MenuItem>
+      {/* <MenuItem icon="filter" text="Corp. Filter">
         <MenuItem 
             text="Active" 
             active={p.showActive}
@@ -20,7 +22,7 @@ const buildMenu = (p, actions) => {
             } 
           />
         <MenuItem text="Birth Sign"  disabled={true} />
-      </MenuItem>
+      </MenuItem> */}
       {/* <MenuItem icon="list-columns" text="View">
         <MenuItem text="Cards" onClick={() => actions.portfolioViewMode(FF.VIEW_CARDS)} active={p.viewMode === FF.VIEW_CARDS } />
         <MenuItem text="Table" onClick={() => actions.portfolioViewMode(FF.VIEW_TABLE)} active={p.viewMode === FF.VIEW_TABLE }/>
@@ -38,34 +40,3 @@ const buildMenu = (p, actions) => {
   );
   
 }
-
-export class Filters  extends React.Component {
-  render(){
-    const props = this.props;
-    const handleFilterChange = handleStringChange(filterValue => props.appActions.portfolioSearch(filterValue));
-
-    return(
-      <div className={styles.container}>
-        <InputGroup
-          onChange={handleFilterChange}
-          leftIcon="search"
-          placeholder="Search..."
-          type="search"
-          value={props.searchFilter}
-        />
-        <Popover content={buildMenu(props, props.appActions)}>
-          <Button icon="cog" />
-        </Popover>
-      </div>
-    )}
-}
-
-Filters.propTypes = {
-  searchFilter:  PropTypes.string,
-  showActive: PropTypes.bool,
-  viewMode: PropTypes.string,
-  appActions: PropTypes.object,
-  sortMode: PropTypes.string
-}
-
-export default Filters;

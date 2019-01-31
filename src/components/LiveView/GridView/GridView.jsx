@@ -10,27 +10,29 @@ export class GridView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timestamp: undefined,
       columnDefs: columnDef
     };
   }
   
   componentWillReceiveProps(nextProps) {
     console.log('GridView: componentWillReceiveProps'); 
-    if(this.gridApi) {
+    if(this.gridApi && nextProps.timer > this.props.timer) {
+      this.gridApi.refreshCells({ columns: ['bid', 'ask','pc','last']});
       //  to keep grid from updating during an update
-      setTimeout(() => this.gridApi.setRowData(nextProps.tickers),0);
+     // setTimeout(() => this.gridApi.refreshCells({ columns: ['bid', 'ask','pc','last']}),0);
     }
   }
 
   render() {
-    console.log('Render GridView', this.props.tickers.length);
+    console.log('Render GridView', this.props.filteredTickers.length);
     return (
       <div className={`${styles.dataArea} ag-theme-balham-dark `} >
         <AgGridReact
+          suppressScrollOnNewData
           onGridReady={ params => this.gridApi = params.api }
           columnDefs={this.state.columnDefs}
-          rowData={this.props.tickers}>
+          rowData={this.props.filteredTickers}>
+
         </AgGridReact>
       </div>
     ) ;
@@ -40,11 +42,12 @@ export class GridView extends Component {
 
 
 GridView.propTypes = {
-  tickers: PropTypes.array,
+  //tickers: PropTypes.array,
   isLoading: PropTypes.bool,
   error: PropTypes.string,
   appActions: PropTypes.object,
-  filteresTickers: PropTypes.array
+  timer: PropTypes.number,
+  filteredTickers: PropTypes.array
 };
 
 

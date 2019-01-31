@@ -18,7 +18,7 @@ const initTickers = (sector) => {
 
   return {
     sector,
-    timer: Date.now(),
+    timer: Date.now().valueOf(),
     tickers
   };
 };
@@ -35,7 +35,7 @@ const incrementTicker = (t) => {
 
 const incrementTickers = (td) => {
   let tickers = (td.tickers || []).map(t => incrementTicker(t));
-  return Object.assign(td, { timer: new Date(), tickers});
+  return Object.assign(td, { timer: Date.now().valueOf(), tickers});
 };
 
 const buildTickUpdate = (sector, td) => td ? incrementTickers(td) : initTickers(sector);

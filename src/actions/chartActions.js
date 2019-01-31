@@ -19,3 +19,6 @@ export const ChartResult = () => ({type: CHART_RESULT});
 
 export const ChartFailed = () => ({type: CHART_FAILED});
 export const refreshChart = () => ({type: CHART_FETCH});
+
+
+

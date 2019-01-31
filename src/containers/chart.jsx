@@ -4,10 +4,10 @@ import {connect} from "react-redux";
 
 import * as myActions from "../actions/chartActions.js";
 import {ChartModule} from "../components/Chart/ChartModule";
-import {filteredFirms} from "../reducers/chartReducer";
+import {filteredTickers} from "../reducers/dataReducer";
 
 export function mapStateToProps(state) {
-    return { ...state.chart, filteredFirms: filteredFirms(state)};
+    return { ...state.chart, filteredTickers: filteredTickers(state)};
   }
   
  export function mapDispatchToProps(dispatch) {
