@@ -52,7 +52,7 @@ export class ViewTable extends React.Component {
 }
 
 ViewTable.propTypes = {
-  filteredFirms: PropTypes.array,
+  filteredTickers: PropTypes.array,
 };
 
 export default ViewTable;

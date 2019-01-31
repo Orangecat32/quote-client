@@ -2,8 +2,9 @@ import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger'
 
-import * as portfolio from './portfolio';
 import * as liveView from './liveView';
+import * as filters from './filters';
+import * as data from './data';
 import * as appConstants from '../components/App/constants';
 import * as chart from './chart';
 import {initSagas } from './initSagas';
@@ -11,9 +12,10 @@ import {initSagas } from './initSagas';
 import reducer from "../reducers";
 
 export const initialState = {
-    selectedModule: appConstants.LIVE_VIEW,
+    data: data.init(),
+    selectedPage: appConstants.LIVE_VIEW,
     liveView: liveView.init(),
-    portfolio: portfolio.init(),
+    filters: filters.init(),
     chart: chart.init()
   };
 

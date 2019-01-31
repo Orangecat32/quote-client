@@ -10,11 +10,11 @@
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;  
-  height: calc(100vh - 50px);
+  height: calc(100vh - 100px);
 }
 
 .dataArea {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 100px);
   display: block;
   min-height: 200px;
   overflow-y: auto;

@@ -1,10 +1,8 @@
-
+import * as CONST from "../components/LiveView/constants";
 
 export const init = () => (
   { 
-    error: null,
-    isLoading: false,
-    searchFilter: '',
-    sector: '', 
-    tickers: []
+    viewMode: CONST.VIEW_GRID
   });
+
+  

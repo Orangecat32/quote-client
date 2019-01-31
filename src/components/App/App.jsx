@@ -9,8 +9,8 @@ import styles from './App.scss';
 import * as constants from './constants.js';
 
 import ChartContainer from '../../containers/chart';
-import PortfolioContainer from '../../containers/portfolio';
 import LiveViewContainer from '../../containers/liveView';
+import Filters from '../../containers/filters';
 
 import * as util from '../../shared/utils';
 
@@ -19,13 +19,13 @@ class App extends Component {
     return (
       <div> 
       {
-        constants.AvailablePages.map(g => (
+        constants.AvailablePages.map(page => (
           <Button 
-            key={g}
+            key={page}
             className={Classes.MINIMAL} 
-            active={this.props.selectedModule === g}
-            text={g} 
-            onClick={()=> this.props.appActions.selectPage(g)} />
+            active={this.props.selectedPage === page}
+            text={page} 
+            onClick={()=> this.props.appActions.selectPage(page)} />
         ))
       }
       </div>
@@ -47,17 +47,21 @@ class App extends Component {
             <Spinner intent="primary" size={Spinner.SIZE_LARGE}/>
           </div>
         }
-        <div className={styles.gameContainer}>
-        {this.props.selectedModule === constants.PORTFOLIO &&
-            <PortfolioContainer />
-          }
-          {this.props.selectedModule === constants.CHART_VIEW &&
-            <ChartContainer />
-          }
-          {this.props.selectedModule === constants.LIVE_VIEW &&
-            <LiveViewContainer />
-          } 
-        </div>   
+        { !this.props.isLoading &&
+          <div className={styles.content}>
+            <div className={styles.filters}>
+              <Filters {...this.props}/>
+            </div>
+            <div className={styles.gameContainer}>
+              {this.props.selectedPage === constants.CHART_VIEW &&
+                <ChartContainer />
+              }
+              {this.props.selectedPage === constants.LIVE_VIEW &&
+                <LiveViewContainer />
+              } 
+            </div>   
+          </div>
+        }
         { !util.isNullOrWhitespace(this.props.error) && !this.props.isLoading &&
           <div className={styles.error}>
             {`Error loading data: ${this.props.error}`}
@@ -68,23 +72,17 @@ class App extends Component {
   }
 }
 
-const UnderConstruction = (p) => (
-  <div className={styles.constructionContainer}>
-   {p.text}
-  </div>
-);
-
 App.propTypes = {
   appActions: PropTypes.any,
   text: PropTypes.string,
   error: PropTypes.string,
   isLoading: PropTypes.bool,
-  selectedModule: PropTypes.string
+  selectedPage: PropTypes.string
 };
 
 function mapStateToProps(state) {
   return {
-    selectedModule: state.selectedModule
+    selectedPage: state.selectedPage
   };
 }
 
