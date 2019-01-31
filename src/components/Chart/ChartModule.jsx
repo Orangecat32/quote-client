@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
-import { Spinner} from "@blueprintjs/core";
 import PropTypes from 'prop-types'; 
 
 import styles from './ChartModule.scss';
 
 import {isNullOrWhitespace} from '../../shared/utils';
-import {VIEW_CARDS, VIEW_TABLE} from './constants';
+import * as CONST from './constants';
+import SectorChart from './sectors/SectorChart';
 
 export class ChartModule extends Component {
-  componentDidMount() {
-   
-  }
-
   render() {
+  const view = this.props.viewMode === CONST.VIEW_SECTOR 
+    ? (<SectorChart {...this.props}/>) 
+    : ('Under Construction');
+
     return (
       <div className={styles.container}>
-        Charts go here
+       {view}
       </div>
     );
   }
 }
 
 ChartModule.propTypes = {
-  isLoading: PropTypes.bool,
-  error: PropTypes.string,
   viewMode: PropTypes.any,
   appActions: PropTypes.any
 };
