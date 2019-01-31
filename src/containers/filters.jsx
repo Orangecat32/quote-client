@@ -12,6 +12,7 @@ export function mapStateToProps(state) {
       filteredTickers: filteredTickers(state),
       selectedPage: selectedPage(state),
       sectors: allSectors(state),
+      chartViewMode: state.chart.viewMode,
       liveViewMode: state.liveView.viewMode
     };
   }
