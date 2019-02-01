@@ -1,6 +1,6 @@
-# Sample Quote Client
+# React Market Data Client
 
-React Components for stock market simulation
+Stock market simulation created with react, redux, redux-sagas, socket.io, ag-grid, echarts and blueprint.js
 
 ## About this repro
  - This is a work in progress, created purely for my own amusement. 
@@ -24,6 +24,7 @@ React Components for stock market simulation
      - start the server before starting the client
 
 ## Server Notes
+- server was created with node, express and socket.io
 - To run the server, open a command window in the repository directory and execute 'yarn server' (or npm server)
 - socket.io listening on port 8005
 - REST data served by express on port 4000
