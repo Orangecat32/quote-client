@@ -9,7 +9,7 @@ import styles from './App.scss';
 import * as constants from './constants.js';
 
 import ChartContainer from '../../containers/chart';
-import LiveViewContainer from '../../containers/liveView';
+import TableViewContainer from '../../containers/tableView';
 import Filters from '../../containers/filters';
 
 import * as util from '../../shared/utils';
@@ -56,8 +56,8 @@ class App extends Component {
               {this.props.selectedPage === constants.CHART_VIEW &&
                 <ChartContainer />
               }
-              {this.props.selectedPage === constants.LIVE_VIEW &&
-                <LiveViewContainer />
+              {this.props.selectedPage === constants.TABLE_VIEW &&
+                <TableViewContainer />
               } 
             </div>   
           </div>

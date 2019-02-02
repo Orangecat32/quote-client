@@ -32,7 +32,7 @@ Filters.propTypes = {
   searchFilter:  PropTypes.string,
   sectors: PropTypes.array,
   showActive: PropTypes.bool,
-  liveViewMode: PropTypes.string,
+  tableViewMode: PropTypes.string,
   appActions: PropTypes.object,
   selectedPage: PropTypes.string,
   sortMode: PropTypes.string

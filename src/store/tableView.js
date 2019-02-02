@@ -1,4 +1,4 @@
-import * as CONST from "../components/LiveView/constants";
+import * as CONST from "../components/TableView/constants";
 
 export const init = () => (
   { 

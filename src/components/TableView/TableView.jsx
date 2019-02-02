@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'; 
 
 import * as CONST from './constants';
-import styles from './liveView.scss';
+import styles from './tableView.scss';
 import LiveTable from './LiveTable/LiveTable';
 import GridView from './GridView/GridView';
 import ViewTable from './ViewTable/ViewTable';
 
 //import {isNullOrWhitespace} from '../../shared/utils';
 
-export class LiveView extends Component {
+export class TableView extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -22,7 +22,6 @@ export class LiveView extends Component {
         ? (<ViewTable {...this.props}/>) 
         : (<GridView {...this.props}/>);
 
-    console.log('live:', this.props.viewMode);
     return (
      
           <div className={styles.dataArea}>
@@ -33,7 +32,7 @@ export class LiveView extends Component {
   }
 }
 
-LiveView.propTypes = {
+TableView.propTypes = {
   tickers: PropTypes.array,
   isLoading: PropTypes.bool,
   error: PropTypes.string,
@@ -45,5 +44,5 @@ LiveView.propTypes = {
 
 
 
-export default LiveView;
+export default TableView;
 

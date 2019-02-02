@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger'
 
-import * as liveView from './liveView';
+import * as tableView from './tableView';
 import * as filters from './filters';
 import * as data from './data';
 import * as appConstants from '../components/App/constants';
@@ -13,8 +13,8 @@ import reducer from "../reducers";
 
 export const initialState = {
     data: data.init(),
-    selectedPage: appConstants.LIVE_VIEW,
-    liveView: liveView.init(),
+    selectedPage: appConstants.TABLE_VIEW,
+    tableView: tableView.init(),
     filters: filters.init(),
     chart: chart.init()
   };

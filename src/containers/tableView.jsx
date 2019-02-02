@@ -2,12 +2,12 @@
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 
-import * as myActions from "../actions/liveViewActions";
-import {LiveView} from "../components/LiveView/LiveView";
+import * as myActions from "../actions/tableViewActions";
+import {TableView} from "../components/TableView/TableView";
 import {filteredTickers} from "../reducers/dataReducer";
 
 export function mapStateToProps(state) {
-    return { ...state.liveView, filteredTickers: filteredTickers(state)};
+    return { ...state.tableView, filteredTickers: filteredTickers(state)};
   }
   
  export function mapDispatchToProps(dispatch) {
@@ -16,12 +16,12 @@ export function mapStateToProps(state) {
     };
   }
  
-const LiveViewContainer = connect(
+const TableViewContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-  )(LiveView)
+  )(TableView)
   
-  export default LiveViewContainer;
+  export default TableViewContainer;
   
   
   

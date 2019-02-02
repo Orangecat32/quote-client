@@ -13,7 +13,7 @@ export function mapStateToProps(state) {
       selectedPage: selectedPage(state),
       sectors: allSectors(state),
       chartViewMode: state.chart.viewMode,
-      liveViewMode: state.liveView.viewMode
+      tableViewMode: state.tableView.viewMode
     };
   }
   
