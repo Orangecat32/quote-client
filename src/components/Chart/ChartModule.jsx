@@ -40,12 +40,3 @@ ChartModule.propTypes = {
 
 
 export default ChartModule;
-
-/*
-
-  <div>
-          <SectorChart {...this.props}/>
-          <AllSectorsChart {...this.props}/>
-        </div>
-
-        */
