@@ -5,9 +5,6 @@ import ReactEcharts from 'echarts-for-react';
 import styles from './sectorChart.scss';
 import {option} from './utils';
 
-import {isNullOrWhitespace} from '../../../shared/utils';
-
-
 export class SectorChart extends PureComponent {
   constructor(props) {
     super(props);
@@ -36,11 +33,13 @@ export class SectorChart extends PureComponent {
       'legendselectchanged': this.onChartLegendselectchanged
     };
 
+    const count = this.props.portfolio.filter(f => f.sector === this.props.selectedSector).length;
+
     return (
       <div className={styles.container}>
         <div >
           <ReactEcharts
-          style={{height: '1600px'}}
+            style={{height: `${count * 20}px`}}
             option={option(this.props)}
             onChartReady={this.onChartReady}
             onEvents={onEvents} />
@@ -53,6 +52,8 @@ export class SectorChart extends PureComponent {
 SectorChart.propTypes = {
   filteredTickers: PropTypes.array,
   sectors: PropTypes.array,
+  selectedSector: PropTypes.string,
+  portfolio: PropTypes.array,
   appActions: PropTypes.any
 };
 

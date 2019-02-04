@@ -2,7 +2,7 @@ const ONE_BILLION = 1000000000;
 
 export const option = (props) => {
   console.log('sector chart:', props.selectedSector);
-  const firms = props.filteredTickers
+  const firms = props.portfolio
     .filter(f => f.sector === props.selectedSector)
     .map(t => ({name: t.symbol, value: t.mktCap / ONE_BILLION}))
     .sort((a, b) => a.value - b.value);
@@ -16,21 +16,9 @@ export const option = (props) => {
      //   subtext: 'subtext'
     },
     tooltip : {
-        trigger: 'axis'
+      trigger: 'axis',
+        formatter: "{b} {d}%"
     },
-    // legend: {
-    //     data:['2011年', '2012年']
-    // },
-    // toolbox: {
-    //     show : true,
-    //     feature : {
-    //         mark : {show: true},
-    //         dataView : {show: true, readOnly: false},
-    //         magicType: {show: true, type: ['line', 'bar']},
-    //         restore : {show: true},
-    //         saveAsImage : {show: true}
-    //     }
-    // },
     calculable : true,
     xAxis : [
         {
@@ -45,11 +33,6 @@ export const option = (props) => {
         }
     ],
     series : [
-        // {
-        //     name:'2011年',
-        //     type:'bar',
-        //     data:[18203, 23489, 29034, 104970, 131744, 630230]
-        // },
         {
             name:'Mkt Cap',
             type:'bar',

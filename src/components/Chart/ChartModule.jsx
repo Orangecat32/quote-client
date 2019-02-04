@@ -5,6 +5,7 @@ import styles from './ChartModule.scss';
 import * as CONST from './constants';
 import SectorChart from './sectors/SectorChart';
 import AllSectorsChart from './allSectors/AllSectorsChart';
+import {isNullOrWhitespace} from '../../shared/utils';
 
 
 export class ChartModule extends Component {
@@ -15,9 +16,11 @@ export class ChartModule extends Component {
         <div className={styles.item}>
           <AllSectorsChart {...this.props}/>
         </div>
-        <div className={styles.item}>
-          <SectorChart {...this.props}/>
-        </div>
+        { !isNullOrWhitespace(this.props.selectedSector) &&
+          <div className={styles.item}>
+            <SectorChart {...this.props}/>
+          </div>
+        }
       </div>
       ) 
     : ('Under Construction');
@@ -32,6 +35,7 @@ export class ChartModule extends Component {
 
 ChartModule.propTypes = {
   viewMode: PropTypes.any,
+  selectedSector: PropTypes.string,
   appActions: PropTypes.object
 };
 
