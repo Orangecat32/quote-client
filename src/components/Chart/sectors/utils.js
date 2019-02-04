@@ -16,8 +16,8 @@ export const option = (props) => {
      //   subtext: 'subtext'
     },
     tooltip : {
-      trigger: 'axis',
-        formatter: "{b} {d}%"
+      trigger: 'axis', 
+        formatter: "{b} MktCap: {c}B"
     },
     calculable : true,
     xAxis : [

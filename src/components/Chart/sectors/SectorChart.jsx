@@ -39,7 +39,7 @@ export class SectorChart extends PureComponent {
       <div className={styles.container}>
         <div >
           <ReactEcharts
-            style={{height: `${count * 20}px`}}
+            style={{height: `${count * 25}px`}}
             option={option(this.props)}
             onChartReady={this.onChartReady}
             onEvents={onEvents} />
