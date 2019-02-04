@@ -36,13 +36,16 @@ export class SectorChart extends PureComponent {
     const count = this.props.portfolio.filter(f => f.sector === this.props.selectedSector).length;
 
     return (
-      <div className={styles.container}>
-        <div >
-          <ReactEcharts
-            style={{height: `${count * 25}px`}}
-            option={option(this.props)}
-            onChartReady={this.onChartReady}
-            onEvents={onEvents} />
+      <div className={styles.container} >
+        <div className={styles.title}>
+        {`${count} ${this.props.selectedSector} Firms`}
+        </div>
+        <div className={styles.graph} >
+            <ReactEcharts
+              style={{height: `${count * 25}px`, marginTop: '-40px'}}
+              option={option(this.props)}
+              onChartReady={this.onChartReady}
+              onEvents={onEvents} />
         </div>
       </div>
     );

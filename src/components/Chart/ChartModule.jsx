@@ -7,17 +7,16 @@ import SectorChart from './sectors/SectorChart';
 import AllSectorsChart from './allSectors/AllSectorsChart';
 import {isNullOrWhitespace} from '../../shared/utils';
 
-
 export class ChartModule extends Component {
   render() {
   const view = this.props.viewMode === CONST.VIEW_SECTOR 
     ? (
-      <div className={styles.container}>
-        <div className={styles.item}>
+      <div className={styles.chartItems}>
+        <div className={styles.itemAll} >
           <AllSectorsChart {...this.props}/>
         </div>
         { !isNullOrWhitespace(this.props.selectedSector) &&
-          <div className={styles.item}>
+          <div className={styles.itemSector}>
             <SectorChart {...this.props}/>
           </div>
         }

@@ -11,10 +11,10 @@ export const option = (props) => {
   const values = firms.map(f => f.value);
 
   return {
-    title : {
-        text: `Mkt Cap (billions) ${names.length} firms`,
-     //   subtext: 'subtext'
-    },
+    // title : {
+    //   //  text: `Mkt Cap (billions) ${names.length} firms`,
+    //  //   subtext: 'subtext'
+    // },
     tooltip : {
       trigger: 'axis', 
         formatter: "{b} MktCap: {c}B"
