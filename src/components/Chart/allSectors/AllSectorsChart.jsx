@@ -2,18 +2,14 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'; 
 import ReactEcharts from 'echarts-for-react';
 
-import styles from './sectorChart.scss';
-import {option} from './utils';
+import styles from './allSectorsChart.scss';
+import {getAllSectorsOption} from './utils';
 
-import {isNullOrWhitespace} from '../../../shared/utils';
-
-
-export class SectorChart extends PureComponent {
+export class AllSectorsChart extends PureComponent {
   constructor(props) {
     super(props);
 
     this.onChartClick = this.onChartClick.bind(this);
-    this.onChartReady = this.onChartReady.bind(this);
   }
 
   onChartClick(param, echarts) {
@@ -22,12 +18,12 @@ export class SectorChart extends PureComponent {
   }
 
   onChartLegendselectchanged(param, echart) {
-    console.log('legend click:', param, echart);
+    console.log(param, echart);
+    alert('chart legendselectchanged');
   }
 
   onChartReady(echarts) {
     console.log('echart is ready', echarts);
-    this.echarts = echarts;
   }
 
   render() {
@@ -38,25 +34,22 @@ export class SectorChart extends PureComponent {
 
     return (
       <div className={styles.container}>
-        <div >
-          <ReactEcharts
-          style={{height: '1600px'}}
-            option={option(this.props)}
+        <ReactEcharts
+            option={getAllSectorsOption(this.props)}
             onChartReady={this.onChartReady}
             onEvents={onEvents} />
-        </div>
       </div>
     );
   }
 }
 
-SectorChart.propTypes = {
+AllSectorsChart.propTypes = {
   filteredTickers: PropTypes.array,
   sectors: PropTypes.array,
   appActions: PropTypes.any
 };
 
 
-export default SectorChart;
+export default AllSectorsChart;
 
-//   
+//   style={{height: 300}}

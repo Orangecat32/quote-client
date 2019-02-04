@@ -4,8 +4,15 @@
   justify-content: center;
   flex-direction: row;
   width: 100%;
+  flex-wrap: wrap;
 }
 
+.item {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
 // .content {
 //   background-color: lightslategrey;
 //   display: flex;

@@ -1,47 +1,61 @@
 const ONE_BILLION = 1000000000;
 
-export const getOption = (p) => ({
-  title : {
-    text: 'SPX Weights',
-   // subtext: 'sub text',
-    x:'center'
-  },
-  tooltip : {
-    trigger: 'item',
-    formatter: "{a} <br/>{b} : {c} ({d}%)"
-  },
-  // legend: {
-  //   orient: 'vertical',
-  //   left: 'left',
-  //   data: p.sectors
-  // },
-  series : [
-    {
-    name: 'Sector',
-    type: 'pie',
-    radius : '55%',
-    center: ['50%', '60%'],
-    data: computeSectorWeights(p),
-    itemStyle: {
-      emphasis: {
-      shadowBlur: 10,
-      shadowOffsetX: 0,
-      shadowColor: 'rgba(0, 0, 0, 0.5)'
-      }
-    }
-    }
-  ]
-});
+export const option = (props) => {
+  console.log('sector chart:', props.selectedSector);
+  const firms = props.filteredTickers
+    .filter(f => f.sector === props.selectedSector)
+    .map(t => ({name: t.symbol, value: t.mktCap / ONE_BILLION}))
+    .sort((a, b) => a.value - b.value);
 
+  const names = firms.map(f => f.name);
+  const values = firms.map(f => f.value);
 
-const computeSectorWeights = (p) => {
-  const sectors = (p.sectors || []).reduce((acc, s) => {
-    return {...acc, [s]: {value: 0, name: s} }
-  },{});
-
-  // add up the capitalization of the sectors
-  (p.portfolio || []).forEach(t => sectors[t.sector].value += t.mktCap);
-
-  //  divide by billion to get reasonable looking number
-  return Object.values(sectors).map(s => ({ ...s, value : s.value / ONE_BILLION }));
-}
+  return {
+    title : {
+        text: `Mkt Cap (billions) ${names.length} firms`,
+     //   subtext: 'subtext'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    // legend: {
+    //     data:['2011年', '2012年']
+    // },
+    // toolbox: {
+    //     show : true,
+    //     feature : {
+    //         mark : {show: true},
+    //         dataView : {show: true, readOnly: false},
+    //         magicType: {show: true, type: ['line', 'bar']},
+    //         restore : {show: true},
+    //         saveAsImage : {show: true}
+    //     }
+    // },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'value',
+            boundaryGap : [0, 0.01]
+        }
+    ],
+    yAxis : [
+        {
+            type : 'category',
+            data : names
+        }
+    ],
+    series : [
+        // {
+        //     name:'2011年',
+        //     type:'bar',
+        //     data:[18203, 23489, 29034, 104970, 131744, 630230]
+        // },
+        {
+            name:'Mkt Cap',
+            type:'bar',
+            data: values
+        }
+    ]
+  }
+};
+ 
