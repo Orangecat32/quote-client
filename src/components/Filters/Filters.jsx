@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
+
 import { InputGroup, Button, Popover} from "@blueprintjs/core";
 import { handleStringChange } from "@blueprintjs/docs-theme";
+import PickSector from './pickSector/PickSector';
 
 import {buildMenu} from './menu';
 
 import styles from './Filters.scss';
 
+
+
 export class Filters  extends React.Component {
-  render(){
+  render() {
     const props = this.props;
     const handleFilterChange = handleStringChange(filterValue => props.appActions.filterSearch(filterValue));
 
@@ -21,6 +25,7 @@ export class Filters  extends React.Component {
           type="search"
           value={props.searchFilter}
         />
+        <PickSector {...this.props} />
         <Popover content={buildMenu(props, props.appActions)}>
           <Button icon="cog" />
         </Popover>
@@ -35,6 +40,7 @@ Filters.propTypes = {
   tableViewMode: PropTypes.string,
   appActions: PropTypes.object,
   selectedPage: PropTypes.string,
+  selectedSector: PropTypes.string,
   sortMode: PropTypes.string
 }
 

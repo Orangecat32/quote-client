@@ -2,7 +2,7 @@ const ONE_BILLION = 1000000000;
 
 export const getAllSectorsOption = (p) => ({
   title : {
-    text: 'SPX Sectors',
+    text: 'SPX Sector Market Cap',
    // subtext: 'sub text',
     x:'center'
   },

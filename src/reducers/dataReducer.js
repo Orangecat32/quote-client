@@ -51,7 +51,7 @@ const enrichData = (t) => ({...t,
 const filterTicker = (ticker, f) => {
   const search = f.searchFilter.toLowerCase();
   return (isNullOrWhitespace(search) ? true : ticker.search.includes(search)) &&
-    (isNullOrWhitespace(f.sector) ? true : ticker.sector === f.sector);
+    (isNullOrWhitespace(f.selectedSector) ? true : ticker.sector === f.selectedSector);
 };
 
 export const filteredFirmsEx = (enrichedData, filters) => {

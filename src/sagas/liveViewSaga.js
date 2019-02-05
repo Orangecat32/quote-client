@@ -8,7 +8,7 @@ import {update, refresh, errorOccured,
 import {openWSConnection, ioConnect} from '../api/liveApi';
 import { portfolioRequestAll} from '../api/portfolioApi';
 
-const UPDATE_RATE = 1000;
+const UPDATE_RATE = 15000;
 
 export function* liveSagas() {
   yield take(DATA_CONNECT);

@@ -38,7 +38,7 @@ export class SectorChart extends PureComponent {
     return (
       <div className={styles.container} >
         <div className={styles.title}>
-        {`${count} ${this.props.selectedSector} Firms`}
+        {`${count} ${this.props.selectedSector} Firms by Mkt Cap`}
         </div>
         <div className={styles.graph} >
             <ReactEcharts
