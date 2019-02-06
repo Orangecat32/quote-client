@@ -1,5 +1,5 @@
 const ONE_BILLION = 1000000000;
-const ONE_MILLION = 1000;
+const ONE_MILLION = 1000000;
 
 export const option = (p) => {
   const data = buildSeries(p.sectors, p.portfolio, p.selectedSector);
