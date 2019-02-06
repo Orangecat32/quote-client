@@ -34,7 +34,7 @@ Stock market simulation created with react, redux, redux-sagas, socket.io, ag-gr
   
 # Shots
 - 
-    ![Screen Shot](/public/graph1.png?raw=true "Screen Shot")
+    ![Screen Shot](/documentation/graph1.PNG?raw=true "Screen Shot")
 
 -
-    ![Screen Shot](/public/grid1.png?raw=true "Screen Shot")
+    ![Screen Shot](/documentation/grid1.PNG?raw=true "Screen Shot")
