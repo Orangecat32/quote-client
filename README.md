@@ -30,3 +30,11 @@ Stock market simulation created with react, redux, redux-sagas, socket.io, ag-gr
 - REST data served by express on port 4000
   - http://localhost:4000/spx  returns S&P 500 reference info as of Jan, 2 2019
   - http://localhost:4000/sectors  returns GICS sectors of spx names
+
+  
+# Shots
+- 
+    ![Screen Shot](/public/graph1.png?raw=true "Screen Shot")
+
+-
+    ![Screen Shot](/public/grid1.png?raw=true "Screen Shot")
