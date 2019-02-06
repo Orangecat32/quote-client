@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
 
 import styles from './spxGraph.scss';
-//import {option} from './utils';
+import {option} from './utils';
 
 export class SpxGraph extends PureComponent {
   constructor(props) {
@@ -27,9 +27,18 @@ export class SpxGraph extends PureComponent {
   }
 
   render() {
+    const onEvents = {
+      'click': this.onChartClick,
+      'legendselectchanged': this.onChartLegendselectchanged
+    };
+
     return (
-      <div className={styles.container} >
-       {`Under construction - SPX graph`}
+      <div className={styles.container}>
+        <ReactEcharts
+            style={{height: '100%', marginTop: '-30px'}}
+            option={option(this.props)}
+            onChartReady={this.onChartReady}
+            onEvents={onEvents} />
       </div>
     );
   }

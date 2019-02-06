@@ -76,6 +76,25 @@ export const columnDef = [
     sortable: true,
     field: "company"
   },
+  { 
+    headerName: "Avg. Vol", 
+    headerTooltip: 'Shares traded in millions averaged over last 50 days',
+    cellRenderer: (params) => fmtMktCap(params.value),
+    width: 100,
+    sortable: true,
+    cellStyle: {'text-align': 'right'},
+    field: "avgVol50d"
+  },
+ 
+  { 
+    headerName: "Volatility", 
+    headerTooltip: 'Last 50 days average volatility',
+  //  cellRenderer: (params) => params.value,
+    width: 100,
+    sortable: true,
+    cellStyle: {'text-align': 'right'},
+    field: "volPct50d"
+  },
 ];
 
 /*
