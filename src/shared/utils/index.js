@@ -1,5 +1,6 @@
 
-const ONE_MILLION = 1000000;
+export const ONE_BILLION = 1000000000;
+export const ONE_MILLION = 1000000;
 
 // usage to sleep for two seconds: await sleep(2000);  
 export const sleep = (ms) => (new Promise(resolve => setTimeout(resolve, ms)));
@@ -66,7 +67,7 @@ export const fmtMktCap = (n) => {
         return '';
     }
 
-    return (n / ONE_MILLION).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}); 
+    return (n / ONE_MILLION).toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}); 
 }
 
 

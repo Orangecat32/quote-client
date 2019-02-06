@@ -8,7 +8,7 @@ export const getAllSectorsOption = (p) => ({
   },
   tooltip : {
     trigger: 'item',
-    formatter: "{b} {d}%"
+    formatter: "{b} </br>{d}%"
   },
   // legend: {
   //   orient: 'vertical',
