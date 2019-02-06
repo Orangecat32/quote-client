@@ -3,6 +3,8 @@ import {createSelector} from 'reselect';
 import {isNullOrWhitespace} from '../shared/utils';
 import * as ACT from "../actions/dataActions";
 
+const ONE_MILLION = 1000000;
+
 
 export function dataReducer(state, action) {
 
@@ -44,7 +46,8 @@ export const getData = (state) => (state.data);
 export const getPortfolio = (state) => (state.data.portfolio);
 
 const enrichData = (t) => ({...t, 
-  search: `${t.symbol} ${t.company} ${t.Location} ${t.subIndustry} ${t.sector}`.toLowerCase()
+  search: `${t.symbol} ${t.company} ${t.Location} ${t.subIndustry} ${t.sector}`.toLowerCase(),
+  dollarVol: t.avgVol50d * t.close / ONE_MILLION
   }
 );
 

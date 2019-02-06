@@ -10,9 +10,15 @@ export const option = (p) => {
             lineStyle: {
                 type: 'dashed'
             }
-        }
+        },
+        name: 'Avg $ Volume (millions)',
+        nameLocation: 'middle',
+        nameGap: 30,
     },
     yAxis: {
+        name: 'PE TTM',
+        nameLocation: 'middle',
+        nameGap: 50,
         splitLine: {
             lineStyle: {
                 type: 'dashed'
@@ -25,7 +31,7 @@ export const option = (p) => {
 )};
 
 const buildSeries = (sectors, portfolio, selectedSector) => {
-  const items = portfolio.map(f => [f.avgVol50d / 1000, f.PEttm, f.mktCap /1000, f.symbol, f.sector]);
+  const items = portfolio.map(f => [f.avgVol50d * f.close / ONE_MILLION, f.PEttm, f.mktCap / 1000 , f.symbol, f.sector]);
   return selectedSector ? fillSeries(selectedSector, items) : sectors.map(s => fillSeries(s, items));
 }
 

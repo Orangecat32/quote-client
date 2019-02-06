@@ -104,6 +104,15 @@ export const columnDef = [
     cellStyle: {'text-align': 'right'},
     field: "PEttm"
   },
+  { 
+    headerName: "Avg $Vol", 
+    headerTooltip: 'close * avgVol50d / 1000',
+    cellRenderer: (params) => fmtPrice(params.value),
+    width: 100,
+    sortable: true,
+    cellStyle: {'text-align': 'right'},
+    field: "dollarVol"
+  },
 ];
 
 /*
@@ -127,6 +136,7 @@ sharesOut: 318530000
 subIndustry: "Health Care Equipment"
 symbol: "A"
 volPct50d: 0.35
+dollarVol: close/ avgVol50d
 
 
 
