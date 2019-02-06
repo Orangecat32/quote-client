@@ -62,12 +62,23 @@ export const fmtPrice = (n) => {
 }
 
 
+
+export const fmtVolume = (n) => {
+    if (n === null || n === undefined) {
+        return '';
+    }
+
+    return (n / ONE_MILLION).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}); 
+}
+
+
+
 export const fmtMktCap = (n) => {
     if (n === null || n === undefined) {
         return '';
     }
 
-    return (n / ONE_MILLION).toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}); 
+    return (n / ONE_BILLION).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}); 
 }
 
 

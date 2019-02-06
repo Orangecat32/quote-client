@@ -1,4 +1,4 @@
-import {fmtPercent, fmtPrice, fmtShares, fmtMktCap} from '../../../shared/utils';
+import {fmtPercent, fmtPrice, fmtShares, fmtMktCap, fmtVolume} from '../../../shared/utils';
 
 export const columnDef = [
   {
@@ -50,6 +50,7 @@ export const columnDef = [
   }, 
   {
     headerName: "MktCap", 
+    headerTooltip: 'Market capitalization in billions',
     sortable: true,
     width: 90,
     cellStyle: {'text-align': 'right'},
@@ -78,8 +79,8 @@ export const columnDef = [
   },
   { 
     headerName: "Avg. Vol", 
-    headerTooltip: 'Shares traded in millions averaged over last 50 days',
-    cellRenderer: (params) => fmtMktCap(params.value),
+    headerTooltip: 'Average daily trade volume over last 50 days in millions',
+    cellRenderer: (params) => fmtVolume(params.value),
     width: 100,
     sortable: true,
     cellStyle: {'text-align': 'right'},

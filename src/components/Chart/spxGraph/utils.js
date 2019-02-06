@@ -8,7 +8,7 @@ export const option = (p) => {
         trigger: 'item',
         formatter: function(params) {
             const firm = params.data[5];
-            return `${firm.symbol}    MktCap: ${fmtMktCap(firm.mktCap)}M </br> ${firm.company}`;
+            return `${firm.symbol}    MktCap: ${fmtMktCap(firm.mktCap)}B </br> ${firm.company}`;
         }
       },
       xAxis: {

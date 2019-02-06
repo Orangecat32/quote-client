@@ -4,6 +4,7 @@ import styles from './gridView.scss';
 import {columnDef} from './columns';
 
 import { AgGridReact } from 'ag-grid-react';
+import './grid.css';
 
 
 export class GridView extends Component {
