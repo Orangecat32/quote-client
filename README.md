@@ -32,9 +32,9 @@ Stock market simulation created with react, redux, redux-sagas, socket.io, ag-gr
   - http://localhost:4000/sectors  returns GICS sectors of spx names
 
   
-# Shots
+# Screen Shots
 - 
-    ![Screen Shot](/documentation/graph1.PNG?raw=true "Screen Shot")
+    ![Screen Shot](/public/documentation/graph1.PNG?raw=true "Screen Shot")
 
 -
-    ![Screen Shot](/documentation/grid1.PNG?raw=true "Screen Shot")
+    ![Screen Shot](/public/documentation/grid1.PNG?raw=true "Screen Shot")
