@@ -2,7 +2,7 @@ const ONE_BILLION = 1000000000;
 const ONE_MILLION = 1000;
 
 export const option = (p) => {
-  const data = buildSeries(p.sectors, p.portfolio);
+  const data = buildSeries(p.sectors, p.portfolio, p.selectedSector);
    return (
     {
     xAxis: {
@@ -24,9 +24,9 @@ export const option = (p) => {
     }
 )};
 
-const buildSeries = (sectors, portfolio) => {
+const buildSeries = (sectors, portfolio, selectedSector) => {
   const items = portfolio.map(f => [f.avgVol50d / 1000, f.PEttm, f.mktCap /1000, f.symbol, f.sector]);
-  return sectors.map(s => fillSeries(s, items));
+  return selectedSector ? fillSeries(selectedSector, items) : sectors.map(s => fillSeries(s, items));
 }
 
 

@@ -14,7 +14,11 @@ export class SpxGraph extends PureComponent {
   }
 
   onChartClick(param, echarts) {
-    console.log(param, echarts);
+    console.log('items click', param, echarts);
+
+    if(this.props.selectedSector) {
+      this.props.appActions.filterFirm(param.data[3]);
+    }
   }
 
   onChartLegendselectchanged(param, echart) {

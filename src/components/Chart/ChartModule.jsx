@@ -23,7 +23,7 @@ export class ChartModule extends PureComponent {
         </div>
         { !isNullOrWhitespace(this.props.selectedSector) && isNullOrWhitespace(this.props.selectedFirm) &&
           <div className={styles.itemSector}>
-            <SectorBar {...this.props}/>
+            <SpxGraph {...this.props}/>
           </div>
         }
         { isNullOrWhitespace(this.props.selectedSector) && 
