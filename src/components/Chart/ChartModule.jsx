@@ -1,23 +1,27 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'; 
 
 import styles from './ChartModule.scss';
 import * as CONST from './constants';
-import SectorChart from './sectors/SectorChart';
-import AllSectorsChart from './allSectors/AllSectorsChart';
+import SectorBar from './sectorBar/SectorBar';
+import SectorPie from './sectorPie/SectorPie';
+import SectorPath from './sectorPath/SectorPath';
 import {isNullOrWhitespace} from '../../shared/utils';
 
-export class ChartModule extends Component {
+export class ChartModule extends PureComponent {
   render() {
   const view = this.props.viewMode === CONST.VIEW_SECTOR 
     ? (
       <div className={styles.chartItems}>
         <div className={styles.itemAll} >
-          <AllSectorsChart {...this.props}/>
+          <SectorPie {...this.props}/>
+        </div>
+        <div className={styles.chartPath}>
+          <SectorPath {...this.props}/>
         </div>
         { !isNullOrWhitespace(this.props.selectedSector) &&
           <div className={styles.itemSector}>
-            <SectorChart {...this.props}/>
+            <SectorBar {...this.props}/>
           </div>
         }
       </div>

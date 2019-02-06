@@ -5,13 +5,14 @@ import {connect} from "react-redux";
 import * as myActions from "../actions";
 import {ChartModule} from "../components/Chart/ChartModule";
 import {filteredTickers, allSectors, getPortfolio} from "../reducers/dataReducer";
-import {selectedSector} from "../reducers/filterReducer";
+import {selectedSector, selectedFirm} from "../reducers/filterReducer";
 
 export function mapStateToProps(state) {
     return { ...state.chart, 
       filteredTickers: filteredTickers(state),
       portfolio: getPortfolio(state),
       sectors: allSectors(state),
+      selectedFirm: selectedFirm(state),
       selectedSector: selectedSector(state)
     };
   }
@@ -21,9 +22,7 @@ export function mapStateToProps(state) {
       appActions: bindActionCreators(myActions, dispatch)
     };
   }
-
-
-  
+ 
 const ChartContainer = connect(
     mapStateToProps,
     mapDispatchToProps

@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'; 
 import ReactEcharts from 'echarts-for-react';
 
-import styles from './allSectorsChart.scss';
+import styles from './sectorPie.scss';
 import {getAllSectorsOption} from './utils';
 
-export class AllSectorsChart extends PureComponent {
+export class SectorPie extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -43,13 +43,13 @@ export class AllSectorsChart extends PureComponent {
   }
 }
 
-AllSectorsChart.propTypes = {
+SectorPie.propTypes = {
   filteredTickers: PropTypes.array,
   sectors: PropTypes.array,
   appActions: PropTypes.any
 };
 
 
-export default AllSectorsChart;
+export default SectorPie;
 
-//   style={{height: 300}}
+

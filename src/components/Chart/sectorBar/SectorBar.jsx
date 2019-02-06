@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'; 
 import ReactEcharts from 'echarts-for-react';
 
-import styles from './sectorChart.scss';
+import styles from './sectorBar.scss';
 import {option} from './utils';
 
-export class SectorChart extends PureComponent {
+export class SectorBar extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -15,7 +15,7 @@ export class SectorChart extends PureComponent {
 
   onChartClick(param, echarts) {
     console.log(param, echarts);
-    this.props.appActions.filterSector(param.name);
+    this.props.appActions.filterFirm(param.name);
   }
 
   onChartLegendselectchanged(param, echart) {
@@ -52,7 +52,7 @@ export class SectorChart extends PureComponent {
   }
 }
 
-SectorChart.propTypes = {
+SectorBar.propTypes = {
   filteredTickers: PropTypes.array,
   sectors: PropTypes.array,
   selectedSector: PropTypes.string,
@@ -61,6 +61,6 @@ SectorChart.propTypes = {
 };
 
 
-export default SectorChart;
+export default SectorBar;
 
 //   
