@@ -95,6 +95,15 @@ export const columnDef = [
     cellStyle: {'text-align': 'right'},
     field: "volPct50d"
   },
+  { 
+    headerName: "PE TTM", 
+    headerTooltip: 'Trailing 12 month PE',
+  //  cellRenderer: (params) => params.value,
+    width: 100,
+    sortable: true,
+    cellStyle: {'text-align': 'right'},
+    field: "PEttm"
+  },
 ];
 
 /*
