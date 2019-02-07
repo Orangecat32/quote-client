@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger'
 
@@ -24,12 +24,22 @@ export const buildStore = () => {
   const sagaMiddleware = createSagaMiddleware();
   let middlewares = [sagaMiddleware];
 
-  // turn off the noise here
+  //  add filter on logging so we don't see all the updates coming from the server
+  const reduxLogger = createLogger({
+    diff: true,
+    predicate: (state, action) => {
+      return !action.type.startsWith('DATA_UPDATE');
+    }
+  });
+
+  // turn off the logging here
   if (process.env.NODE_ENV !== 'production') {
-    middlewares.push(createLogger())
+    middlewares.push(reduxLogger)
   }
 
-  const s = createStore(reducer,  applyMiddleware(...middlewares));
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+  const s = createStore(reducer, composeEnhancers(applyMiddleware(...middlewares)));
   initSagas(sagaMiddleware);
   return s;
 }
