@@ -5,6 +5,7 @@ import { InputGroup} from "@blueprintjs/core";
 import { handleStringChange } from "@blueprintjs/docs-theme";
 import PickSector from './pickSector/PickSector';
 import SettingsMenu from './settingsMenu/SettingsMenu';
+import * as APP_CONST from '../App/constants.js';
 
 import {buildMenu} from './menu';
 import styles from './Filters.scss';
@@ -13,17 +14,23 @@ export class Filters  extends React.Component {
   render() {
     const props = this.props;
     const handleFilterChange = handleStringChange(filterValue => props.appActions.filterSearch(filterValue));
+    const isChartPage = props.selectedPage === APP_CONST.CHART_VIEW;
+    const barStyle = `${styles.container} ${isChartPage ? `${styles.settings}` : ''}`;
 
     return(
-      <div className={styles.container}>
-        <InputGroup
-          onChange={handleFilterChange}
-          leftIcon="search"
-          placeholder="Search..."
-          type="search"
-          value={props.searchFilter}
-        />
-        <PickSector {...this.props} /> 
+      <div className={barStyle}>
+        { !isChartPage &&
+          <div className={styles.controls}>
+            <InputGroup
+              onChange={handleFilterChange}
+              leftIcon="search"
+              placeholder="Search..."
+              type="search"
+              value={props.searchFilter}
+            />
+            <PickSector {...this.props} /> 
+          </div>
+        }
         <SettingsMenu {...this.props} />
       </div>
     )}

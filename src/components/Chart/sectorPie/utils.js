@@ -1,47 +1,151 @@
-const ONE_BILLION = 1000000000;
 
-export const getAllSectorsOption = (p) => ({
-  title : {
-    text: 'SPX Sector Market Cap',
-   // subtext: 'sub text',
-    x:'center'
-  },
-  tooltip : {
-    trigger: 'item',
-    formatter: "{b} </br>{d}%"
-  },
-  // legend: {
-  //   orient: 'vertical',
-  //   left: 'left',
-  //   data: p.sectors
-  // },
-  series : [
-    {
-    name: 'Sector',
-    type: 'pie',
-    radius : '55%',
-    center: ['50%', '60%'],
-    data: computeSectorWeights(p),
-    itemStyle: {
-      emphasis: {
-      shadowBlur: 10,
-      shadowOffsetX: 0,
-      shadowColor: 'rgba(0, 0, 0, 0.5)'
+import {sectorSubIndustries, computeSubIndustryWeights, subIndustryFirms} from '../../../shared/utils';
+import {isNullOrWhitespace} from '../../../shared/utils';
+import * as CONST from './constants';
+
+export const graphOptions = (props) => {
+ // console.log('graphOptions: ', props.selectedSector, props.selectedSubIndustry, props.selectedFirm);
+  return isNullOrWhitespace(props.selectedSector) 
+    ? indexGraph(props)
+    : isNullOrWhitespace(props.selectedSubIndustry) 
+      ? sectorGraph(props)
+      : subIndustryGraph(props);
+}; 
+
+// top level graph, lists the spx sectors
+export const indexGraph = (p) => {
+  return {
+    
+    // title : {
+    //   text: 'SPX Market Cap: Sectors',
+    // // subtext: 'sub text',
+    //   x:'left'
+    // },
+    tooltip : {
+      trigger: 'item',
+      formatter: "{b} </br>{d}%"
+    },
+    // legend: {
+    //   orient: 'vertical',
+    //   left: 'left',
+    //   data: p.sectors
+    // },
+    series : [
+      {
+      name: CONST.SERIES_SECTOR,
+      type: 'pie',
+      radius : ['35%', '60%'],
+      center: ['50%', '60%'],
+      data: p.allSectors,
+      itemStyle: {
+        emphasis: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      },
+      {
+        name: 'none',
+        type: 'pie',
+        radius : ['0', '25%'],
+        center: ['50%', '60%'],
+        data: [],
       }
-    }
-    }
-  ]
-});
+    ]
+  }
+};
+
+// subIndustries of the selectedSector
+export const sectorGraph = (p) => {
+  const subs = sectorSubIndustries(p.portfolio, p.selectedSector);
+  const data = computeSubIndustryWeights(p.portfolio, p.selectedSector, subs);
+
+  return {
+    // title : {
+    //   text: `SPX Market Cap: ${p.selectedSector}, Sub Industries`,
+    //   x:'left'
+    // },
+    tooltip : {
+      trigger: 'item',
+      formatter: "{b} </br>{d}%"
+    },
+    series : [
+      {
+      name: CONST.SERIES_SUBINDUSTRY,
+      type: 'pie',
+      radius : ['35%', '60%'],
+      center: ['50%', '60%'],
+      data: data,
+      itemStyle: {
+        emphasis: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      },
+      {
+        name: CONST.SERIES_INDEX,
+        type: 'pie',
+        radius : ['0', '25%'],
+        center: ['50%', '60%'],
+        data: [{value: 100, name: 'SPX'}],
+        itemStyle: {
+          emphasis: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    ]
+  };
+}
 
 
-const computeSectorWeights = (p) => {
-  const sectors = (p.sectors || []).reduce((acc, s) => {
-    return {...acc, [s]: {value: 0, name: s} }
-  },{});
+// firms in the subIndustry
+export const subIndustryGraph = (p) => {
+  const data = subIndustryFirms(p.portfolio, p.selectedSubIndustry);
 
-  // add up the capitalization of the sectors
-  (p.portfolio || []).forEach(t => sectors[t.sector].value += t.mktCap);
-
-  //  divide by billion to get reasonable looking number
-  return Object.values(sectors).map(s => ({ ...s, value : s.value / ONE_BILLION }));
+  return {
+    // title : {
+    //   text: `SPX Market Cap: ${p.selectedSector}, ${p.selectedSubIndustry}, Firms`,
+    //   x:'left'
+    // },
+    tooltip : {
+      trigger: 'item',
+      formatter: "{b} </br>{d}%"
+    },
+    series : [
+      {
+      name: CONST.SERIES_FIRM,
+      type: 'pie',
+      radius : ['35%', '60%'],
+      center: ['50%', '60%'],
+      data: data,
+      itemStyle: {
+        emphasis: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      },
+      {
+        name: CONST.SERIES_SECTOR,
+        type: 'pie',
+        radius : ['0', '25%'],
+        center: ['50%', '60%'],
+        data: [{value: 100, name: p.selectedSector}],
+        itemStyle: {
+          emphasis: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    ]
+  };
 }

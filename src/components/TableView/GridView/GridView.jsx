@@ -16,16 +16,15 @@ export class GridView extends Component {
   }
   
   componentWillReceiveProps(nextProps) {
-    console.log('GridView: componentWillReceiveProps'); 
+   // console.log('GridView: componentWillReceiveProps'); 
     if(this.gridApi && nextProps.timer > this.props.timer) {
       this.gridApi.refreshCells({ columns: ['bid', 'ask','pc','last']});
-      //  to keep grid from updating during an update
+      //  to keep grid from updating during an update ???
      // setTimeout(() => this.gridApi.refreshCells({ columns: ['bid', 'ask','pc','last']}),0);
     }
   }
 
   render() {
-    console.log('Render GridView', this.props.filteredTickers.length);
     return (
       <div className={`${styles.dataArea} ag-theme-balham-dark `} >
         <AgGridReact

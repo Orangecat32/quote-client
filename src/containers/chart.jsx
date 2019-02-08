@@ -4,15 +4,17 @@ import {connect} from "react-redux";
 
 import * as myActions from "../actions";
 import {ChartModule} from "../components/Chart/ChartModule";
-import {filteredTickers, allSectors, getPortfolio} from "../reducers/dataReducer";
-import {selectedSector, selectedFirm} from "../reducers/filterReducer";
+import {filteredTickers, allSectors, getPortfolio, sectorNames} from "../reducers/dataReducer";
+import {selectedSector, selectedFirm, selectedSubIndustry} from "../reducers/filterReducer";
 
 export function mapStateToProps(state) {
     return { ...state.chart, 
       filteredTickers: filteredTickers(state),
       portfolio: getPortfolio(state),
-      sectors: allSectors(state),
+      sectors: sectorNames(state),
+      allSectors: allSectors(state),
       selectedFirm: selectedFirm(state),
+      selectedSubIndustry: selectedSubIndustry(state),
       selectedSector: selectedSector(state)
     };
   }

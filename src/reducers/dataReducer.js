@@ -2,8 +2,9 @@
 import {createSelector} from 'reselect';
 import {isNullOrWhitespace} from '../shared/utils';
 import * as ACT from "../actions/dataActions";
+import {ONE_MILLION, ONE_BILLION} from '../shared/utils';
+import {computeSectorWeights} from '../shared/utils';
 
-const ONE_MILLION = 1000000;
 
 
 export function dataReducer(state, action) {
@@ -61,6 +62,7 @@ export const filteredFirmsEx = (enrichedData, filters) => {
   return (enrichedData || []).filter(i => filterTicker(i,filters));
 }
 
+
 //  helper function
 function mergeUpdate(portfolio, updates) {
   // build map of updates. Note that not every ticker will have an update
@@ -72,13 +74,7 @@ function mergeUpdate(portfolio, updates) {
   });
 }
  
-export const sectorSubindustries = (portfolio, sector) => {
-  const obj = (portfolio || []).reduce((acc, ticker) => {
-    return acc[ticker.subIndustry] || ticker.sector !== sector ? acc : {...acc, [ticker.subIndustry] : true}
-  },{});
 
-  return Object.keys(obj).sort();
-};
 
 // selectors
 
@@ -86,8 +82,7 @@ export const allTickers = createSelector([getTickers], items => {
   return (items || []).map(i => enrichData(i));
 });
 
-
-export const allSectors = createSelector([getPortfolio], portfolio => {
+export const sectorNames = createSelector([getPortfolio], portfolio => {
   const obj = (portfolio || []).reduce((acc, ticker) => {
     return acc[ticker.sector] ? acc : {...acc, [ticker.sector] : true}
   },{});
@@ -95,8 +90,9 @@ export const allSectors = createSelector([getPortfolio], portfolio => {
   return Object.keys(obj).sort();
 });
 
-
-
+export const allSectors = createSelector([getPortfolio, sectorNames], (portfolio, sectorNames) => {
+  return computeSectorWeights(sectorNames, portfolio);
+});
 
 export const filteredTickers = createSelector([allTickers, getFilters], (enrichedData, filters) => {
   return filteredFirmsEx(enrichedData, filters);

@@ -4,6 +4,7 @@ import ReactEcharts from 'echarts-for-react';
 
 import styles from './spxGraph.scss';
 import {option} from './utils';
+import {isNullOrWhitespace} from '../../../shared/utils';
 
 export class SpxGraph extends PureComponent {
   constructor(props) {
@@ -14,10 +15,20 @@ export class SpxGraph extends PureComponent {
   }
 
   onChartClick(param, echarts) {
-    console.log('items click', param, echarts);
+    console.log('spx graph click', param, echarts);
 
-    if(this.props.selectedSector) {
-      this.props.appActions.filterFirm(param.data[3]);
+    const ticker = param.data[5];
+
+    if(isNullOrWhitespace(this.props.selectedSector)) {
+      this.props.appActions.filterSector(ticker.sector);
+    }
+
+    if(isNullOrWhitespace(this.props.selectedSubIndustry)) {
+      this.props.appActions.filterSubIndustry(ticker.subIndustry);
+    }
+
+    if(ticker) {
+      this.props.appActions.filterTicker(ticker);
     }
   }
 
@@ -36,11 +47,14 @@ export class SpxGraph extends PureComponent {
       'legendselectchanged': this.onChartLegendselectchanged
     };
 
+    console.log('render spx:', this.props.selectedSector, this.props.selectedSubIndustry);
+
     return (
       <div className={styles.container}>
         <ReactEcharts
             style={{height: '100%', marginTop: '-30px'}}
             option={option(this.props)}
+            notMerge={true}
             onChartReady={this.onChartReady}
             onEvents={onEvents} />
       </div>
@@ -52,6 +66,7 @@ SpxGraph.propTypes = {
   filteredTickers: PropTypes.array,
   sectors: PropTypes.array,
   selectedSector: PropTypes.string,
+  selectedSubIndustry: PropTypes.string,
   portfolio: PropTypes.array,
   appActions: PropTypes.any
 };
