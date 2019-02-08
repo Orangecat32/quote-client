@@ -7,11 +7,11 @@ import styles from './sectorPath.scss';
 export const buildPath = (p) => {
   let path = [{text: 'SPX', onClick: () => p.appActions.filterClearPath()} ];
   if(p.selectedSector) {
-    path.push({text: p.selectedSector, onClick: () => p.appActions.filterSector(p.selectedSector)})
+    path.push({text: p.selectedSector, onClick: () => p.appActions.filterSector(p.selectedSector) })
   }
 
   if(p.selectedFirm) {
-    path.push({text: p.selectedFirm})
+    path.push({text: p.selectedFirm })
   }
 
   return path;

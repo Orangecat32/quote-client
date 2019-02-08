@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
 import styles from './ViewTable.scss';
+import {fmtMktCap, fmtVolume} from '../../../shared/utils';
 
-const ONE_MILLION = 1000000;
+
 
 export class ViewTable extends React.Component {
 
@@ -30,11 +31,8 @@ export class ViewTable extends React.Component {
               p.filteredTickers.map(a => (
                 <tr key={a.symbol}>
                   <td className={styles.name}>{a.symbol}</td>
-                  <td className={styles.numeric}>{`${a.avgVol50d.toLocaleString()}`}</td>
-                  <td className={styles.numeric}>
-                    {
-                      `${(a.mktCap/ONE_MILLION).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`
-                    }</td>
+                  <td className={styles.numeric}>{fmtVolume(a)}</td>
+                  <td className={styles.numeric}>{fmtMktCap(a)}</td>
                   <td className={styles.numeric}>{`${a.volPct50d}`}</td>
                   <td className={styles.name}>{`${a.sector}`}</td>
                   <td className={styles.name}>{`${a.subIndustry}`}</td>
