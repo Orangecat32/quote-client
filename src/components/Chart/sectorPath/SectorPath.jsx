@@ -5,9 +5,13 @@ import { Breadcrumbs, IBreadcrumbProps, Breadcrumb, Icon } from "@blueprintjs/co
 import styles from './sectorPath.scss';
 
 export const buildPath = (p) => {
-  let path = [{text: 'SPX', onClick: () => p.appActions.filterClearPath()} ];
+  let path = [{text: 'All SPX', onClick: () => p.appActions.filterClearPath()} ];
   if(p.selectedSector) {
     path.push({text: p.selectedSector, onClick: () => p.appActions.filterSector(p.selectedSector) })
+  }
+
+  if(p.selectedSubIndustry) {
+    path.push({text: p.selectedSubIndustry, onClick: () => p.appActions.filterSubIndustry(p.selectedSubIndustry) })
   }
 
   if(p.selectedFirm) {
@@ -29,6 +33,8 @@ export class SectorPath extends PureComponent {
 
 SectorPath.propTypes = {
   selectedSector: PropTypes.string,
+  selectedSubIndustry: PropTypes.string,
+  selectedFirm: PropTypes.string,
   appActions: PropTypes.any
 };
 

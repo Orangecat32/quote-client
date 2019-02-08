@@ -15,18 +15,13 @@ export class ChartModule extends PureComponent {
   const view = this.props.viewMode === CONST.VIEW_SECTOR 
     ? (
       <div className={styles.chartItems}>
+       <div className={styles.chartPath}>
+          <SectorPath {...this.props}/>
+        </div>
         <div className={styles.itemAll} >
           <SectorPie {...this.props}/>
         </div>
-        <div className={styles.chartPath}>
-          <SectorPath {...this.props}/>
-        </div>
-        { !isNullOrWhitespace(this.props.selectedSector) && isNullOrWhitespace(this.props.selectedFirm) &&
-          <div className={styles.itemSector}>
-            <SpxGraph {...this.props}/>
-          </div>
-        }
-        { isNullOrWhitespace(this.props.selectedSector) && 
+        { isNullOrWhitespace(this.props.selectedFirm) &&
           <div className={styles.itemSector}>
             <SpxGraph {...this.props}/>
           </div>
@@ -52,6 +47,7 @@ export class ChartModule extends PureComponent {
 ChartModule.propTypes = {
   viewMode: PropTypes.any,
   selectedSector: PropTypes.string,
+  selectedSubIndustry: PropTypes.string,
   selectedFirm: PropTypes.string,
   appActions: PropTypes.object
 };

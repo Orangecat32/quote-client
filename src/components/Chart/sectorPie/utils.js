@@ -4,7 +4,7 @@ import {isNullOrWhitespace} from '../../../shared/utils';
 import * as CONST from './constants';
 
 export const graphOptions = (props) => {
-  console.log('graphOptions: ', props.selectedSector, props.selectedSubIndustry, props.selectedFirm);
+ // console.log('graphOptions: ', props.selectedSector, props.selectedSubIndustry, props.selectedFirm);
   return isNullOrWhitespace(props.selectedSector) 
     ? indexGraph(props)
     : isNullOrWhitespace(props.selectedSubIndustry) 
@@ -15,11 +15,12 @@ export const graphOptions = (props) => {
 // top level graph, lists the spx sectors
 export const indexGraph = (p) => {
   return {
-    title : {
-      text: 'SPX Market Cap',
-    // subtext: 'sub text',
-      x:'left'
-    },
+    
+    // title : {
+    //   text: 'SPX Market Cap: Sectors',
+    // // subtext: 'sub text',
+    //   x:'left'
+    // },
     tooltip : {
       trigger: 'item',
       formatter: "{b} </br>{d}%"
@@ -50,13 +51,6 @@ export const indexGraph = (p) => {
         radius : ['0', '25%'],
         center: ['50%', '60%'],
         data: [],
-        itemStyle: {
-          emphasis: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
-          }
-        }
       }
     ]
   }
@@ -68,10 +62,10 @@ export const sectorGraph = (p) => {
   const data = computeSubIndustryWeights(p.portfolio, p.selectedSector, subs);
 
   return {
-    title : {
-      text: 'SPX Market Cap',
-      x:'left'
-    },
+    // title : {
+    //   text: `SPX Market Cap: ${p.selectedSector}, Sub Industries`,
+    //   x:'left'
+    // },
     tooltip : {
       trigger: 'item',
       formatter: "{b} </br>{d}%"
@@ -115,10 +109,10 @@ export const subIndustryGraph = (p) => {
   const data = subIndustryFirms(p.portfolio, p.selectedSubIndustry);
 
   return {
-    title : {
-      text: 'SPX Market Cap',
-      x:'left'
-    },
+    // title : {
+    //   text: `SPX Market Cap: ${p.selectedSector}, ${p.selectedSubIndustry}, Firms`,
+    //   x:'left'
+    // },
     tooltip : {
       trigger: 'item',
       formatter: "{b} </br>{d}%"

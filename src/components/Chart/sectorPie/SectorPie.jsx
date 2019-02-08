@@ -52,9 +52,11 @@ export class SectorPie extends PureComponent {
     return (
       <div className={styles.container}>
         <ReactEcharts
-            option={graphOptions(this.props)}
-            onChartReady={this.onChartReady}
-            onEvents={onEvents} />
+          option={graphOptions(this.props)}
+          notMerge={true}
+          onChartReady={this.onChartReady}
+          onEvents={onEvents} 
+        />
       </div>
     );
   }
