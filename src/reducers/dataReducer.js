@@ -3,6 +3,7 @@ import {createSelector} from 'reselect';
 import {isNullOrWhitespace} from '../shared/utils';
 import * as ACT from "../actions/dataActions";
 import {ONE_MILLION, ONE_BILLION} from '../shared/utils';
+import {computeSectorWeights} from '../shared/utils';
 
 
 
@@ -62,18 +63,6 @@ export const filteredFirmsEx = (enrichedData, filters) => {
 }
 
 
-const computeSectorWeights = (sectorNames, portfolio) => {
-  const sectors = (sectorNames || []).reduce((acc, s) => {
-    return {...acc, [s]: {value: 0, name: s} }
-  },{});
-
-  // add up the capitalization of the sectors
-  (portfolio || []).forEach(t => sectors[t.sector].value += t.mktCap);
-
-  //  divide by billion to get reasonable looking number
-  return Object.values(sectors).map(s => ({ ...s, value : s.value / ONE_BILLION }));
-}
-
 //  helper function
 function mergeUpdate(portfolio, updates) {
   // build map of updates. Note that not every ticker will have an update
@@ -85,13 +74,7 @@ function mergeUpdate(portfolio, updates) {
   });
 }
  
-export const sectorSubindustries = (portfolio, sector) => {
-  const obj = (portfolio || []).reduce((acc, ticker) => {
-    return acc[ticker.subIndustry] || ticker.sector !== sector ? acc : {...acc, [ticker.subIndustry] : true}
-  },{});
 
-  return Object.keys(obj).sort();
-};
 
 // selectors
 

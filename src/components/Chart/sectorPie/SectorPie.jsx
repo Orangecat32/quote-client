@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
 
 import styles from './sectorPie.scss';
-import {getAllSectorsOption} from './utils';
+import {graphOptions} from './utils';
+import * as CONST from './constants';
 
 export class SectorPie extends PureComponent {
   constructor(props) {
@@ -14,12 +15,26 @@ export class SectorPie extends PureComponent {
 
   onChartClick(param, echarts) {
     console.log(param, echarts);
-    this.props.appActions.filterSector(param.name);
+
+    switch(param.seriesName) {
+      case CONST.SERIES_SECTOR:
+        this.props.appActions.filterSector(param.name);
+        break;
+      case CONST.SERIES_SUBINDUSTRY:
+        this.props.appActions.filterSubIndustry(param.name);
+        break;
+      case CONST.SERIES_FIRM:
+        this.props.appActions.filterFirm(param.name);
+        break;
+      case CONST.SERIES_INDEX:
+      default:
+        this.props.appActions.filterSector('');
+        break;
+    }
   }
 
   onChartLegendselectchanged(param, echart) {
     console.log(param, echart);
-    alert('chart legendselectchanged');
   }
 
   onChartReady(echarts) {
@@ -32,10 +47,12 @@ export class SectorPie extends PureComponent {
       'legendselectchanged': this.onChartLegendselectchanged
     };
 
+    console.log('SectorPie render: ', this.props.selectedSector, this.props.selectedSubIndustry);
+
     return (
       <div className={styles.container}>
         <ReactEcharts
-            option={getAllSectorsOption(this.props)}
+            option={graphOptions(this.props)}
             onChartReady={this.onChartReady}
             onEvents={onEvents} />
       </div>
@@ -46,6 +63,8 @@ export class SectorPie extends PureComponent {
 SectorPie.propTypes = {
   filteredTickers: PropTypes.array,
   sectors: PropTypes.array,
+  selectedSector: PropTypes.string,
+  selectedSubIndustry: PropTypes.string,
   appActions: PropTypes.any
 };
 
