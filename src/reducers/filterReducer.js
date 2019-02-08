@@ -28,7 +28,7 @@ export function filterReducer(state, action) {
     case RA.FILTER_VIEW_MODE:
       return Object.assign({}, state, {viewMode: action.payload});
     case RA.FILTER_CLEAR_PATH:
-      return Object.assign({}, state, {selectedFirm: '', selectedSector: ''}); 
+      return Object.assign({}, state, {selectedFirm: '', selectedSector: '', selectedSubIndustry: ''}); 
     default:
       return state;
   }

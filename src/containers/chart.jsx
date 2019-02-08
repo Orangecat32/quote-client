@@ -9,7 +9,7 @@ import {selectedSector, selectedFirm, selectedSubIndustry} from "../reducers/fil
 
 export function mapStateToProps(state) {
     return { ...state.chart, 
-      filteredTickers: filteredTickers(state),
+    //  filteredTickers: filteredTickers(state),
       portfolio: getPortfolio(state),
       sectors: sectorNames(state),
       allSectors: allSectors(state),
