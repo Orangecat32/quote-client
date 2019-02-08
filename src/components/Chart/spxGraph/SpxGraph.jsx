@@ -17,17 +17,13 @@ export class SpxGraph extends PureComponent {
   onChartClick(param, echarts) {
     console.log('spx graph click', param, echarts);
 
-    const ticker = param.data[5];
+    const ticker = param && param.data ? param.data[5] : null;
 
     if(isNullOrWhitespace(this.props.selectedSector)) {
       this.props.appActions.filterSector(ticker.sector);
-    }
-
-    if(isNullOrWhitespace(this.props.selectedSubIndustry)) {
+    } else if(isNullOrWhitespace(this.props.selectedSubIndustry)) {
       this.props.appActions.filterSubIndustry(ticker.subIndustry);
-    }
-
-    if(ticker) {
+    } else if(ticker) {
       this.props.appActions.filterTicker(ticker);
     }
   }

@@ -7,8 +7,13 @@ export const option = (p) => {
     tooltip : {
       trigger: 'item',
       formatter: function(params) {
+        if(params && params.data && params.data[5]){
           const firm = params.data[5];
           return `${firm.symbol}    MktCap: ${fmtMktCap(firm.mktCap)}B </br> ${firm.company}`;
+        } else {
+         // console.log('fp',params);
+          return '';
+        }      
       }
     },
     xAxis: {
