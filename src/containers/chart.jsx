@@ -6,6 +6,7 @@ import * as myActions from "../actions";
 import {ChartModule} from "../components/Chart/ChartModule";
 import {filteredTickers, allSectors, getPortfolio, sectorNames} from "../reducers/dataReducer";
 import {selectedSector, selectedFirm, selectedSubIndustry} from "../reducers/filterReducer";
+import {iexHistory} from '../reducers/iexHistReducer';
 
 export function mapStateToProps(state) {
     return { ...state.chart, 
@@ -15,7 +16,8 @@ export function mapStateToProps(state) {
       allSectors: allSectors(state),
       selectedFirm: selectedFirm(state),
       selectedSubIndustry: selectedSubIndustry(state),
-      selectedSector: selectedSector(state)
+      selectedSector: selectedSector(state),
+      iexHist: iexHistory(state)
     };
   }
   

@@ -16,6 +16,7 @@ export class FirmGraph extends PureComponent {
   }
 
   render() {
+    console.log('firmGraph',this.props.iexHist);
     return (
       <div className={styles.container} >
         {`Under construction - firmview: ${this.props.selectedFirm}`}
@@ -27,6 +28,8 @@ export class FirmGraph extends PureComponent {
 FirmGraph.propTypes = {
   selectedFirm: PropTypes.string,
   selectedSector: PropTypes.string,
+  selectedSubIndustry: PropTypes.string,
+  iexHist: PropTypes.any,
   appActions: PropTypes.any
 };
 

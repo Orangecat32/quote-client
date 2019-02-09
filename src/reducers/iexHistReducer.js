@@ -2,18 +2,20 @@
 
 import * as ACT from "../actions/iexHistActions";
 
+export const iexHistory = (state) => state.iexHist; 
+
 
 export function iexHistReducer(state, action) {
-  if(action.type === 'DATA_UPDATE'){
+  if((action && action.type === 'DATA_UPDATE') && action){
     return state;
   }
-
+  
   switch(action.type) {
     case ACT.IEX_HIST_REQUEST:
       return state;
     case ACT.IEX_HIST_SUCCESS:
     {
-      //console.log('iexHistReducer',action);
+      console.log('iexHistReducer',action);
       const p = action.payload;
       const symbol = Object.keys(p)[0];
       console.log('iexHistReducer.symbol',symbol);
