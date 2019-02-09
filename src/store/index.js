@@ -5,6 +5,7 @@ import { createLogger } from 'redux-logger'
 import * as tableView from './tableView';
 import * as filters from './filters';
 import * as data from './data';
+import * as iexHist from './iexHist';
 import * as appConstants from '../components/App/constants';
 import * as chart from './chart';
 import {initSagas } from './initSagas';
@@ -16,6 +17,7 @@ export const initialState = {
     selectedPage: appConstants.TABLE_VIEW,
     tableView: tableView.init(),
     filters: filters.init(),
+    iexHist: iexHist.init(),
     chart: chart.init()
   };
 

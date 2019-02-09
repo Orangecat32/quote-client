@@ -8,22 +8,11 @@ import styles from './firmGraph.scss';
 export class FirmGraph extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.onChartClick = this.onChartClick.bind(this);
-    this.onChartReady = this.onChartReady.bind(this);
   }
 
-  onChartClick(param, echarts) {
-    console.log(param, echarts);
-  }
-
-  onChartLegendselectchanged(param, echart) {
-    console.log('legend click:', param, echart);
-  }
-
-  onChartReady(echarts) {
-    console.log('echart is ready', echarts);
-    this.echarts = echarts;
+  componentWillMount() {
+    console.log('mount FirmGraph:',this.props.selectedFirm);
+    this.props.appActions.requestHistory(this.props.selectedFirm)
   }
 
   render() {
