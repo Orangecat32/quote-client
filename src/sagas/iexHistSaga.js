@@ -1,22 +1,34 @@
 
-import { take, call, put } from 'redux-saga/effects';
+import { take, call, put, takeEvery } from 'redux-saga/effects';
 import {iexHistRequest} from '../api/iexApi';
 
-import {IEX_HIST_REQUEST,IEX_HIST_SUCCESS, IEX_HIST_FAIL} from '../actions';
-
+import {IEX_HIST_REQUEST,IEX_HIST_SUCCESS, IEX_HIST_FAIL, FILTER_FIRM, FILTER_EXACT_FIRM} from '../actions';
 
 
 export function* iexHistSagas() {
-  const action = yield take(IEX_HIST_REQUEST);
- // yield put({type: IEX_HIST_REQUEST});
-  console.log('saga.iexHist',action.payload);
-  const response = yield call(iexHistRequest, action.payload);
-  console.log('saga.iexHist.fetch',response);
-  const json= yield response.json();
-  console.log('saga.iexHist.json',json);
-  yield put({type: IEX_HIST_SUCCESS, payload: json});
+  yield getIexHistory();
+}
+
+function* getIexHistory() {
+  yield takeEvery(FILTER_FIRM, getFirmHistory);
+  yield takeEvery(FILTER_EXACT_FIRM, getExactFirmHistory);
 
 }
+
+function* getExactFirmHistory(action) {
+  yield getFirmHistory({type: FILTER_FIRM, payload: action.payload.symbol});
+}
+
+function* getFirmHistory(action) {
+  yield put({type: IEX_HIST_REQUEST, payload: action.payload});
+  const response = yield call(iexHistRequest, action.payload);
+  console.log('saga.iexHist.fetch.response:', response);
+  const json= yield response.json();
+  yield put({type: IEX_HIST_SUCCESS, payload: json});
+}
+
+
+
 
 
 

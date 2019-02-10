@@ -28,7 +28,7 @@ export const buildStore = () => {
 
   //  add filter on logging so we don't see all the updates coming from the server
   const reduxLogger = createLogger({
-    diff: true,
+    diff: false,  //  shows diff between states.  Can be very long
     predicate: (state, action) => {
       return !action.type.startsWith('DATA_UPDATE');
     }

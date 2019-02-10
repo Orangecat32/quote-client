@@ -14,11 +14,11 @@ export const filterSearch = (s) => ({type: FILTER_SEARCH, payload: s});
 export const filterSector = (s) => ({type: FILTER_SECTOR, payload: s});
 export const filterSubIndustry = (s) => ({type: FILTER_SUBINDUSTRY, payload: s});
 export const changeSettings = () => ({type: FILTER_SETTINGS});
-export const filterFirm = (s) => ({type: FILTER_FIRM, payload: s});
+export const filterFirm = (s) => ({type: FILTER_FIRM, payload: s} );
 export const filterClearPath = () => ({type: FILTER_CLEAR_PATH});
 
-export const filterTicker = (ticker) =>
-        ({type: FILTER_TICKER, payload:ticker});
+export const filterTicker = (ticker) => filterExactFirm(ticker.sector, ticker.subIndustry, ticker.symbol);
+
 
 export const filterExactFirm = (sector, subIndustry, symbol) =>
         ({type: FILTER_EXACT_FIRM, payload: {sector, subIndustry, symbol}});
