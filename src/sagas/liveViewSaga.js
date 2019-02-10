@@ -1,8 +1,7 @@
 
 import { eventChannel } from 'redux-saga';
 import { take, call, put } from 'redux-saga/effects';
-import {update, refresh, errorOccured, 
-  DATA_CONNECT, DATA_PORTFOLIO_SUCCESS, DATA_REFRESH ,DATA_PORTFOLIO_FAILED, DATA_PORTFOLIO_REQUEST
+import {update, DATA_CONNECT, DATA_PORTFOLIO_SUCCESS, DATA_REFRESH ,DATA_PORTFOLIO_FAILED, DATA_PORTFOLIO_REQUEST
 } from '../actions/dataActions';
 
 import {openWSConnection, ioConnect} from '../api/liveApi';

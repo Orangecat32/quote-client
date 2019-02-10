@@ -5,7 +5,7 @@ import * as RA from "../actions/filterActions";
 export const selectedPage = (state) => (state.selectedPage);
 
 export function filterReducer(state, action) {
-  console.log('filterReducer:', action.type);
+ // console.log('filterReducer:', action.type);
   switch(action.type) {
     case RA.FILTER_EXACT_FIRM:
       {
