@@ -20,7 +20,7 @@ export const filterTicker = (ticker) => filterExactFirm(ticker.sector, ticker.su
 
 
 export const filterExactFirm = (sector, subIndustry, symbol) =>
-        ({type: FILTER_EXACT_FIRM, payload: {sector, subIndustry, symbol}});
+  ({type: FILTER_EXACT_FIRM, payload: {sector, subIndustry, symbol}});
 
 
 

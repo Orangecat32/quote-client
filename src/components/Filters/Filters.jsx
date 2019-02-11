@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
 
-import { InputGroup} from "@blueprintjs/core";
-import { handleStringChange } from "@blueprintjs/docs-theme";
+import { InputGroup} from '@blueprintjs/core';
+import { handleStringChange } from '@blueprintjs/docs-theme';
 import PickSector from './pickSector/PickSector';
 import SettingsMenu from './settingsMenu/SettingsMenu';
 import * as APP_CONST from '../App/constants.js';
 
-import {buildMenu} from './menu';
+
 import styles from './Filters.scss';
 
 export class Filters  extends React.Component {
@@ -17,7 +17,7 @@ export class Filters  extends React.Component {
     const isChartPage = props.selectedPage === APP_CONST.CHART_VIEW;
     const barStyle = `${styles.container} ${isChartPage ? `${styles.settings}` : ''}`;
 
-    return(
+    return (
       <div className={barStyle}>
         { !isChartPage &&
           <div className={styles.controls}>
@@ -33,7 +33,8 @@ export class Filters  extends React.Component {
         }
         <SettingsMenu {...this.props} />
       </div>
-    )}
+    );
+  }
 }
 
 Filters.propTypes = {
@@ -44,7 +45,7 @@ Filters.propTypes = {
   appActions: PropTypes.object,
   selectedPage: PropTypes.string,
   selectedSector: PropTypes.string,
-  sortMode: PropTypes.string
-}
+  sortMode: PropTypes.string,
+};
 
 export default Filters;

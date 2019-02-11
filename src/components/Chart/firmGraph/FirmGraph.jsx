@@ -20,7 +20,7 @@ export class FirmGraph extends PureComponent {
 
   render() {
     const onEvents = {
-      'click': this.onChartClick
+      'click': this.onChartClick,
     };
 
     return (
@@ -30,14 +30,14 @@ export class FirmGraph extends PureComponent {
           option={option(this.props)}
           onChartReady={this.onChartReady}
           onEvents={onEvents} />
-        </div>
+      </div>
     );
   }
 }
 
 FirmGraph.propTypes = {
   iexHist: PropTypes.any,
-  appActions: PropTypes.any
+  appActions: PropTypes.any,
 };
 
 

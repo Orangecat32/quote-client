@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types'; 
-import { Alignment, Classes, Spinner, Navbar, NavbarDivider, NavbarGroup,  NavbarHeading, Button} from "@blueprintjs/core";
+import { Alignment, Classes, Spinner, Navbar, NavbarDivider, NavbarGroup,  NavbarHeading, Button} from '@blueprintjs/core';
 
-import * as myActions from "../../actions/index";
+import * as myActions from '../../actions/index';
 import styles from './App.scss';
 import * as constants from './constants.js';
 
@@ -18,16 +18,16 @@ class App extends Component {
   gameSelectionButtons() {
     return (
       <div> 
-      {
-        constants.AvailablePages.map(page => (
-          <Button 
-            key={page}
-            className={Classes.MINIMAL} 
-            active={this.props.selectedPage === page}
-            text={page} 
-            onClick={()=> this.props.appActions.selectPage(page)} />
-        ))
-      }
+        {
+          constants.AvailablePages.map(page => (
+            <Button 
+              key={page}
+              className={Classes.MINIMAL} 
+              active={this.props.selectedPage === page}
+              text={page} 
+              onClick={() => this.props.appActions.selectPage(page)} />
+          ))
+        }
       </div>
     );
   }
@@ -77,23 +77,23 @@ App.propTypes = {
   text: PropTypes.string,
   error: PropTypes.string,
   isLoading: PropTypes.bool,
-  selectedPage: PropTypes.string
+  selectedPage: PropTypes.string,
 };
 
 function mapStateToProps(state) {
   return {
-    selectedPage: state.selectedPage
+    selectedPage: state.selectedPage,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    appActions: bindActionCreators(myActions, dispatch)
+    appActions: bindActionCreators(myActions, dispatch),
   };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(App);
+)(App);
 

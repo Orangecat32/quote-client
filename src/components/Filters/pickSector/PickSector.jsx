@@ -21,7 +21,7 @@ export class PickSector extends PureComponent {
         >
           {buildSectorMenu(this.props)}
         </Select>
-        </div>
+      </div>
     );
   }
 }

@@ -2,140 +2,140 @@ import {fmtPercent, fmtPrice, fmtShares, fmtMktCap, fmtVolume} from '../../../sh
 
 export const columnDef = [
   {
-    headerName: "Symbol", 
-    field: "symbol",
+    headerName: 'Symbol', 
+    field: 'symbol',
     width: 90,
     pinned: 'left',
-    sortable: true
+    sortable: true,
   },
   {
-    headerName: "Last", 
+    headerName: 'Last', 
     cellRenderer: (params) => fmtPrice(params.value),
     width: 80,
     cellStyle: {'text-align': 'right'},
     sortable: true,
-    field: "last"
+    field: 'last',
   },
   {
-    headerName: "Chng", 
+    headerName: 'Chng', 
     cellRenderer: (params) => fmtPercent(params.value),
     width: 90,
     cellStyle: {'text-align': 'right'},
     sortable: true,
-    field: "pc"
+    field: 'pc',
   },
   {
-    headerName: "Bid", 
-    field: "bid",
+    headerName: 'Bid', 
+    field: 'bid',
     width: 80,
     cellStyle: {'text-align': 'right'},
     sortable: true,
-    cellRenderer: (params) => fmtPrice(params.value)
+    cellRenderer: (params) => fmtPrice(params.value),
   },
   { 
-    headerName: "Ask", 
+    headerName: 'Ask', 
     cellRenderer: (params) => fmtPrice(params.value),
     width: 80,
     sortable: true,
     cellStyle: {'text-align': 'right'},
-    field: "ask"
+    field: 'ask',
   },
   {
-    headerName: "Shares", 
+    headerName: 'Shares', 
     sortable: true,
     width: 90,
     cellStyle: {'text-align': 'right'},
     cellRenderer: (params) => fmtShares(params.value),
-    field: "sharesOut"
+    field: 'sharesOut',
   }, 
   {
-    headerName: "MktCap", 
+    headerName: 'MktCap', 
     headerTooltip: 'Market capitalization in billions',
     sortable: true,
     width: 90,
     cellStyle: {'text-align': 'right'},
     cellRenderer: (params) => fmtMktCap(params.value),
-    field: "mktCap"
+    field: 'mktCap',
   }, 
   {
-    headerName: "Location", 
+    headerName: 'Location', 
     sortable: true,
-    field: "Location"
+    field: 'Location',
   },
   {
-    headerName: "Sector", 
+    headerName: 'Sector', 
     sortable: true,
-    field: "sector"
+    field: 'sector',
   },
   {
-    headerName: "Sub-Industry", 
+    headerName: 'Sub-Industry', 
     sortable: true,
-    field: "subIndustry"
+    field: 'subIndustry',
   }, 
   {
-    headerName: "Company", 
+    headerName: 'Company', 
     sortable: true,
-    field: "company"
+    field: 'company',
   },
   { 
-    headerName: "Avg. Vol", 
+    headerName: 'Avg. Vol', 
     headerTooltip: 'Average daily trade volume over last 50 days in millions',
     cellRenderer: (params) => fmtVolume(params.value),
     width: 100,
     sortable: true,
     cellStyle: {'text-align': 'right'},
-    field: "avgVol50d"
+    field: 'avgVol50d',
   },
  
   { 
-    headerName: "Volatility", 
+    headerName: 'Volatility', 
     headerTooltip: 'Last 50 days average volatility',
-  //  cellRenderer: (params) => params.value,
+    //  cellRenderer: (params) => params.value,
     width: 100,
     sortable: true,
     cellStyle: {'text-align': 'right'},
-    field: "volPct50d"
+    field: 'volPct50d',
   },
   { 
-    headerName: "PE TTM", 
+    headerName: 'PE TTM', 
     headerTooltip: 'Trailing 12 month PE',
-  //  cellRenderer: (params) => params.value,
+    //  cellRenderer: (params) => params.value,
     width: 100,
     sortable: true,
     cellStyle: {'text-align': 'right'},
-    field: "PEttm"
+    field: 'PEttm',
   },
   { 
-    headerName: "Avg $Vol", 
+    headerName: 'Avg $Vol', 
     headerTooltip: 'close * avgVol50d / 1000',
     cellRenderer: (params) => fmtPrice(params.value),
     width: 100,
     sortable: true,
     cellStyle: {'text-align': 'right'},
-    field: "dollarVol"
+    field: 'dollarVol',
   },
 ];
 
 /*
 
-Location: "Santa Clara, California"
+Location: 'Santa Clara, California'
 PEttm: 23.64
-ShortName: "Agilent Techno"
+ShortName: 'Agilent Techno'
 ask: 67.39916699999999
 avgVol50d: 2849033
 bid: 67.37916699999998
 close: 67.46
-company: "Agilent Technologies Inc"
+company: 'Agilent Technologies Inc'
 high52wk: 75.11
 increment: 0.023610999999999997
 last: 67.38916699999999
 low52wk: 60.42
 mktCap: 21488034000
 pc: -0.001050000000000111
-sector: "Health Care"
+sector: 'Health Care'
 sharesOut: 318530000
-subIndustry: "Health Care Equipment"
-symbol: "A"
+subIndustry: 'Health Care Equipment'
+symbol: 'A'
 volPct50d: 0.35
 dollarVol: close/ avgVol50d
 

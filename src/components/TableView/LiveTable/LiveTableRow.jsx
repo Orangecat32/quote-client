@@ -5,7 +5,7 @@ export class LiveTableRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDetails: false
+      showDetails: false,
     };
   }
 
@@ -15,10 +15,11 @@ export class LiveTableRow extends Component {
     const pc = t.pc ? t.pc * 100 : 0;
 
     return (
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div 
         className={styles.rowItem} 
         // click sets state on the row to control details visibility
-        onClick={() => {this.setState({showDetails: !this.state.showDetails})}} >
+        onClick={() => {this.setState({showDetails: !this.state.showDetails}); }} >
         <div className={styles.rowData}>
           <div className={styles.colSym}>{t.symbol}</div>
           <div className={styles.colData}>{t.last ? t.last.toFixed(2) : ''}</div>
@@ -33,7 +34,8 @@ export class LiveTableRow extends Component {
           </>
         }
       </div>
-    )}
+    );
+  }
 }
 
 

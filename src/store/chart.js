@@ -1,6 +1,6 @@
-import {SORT_NAME_DEC, VIEW_SECTOR} from '../components/Chart/constants';
+import {VIEW_SECTOR} from '../components/Chart/constants';
 
 export const init = () => (
-    { 
-        viewMode: VIEW_SECTOR
-    });
+  { 
+    viewMode: VIEW_SECTOR,
+  });

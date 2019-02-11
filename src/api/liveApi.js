@@ -6,7 +6,7 @@ const sioParams = {protocol: 'http', hostname: 'localhost', port: 8005};
 
 export const ioConnect = () => {
   const url = `${sioParams.protocol}://${sioParams.hostname}:${sioParams.port}`;
-  console.log("socket.io connecting to: " + url);
+  console.log('socket.io connecting to: ' + url);
   try {
     const socket = sio(url);
     return socket;
@@ -14,16 +14,16 @@ export const ioConnect = () => {
     console.error('threw inside open connection', ex);
     throw new Error(ex);
   }
-}
+};
 
 export const  openWSConnection = () => {
-  const url = `${wsParams.protocol}://${wsParams.hostname}:${wsParams.port}`;
-  console.log("websocket connecting to: " + url);
   try {
-      const webSocket = new WebSocket(url);
-      return webSocket;
+    const url = `${wsParams.protocol}://${wsParams.hostname}:${wsParams.port}`;
+    return new WebSocket(url);
   } catch (exception) {
-      console.error('threw inside openWSConnection');
-      console.error(exception);
+    console.error('threw inside openWSConnection');
+    console.error(exception);
   }
-}
+
+  return null;
+};

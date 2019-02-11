@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './ChartModule.scss';
 import * as CONST from './constants';
-import SectorBar from './sectorBar/SectorBar';
+//import SectorBar from './sectorBar/SectorBar';
 import SectorPie from './sectorPie/SectorPie';
 import SectorPath from './sectorPath/SectorPath';
 import SpxGraph from './spxGraph/SpxGraph';
@@ -12,33 +12,33 @@ import {isNullOrWhitespace} from '../../shared/utils';
 
 export class ChartModule extends PureComponent {
   render() {
-  const view = this.props.viewMode === CONST.VIEW_SECTOR 
-    ? (
-      <div className={styles.chartItems}>
-       <div className={styles.chartPath}>
-          <SectorPath {...this.props}/>
-        </div>
-        <div className={styles.itemAll} >
-          <SectorPie {...this.props}/>
-        </div>
-        { isNullOrWhitespace(this.props.selectedFirm) &&
-          <div className={styles.itemSector}>
-            <SpxGraph {...this.props}/>
+    const view = this.props.viewMode === CONST.VIEW_SECTOR 
+      ? (
+        <div className={styles.chartItems}>
+          <div className={styles.chartPath}>
+            <SectorPath {...this.props}/>
           </div>
-        }
-        { !isNullOrWhitespace(this.props.selectedFirm) &&
-          <div className={styles.itemSector}>
-            <FirmGraph {...this.props}/>
+          <div className={styles.itemAll} >
+            <SectorPie {...this.props}/>
           </div>
-        }
+          { isNullOrWhitespace(this.props.selectedFirm) &&
+            <div className={styles.itemSector}>
+              <SpxGraph {...this.props}/>
+            </div>
+          }
+          { !isNullOrWhitespace(this.props.selectedFirm) &&
+            <div className={styles.itemSector}>
+              <FirmGraph {...this.props}/>
+            </div>
+          }
 
-      </div>
+        </div>
       ) 
-    : ('Under Construction');
+      : ('Under Construction');
 
     return (
       <div className={styles.container}>
-       {view}
+        {view}
       </div>
     );
   }
@@ -49,7 +49,7 @@ ChartModule.propTypes = {
   selectedSector: PropTypes.string,
   selectedSubIndustry: PropTypes.string,
   selectedFirm: PropTypes.string,
-  appActions: PropTypes.object
+  appActions: PropTypes.object,
 };
 
 

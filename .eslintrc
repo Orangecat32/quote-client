@@ -1,7 +1,9 @@
  
 {
     "plugins": [
-        "react"
+        "react",
+        "relay",
+        "babel"
     ],
     "parserOptions": {
         "ecmaVersion": 2018,
@@ -17,12 +19,15 @@
         "mocha":   true
     },   
     "extends": [
-        "eslint:recommended", 
+        "google",
+        "fbjs",
+
         "plugin:react/recommended"
     ],    
     "rules": {
         "no-unused-vars": 1,
-        "no-console": "off"
+        "no-console": "off",
+        "max-len": 0
     },
     "settings": {
         "react": {
@@ -38,3 +43,4 @@
         ]
     }
 }
+

@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'; 
 
-import { Button, Popover} from "@blueprintjs/core";
+import { Button, Popover} from '@blueprintjs/core';
 
 
-import styles from './settingsMenu.scss';
+// import styles from './settingsMenu.scss';
 import {buildMenu} from './utils';
 
 export class SettingsMenu extends PureComponent {
@@ -12,8 +12,8 @@ export class SettingsMenu extends PureComponent {
     const p = this.props;
     return (
       <Popover content={buildMenu(p, p.appActions)}>
-      <Button icon="cog" />
-    </Popover>
+        <Button icon="cog" />
+      </Popover>
     );
   }
 }

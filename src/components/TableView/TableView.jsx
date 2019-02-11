@@ -23,12 +23,10 @@ export class TableView extends Component {
         : (<GridView {...this.props}/>);
 
     return (
-     
-          <div className={styles.dataArea}>
-            {view}
-          </div>
-
-    ) ;
+      <div className={styles.dataArea}>
+        {view}
+      </div>
+    );
   }
 }
 
@@ -39,7 +37,7 @@ TableView.propTypes = {
   timer: PropTypes.number,
   viewMode: PropTypes.string,
   appActions: PropTypes.object,
-  filteredTickers: PropTypes.array
+  filteredTickers: PropTypes.array,
 };
 
 

@@ -1,15 +1,15 @@
 
 import {createSelector} from 'reselect';
 import {isNullOrWhitespace} from '../shared/utils';
-import * as ACT from "../actions/dataActions";
-import {ONE_MILLION, ONE_BILLION} from '../shared/utils';
+import * as ACT from '../actions/dataActions';
+import {ONE_MILLION} from '../shared/utils';
 import {computeSectorWeights} from '../shared/utils';
 
 
 
 export function dataReducer(state, action) {
 
-  switch(action.type) {
+  switch (action.type) {
     case ACT.DATA_PORTFOLIO_SUCCESS:
       return Object.assign(state, 
         {
@@ -17,10 +17,10 @@ export function dataReducer(state, action) {
           tickers: action.payload,  // portfolio that is being updated with price changes
           timer: 0, 
           isloading: false, 
-          error: '' 
+          error: '', 
         }); 
     case ACT.DATA_ERROR:
-      console.log('data error:', action.payload)
+      console.log('data error:', action.payload);
       return Object.assign(state, {error: action.payload }); 
     case ACT.DATA_UPDATE:
     {
@@ -29,8 +29,8 @@ export function dataReducer(state, action) {
           isLoading: false, 
           timer: action.payload.timer,
           error: null, 
-          tickers: mergeUpdate(state.tickers, action.payload.tickers)
-      });
+          tickers: mergeUpdate(state.tickers, action.payload.tickers),
+        });
     }
     default:
       return state;
@@ -48,8 +48,8 @@ export const getPortfolio = (state) => (state.data.portfolio);
 
 const enrichData = (t) => ({...t, 
   search: `${t.symbol} ${t.company} ${t.Location} ${t.subIndustry} ${t.sector}`.toLowerCase(),
-  dollarVol: t.avgVol50d * t.close / ONE_MILLION
-  }
+  dollarVol: t.avgVol50d * t.close / ONE_MILLION,
+}
 );
 
 const filterTicker = (ticker, f) => {
@@ -59,8 +59,8 @@ const filterTicker = (ticker, f) => {
 };
 
 export const filteredFirmsEx = (enrichedData, filters) => {
-  return (enrichedData || []).filter(i => filterTicker(i,filters));
-}
+  return (enrichedData || []).filter(i => filterTicker(i, filters));
+};
 
 
 //  helper function
@@ -84,8 +84,8 @@ export const allTickers = createSelector([getTickers], items => {
 
 export const sectorNames = createSelector([getPortfolio], portfolio => {
   const obj = (portfolio || []).reduce((acc, ticker) => {
-    return acc[ticker.sector] ? acc : {...acc, [ticker.sector] : true}
-  },{});
+    return acc[ticker.sector] ? acc : {...acc, [ticker.sector] : true};
+  }, {});
 
   return Object.keys(obj).sort();
 });

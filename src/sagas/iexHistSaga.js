@@ -1,8 +1,9 @@
 
-import { take, call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import {iexHistRequest} from '../api/iexApi';
 
-import {IEX_HIST_REQUEST,IEX_HIST_SUCCESS, IEX_HIST_FAIL, FILTER_FIRM, FILTER_EXACT_FIRM} from '../actions';
+import {IEX_HIST_REQUEST, IEX_HIST_SUCCESS, FILTER_FIRM, FILTER_EXACT_FIRM} from '../actions';
+// IEX_HIST_FAIL, 
 
 
 export function* iexHistSagas() {
@@ -23,19 +24,9 @@ function* getFirmHistory(action) {
   yield put({type: IEX_HIST_REQUEST, payload: action.payload});
   const response = yield call(iexHistRequest, action.payload);
   console.log('saga.iexHist.fetch.response:', response);
-  const json= yield response.json();
+  const json = yield response.json();
   yield put({type: IEX_HIST_SUCCESS, payload: json});
 }
-
-
-
-
-
-
-
-
-
-
 
 /*
 

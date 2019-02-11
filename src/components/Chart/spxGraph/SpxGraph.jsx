@@ -19,11 +19,11 @@ export class SpxGraph extends PureComponent {
 
     const ticker = param && param.data ? param.data[5] : null;
 
-    if(isNullOrWhitespace(this.props.selectedSector)) {
+    if (isNullOrWhitespace(this.props.selectedSector)) {
       this.props.appActions.filterSector(ticker.sector);
-    } else if(isNullOrWhitespace(this.props.selectedSubIndustry)) {
+    } else if (isNullOrWhitespace(this.props.selectedSubIndustry)) {
       this.props.appActions.filterSubIndustry(ticker.subIndustry);
-    } else if(ticker) {
+    } else if (ticker) {
       this.props.appActions.filterTicker(ticker);
     }
   }
@@ -40,7 +40,7 @@ export class SpxGraph extends PureComponent {
   render() {
     const onEvents = {
       'click': this.onChartClick,
-      'legendselectchanged': this.onChartLegendselectchanged
+      'legendselectchanged': this.onChartLegendselectchanged,
     };
 
     console.log('render spx:', this.props.selectedSector, this.props.selectedSubIndustry);
@@ -48,11 +48,11 @@ export class SpxGraph extends PureComponent {
     return (
       <div className={styles.container}>
         <ReactEcharts
-            style={{height: '100%', marginTop: '-30px'}}
-            option={option(this.props)}
-            notMerge={true}
-            onChartReady={this.onChartReady}
-            onEvents={onEvents} />
+          style={{height: '100%', marginTop: '-30px'}}
+          option={option(this.props)}
+          notMerge={true}
+          onChartReady={this.onChartReady}
+          onEvents={onEvents} />
       </div>
     );
   }
@@ -64,10 +64,8 @@ SpxGraph.propTypes = {
   selectedSector: PropTypes.string,
   selectedSubIndustry: PropTypes.string,
   portfolio: PropTypes.array,
-  appActions: PropTypes.any
+  appActions: PropTypes.any,
 };
 
 
 export default SpxGraph;
-
-//   

@@ -1,8 +1,8 @@
-import * as CONST from "../components/TableView/constants";
+import * as CONST from '../components/TableView/constants';
 
 export const init = () => (
   { 
-    viewMode: CONST.VIEW_GRID
+    viewMode: CONST.VIEW_GRID,
   });
 
   

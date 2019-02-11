@@ -11,16 +11,16 @@ export class GridView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      columnDefs: columnDef
+      columnDefs: columnDef,
     };
   }
   
   componentWillReceiveProps(nextProps) {
-   // console.log('GridView: componentWillReceiveProps'); 
-    if(this.gridApi && nextProps.timer > this.props.timer) {
-      this.gridApi.refreshCells({ columns: ['bid', 'ask','pc','last']});
+    // console.log('GridView: componentWillReceiveProps'); 
+    if (this.gridApi && nextProps.timer > this.props.timer) {
+      this.gridApi.refreshCells({ columns: ['bid', 'ask', 'pc', 'last']});
       //  to keep grid from updating during an update ???
-     // setTimeout(() => this.gridApi.refreshCells({ columns: ['bid', 'ask','pc','last']}),0);
+      // setTimeout(() => this.gridApi.refreshCells({ columns: ['bid', 'ask','pc','last']}),0);
     }
   }
 
@@ -35,7 +35,7 @@ export class GridView extends Component {
 
         </AgGridReact>
       </div>
-    ) ;
+    );
   }
 }
 
@@ -47,7 +47,7 @@ GridView.propTypes = {
   error: PropTypes.string,
   appActions: PropTypes.object,
   timer: PropTypes.number,
-  filteredTickers: PropTypes.array
+  filteredTickers: PropTypes.array,
 };
 
 

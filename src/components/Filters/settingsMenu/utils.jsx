@@ -1,9 +1,9 @@
 import React from 'react';
-import { InputGroup,  Button,  Menu, MenuItem ,  Popover, MenuDivider} from "@blueprintjs/core";
-import { handleStringChange } from "@blueprintjs/docs-theme";
+import { Menu, MenuItem, MenuDivider} from '@blueprintjs/core';
 
-import * as GC from "../../TableView/constants";
-import * as CC from "../../Chart/constants";
+
+import * as GC from '../../TableView/constants';
+import * as CC from '../../Chart/constants';
 import * as APP from '../../App/constants';
 
 
@@ -21,7 +21,7 @@ const gridMenu = (p, actions) => {
       </MenuItem>
       <MenuDivider />
       <MenuItem icon="refresh" text="Refresh" onClick={() => actions.refreshPortfolio()}/>
-  </Menu>
+    </Menu>
   );  
 };
 
@@ -34,7 +34,7 @@ const chartMenu = (p, actions) => {
       <MenuItem icon="list-columns" text="View">
         <MenuItem text="Sector" onClick={() => actions.chartViewMode(CC.VIEW_SECTOR)} active={p.chartViewMode === CC.VIEW_SECTOR } />
         <MenuItem text="PE" onClick={() => actions.chartViewMode(CC.VIEW_PE)} active={p.chartViewMode === CC.VIEW_PE }/>
-       </MenuItem> 
+      </MenuItem> 
       <MenuDivider />
       <MenuItem icon="refresh" text="Refresh" onClick={() => actions.refreshPortfolio()}/>
     </Menu>

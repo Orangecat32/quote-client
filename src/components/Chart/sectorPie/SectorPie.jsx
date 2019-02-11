@@ -16,7 +16,7 @@ export class SectorPie extends PureComponent {
   onChartClick(param, echarts) {
     console.log(param, echarts);
 
-    switch(param.seriesName) {
+    switch (param.seriesName) {
       case CONST.SERIES_SECTOR:
         this.props.appActions.filterSector(param.name);
         break;
@@ -44,7 +44,7 @@ export class SectorPie extends PureComponent {
   render() {
     const onEvents = {
       'click': this.onChartClick,
-      'legendselectchanged': this.onChartLegendselectchanged
+      'legendselectchanged': this.onChartLegendselectchanged,
     };
 
     console.log('SectorPie render: ', this.props.selectedSector, this.props.selectedSubIndustry);
@@ -67,7 +67,7 @@ SectorPie.propTypes = {
   sectors: PropTypes.array,
   selectedSector: PropTypes.string,
   selectedSubIndustry: PropTypes.string,
-  appActions: PropTypes.any
+  appActions: PropTypes.object,
 };
 
 

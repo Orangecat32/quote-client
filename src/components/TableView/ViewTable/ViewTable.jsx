@@ -24,7 +24,7 @@ export class ViewTable extends React.Component {
               <th>PE</th>
               <th>HQ</th>
               <th>Company Name</th>
-          </tr>
+            </tr>
           </thead>
           <tbody>
             {

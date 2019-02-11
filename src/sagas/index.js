@@ -1,3 +1,2 @@
 export {liveSagas} from './liveViewSaga';
-export {iexHistSagas} from './iexHistSaga'
-
+export {iexHistSagas} from './iexHistSaga';

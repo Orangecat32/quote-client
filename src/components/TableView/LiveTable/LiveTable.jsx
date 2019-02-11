@@ -25,14 +25,14 @@ export class LiveTable extends Component {
           </div>
         </div>
       </div>
-    ) ;
+    );
   }
 }
 
 
 LiveTable.propTypes = {
   appActions: PropTypes.object,
-  filteredTickers: PropTypes.array
+  filteredTickers: PropTypes.array,
 };
 
 
