@@ -19,6 +19,14 @@ export class FirmGraph extends PureComponent {
 
 
   render() {
+    if (this.props.iexHist.isLoading ) {
+      return (<>{`Loading chart...`}</>);
+    }
+
+    if (this.props.iexHist.error && !this.props.iexHist.isLoading ) {
+      return (<>{`Problem with chart: ${this.props.iexHist.error}`}</>);
+    }
+
     const onEvents = {
       'click': this.onChartClick,
     };

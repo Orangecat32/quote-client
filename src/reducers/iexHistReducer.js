@@ -22,11 +22,12 @@ export function iexHistReducer(state, action) {
       return Object.assign({}, state, {isLoading: false, symbol: symbol, chart: p[symbol].chart, quote: p[symbol].quote});
     }
     case ACT.IEX_HIST_FAIL:
-      return Object.assign(state, {
+      return Object.assign({}, state, {
         isLoading: false, 
-        error: isNullOrWhitespace(action.payload)
+        error: isNullOrWhitespace(action.payload.error)
           ? 'Error loading history'
-          : action.payload  });
+          : action.payload.error, 
+      });
     default:
       return state;
   }

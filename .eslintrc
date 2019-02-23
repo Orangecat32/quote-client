@@ -27,6 +27,7 @@
     "rules": {
         "no-unused-vars": 1,
         "no-console": "off",
+        "semi": 2,
         "max-len": 0
     },
     "settings": {

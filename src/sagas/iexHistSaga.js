@@ -2,9 +2,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import {iexHistRequest} from '../api/iexApi';
 
-import {IEX_HIST_REQUEST, IEX_HIST_SUCCESS, FILTER_FIRM, FILTER_EXACT_FIRM} from '../actions';
-// IEX_HIST_FAIL, 
-
+import {IEX_HIST_REQUEST, IEX_HIST_SUCCESS, FILTER_FIRM, FILTER_EXACT_FIRM, IEX_HIST_FAIL} from '../actions';
 
 export function* iexHistSagas() {
   yield getIexHistory();
@@ -23,9 +21,21 @@ function* getExactFirmHistory(action) {
 function* getFirmHistory(action) {
   yield put({type: IEX_HIST_REQUEST, payload: action.payload});
   const response = yield call(iexHistRequest, action.payload);
-  console.log('saga.iexHist.fetch.response:', response);
-  const json = yield response.json();
-  yield put({type: IEX_HIST_SUCCESS, payload: json});
+  if (response.error) {
+    yield put({type: IEX_HIST_FAIL, payload: response}); 
+  } else {
+    const json = yield response.json();
+    if (response.ok) { 
+      if (Object.keys(json)[0]) {
+        yield put({type: IEX_HIST_SUCCESS, payload: json});
+      } else {
+        //  there is no data, error of some kind occured
+        yield put({type: IEX_HIST_FAIL, payload: {error: 'Invalid input'}});   
+      }
+    } else {
+      yield put({type: IEX_HIST_FAIL, payload: {error: json.error}});  
+    }
+  }
 }
 
 /*
