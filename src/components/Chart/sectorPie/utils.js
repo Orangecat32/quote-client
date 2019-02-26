@@ -11,8 +11,8 @@ export const graphOptions = (props) => {
   return isNullOrWhitespace(props.selectedSector)
     ? indexGraph(props)
     : isNullOrWhitespace(props.selectedSubIndustry)
-    ? sectorGraph(props)
-    : subIndustryGraph(props);
+      ? sectorGraph(props)
+      : subIndustryGraph(props);
 };
 
 // top level graph, lists the spx sectors

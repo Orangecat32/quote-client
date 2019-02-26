@@ -72,10 +72,10 @@ class App extends Component {
         )}
         {!util.isNullOrWhitespace(this.props.error) &&
           !this.props.isLoading && (
-            <div className={styles.error}>
-              {`Error loading data: ${this.props.error}`}
-            </div>
-          )}
+          <div className={styles.error}>
+            {`Error loading data: ${this.props.error}`}
+          </div>
+        )}
       </div>
     );
   }
