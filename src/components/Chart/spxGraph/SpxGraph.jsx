@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
 
 import styles from './spxGraph.scss';
-import {option} from './utils';
-import {isNullOrWhitespace} from '../../../shared/utils';
+import { option } from './utils';
+import { isNullOrWhitespace } from '../../../shared/utils';
 
 export class SpxGraph extends PureComponent {
   constructor(props) {
@@ -39,20 +39,25 @@ export class SpxGraph extends PureComponent {
 
   render() {
     const onEvents = {
-      'click': this.onChartClick,
-      'legendselectchanged': this.onChartLegendselectchanged,
+      click: this.onChartClick,
+      legendselectchanged: this.onChartLegendselectchanged
     };
 
-    console.log('render spx:', this.props.selectedSector, this.props.selectedSubIndustry);
+    console.log(
+      'render spx:',
+      this.props.selectedSector,
+      this.props.selectedSubIndustry
+    );
 
     return (
       <div className={styles.container}>
         <ReactEcharts
-          style={{height: '100%', marginTop: '-30px'}}
+          style={{ height: '100%', marginTop: '-30px' }}
           option={option(this.props)}
           notMerge={true}
           onChartReady={this.onChartReady}
-          onEvents={onEvents} />
+          onEvents={onEvents}
+        />
       </div>
     );
   }
@@ -64,8 +69,7 @@ SpxGraph.propTypes = {
   selectedSector: PropTypes.string,
   selectedSubIndustry: PropTypes.string,
   portfolio: PropTypes.array,
-  appActions: PropTypes.any,
+  appActions: PropTypes.any
 };
-
 
 export default SpxGraph;

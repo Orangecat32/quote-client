@@ -1,12 +1,9 @@
-
 var upColor = '#ec0000';
 var upBorderColor = '#8A0000';
 var downColor = '#00da3c';
 var downBorderColor = '#008F28';
 
-
 // [dateString, open，close，lowest，highest]
-
 
 function splitData(rawData) {
   var categoryData = [];
@@ -17,7 +14,7 @@ function splitData(rawData) {
   }
   return {
     categoryData: categoryData,
-    values: values,
+    values: values
   };
 }
 
@@ -37,23 +34,26 @@ function calculateMA(data0, dayCount) {
   return result;
 }
 
-
-
 export const option = (p) => {
-
-  const data = p.iexHist.chart.map(d => ([d.date, d.open, d.close, d.low, d.high]));
+  const data = p.iexHist.chart.map((d) => [
+    d.date,
+    d.open,
+    d.close,
+    d.low,
+    d.high
+  ]);
   const data0 = splitData(data);
 
-  return  {
+  return {
     title: {
       text: p.iexHist.symbol,
-      left: 0,
+      left: 0
     },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        type: 'cross',
-      },
+        type: 'cross'
+      }
     },
     // legend: {
     //     data: ['Candlestick', 'MA5', 'MA10', 'MA20', 'MA30']
@@ -61,38 +61,38 @@ export const option = (p) => {
     grid: {
       left: '10%',
       right: '10%',
-      bottom: '15%',
+      bottom: '15%'
     },
     xAxis: {
       type: 'category',
       data: data0.categoryData,
       scale: true,
-      boundaryGap : false,
-      axisLine: {onZero: false},
-      splitLine: {show: false},
+      boundaryGap: false,
+      axisLine: { onZero: false },
+      splitLine: { show: false },
       splitNumber: 20,
       min: 'dataMin',
-      max: 'dataMax',
+      max: 'dataMax'
     },
     yAxis: {
       scale: true,
       splitArea: {
-        show: true,
-      },
+        show: true
+      }
     },
     dataZoom: [
       {
         type: 'inside',
         start: 0,
-        end: 100,
+        end: 100
       },
       {
         show: true,
         type: 'slider',
         y: '90%',
         start: 0,
-        end: 100,
-      },
+        end: 100
+      }
     ],
     series: [
       {
@@ -104,16 +104,16 @@ export const option = (p) => {
             color: upColor,
             color0: downColor,
             borderColor: upBorderColor,
-            borderColor0: downBorderColor,
-          },
+            borderColor0: downBorderColor
+          }
         },
         markPoint: {
           label: {
             normal: {
               formatter: function(param) {
                 return param != null ? Math.round(param.value) : '';
-              },
-            },
+              }
+            }
           },
           data: [
             {
@@ -121,30 +121,30 @@ export const option = (p) => {
               coord: ['2013/5/31', 2300],
               value: 2300,
               itemStyle: {
-                normal: {color: 'rgb(41,60,85)'},
-              },
+                normal: { color: 'rgb(41,60,85)' }
+              }
             },
             {
               name: 'highest value',
               type: 'max',
-              valueDim: 'highest',
+              valueDim: 'highest'
             },
             {
               name: 'lowest value',
               type: 'min',
-              valueDim: 'lowest',
+              valueDim: 'lowest'
             },
             {
               name: 'average value on close',
               type: 'average',
-              valueDim: 'close',
-            },
+              valueDim: 'close'
+            }
           ],
           tooltip: {
             formatter: function(param) {
               return param.name + '<br>' + (param.data.coord || '');
-            },
-          },
+            }
+          }
         },
         markLine: {
           symbol: ['none', 'none'],
@@ -157,9 +157,9 @@ export const option = (p) => {
                 symbol: 'circle',
                 symbolSize: 10,
                 label: {
-                  normal: {show: false},
-                  emphasis: {show: false},
-                },
+                  normal: { show: false },
+                  emphasis: { show: false }
+                }
               },
               {
                 type: 'max',
@@ -167,23 +167,23 @@ export const option = (p) => {
                 symbol: 'circle',
                 symbolSize: 10,
                 label: {
-                  normal: {show: false},
-                  emphasis: {show: false},
-                },
-              },
+                  normal: { show: false },
+                  emphasis: { show: false }
+                }
+              }
             ],
             {
               name: 'min line on close',
               type: 'min',
-              valueDim: 'close',
+              valueDim: 'close'
             },
             {
               name: 'max line on close',
               type: 'max',
-              valueDim: 'close',
-            },
-          ],
-        },
+              valueDim: 'close'
+            }
+          ]
+        }
       },
       {
         name: 'MA5',
@@ -191,8 +191,8 @@ export const option = (p) => {
         data: calculateMA(5),
         smooth: true,
         lineStyle: {
-          normal: {opacity: 0.5},
-        },
+          normal: { opacity: 0.5 }
+        }
       },
       {
         name: 'MA10',
@@ -200,8 +200,8 @@ export const option = (p) => {
         data: calculateMA(10),
         smooth: true,
         lineStyle: {
-          normal: {opacity: 0.5},
-        },
+          normal: { opacity: 0.5 }
+        }
       },
       {
         name: 'MA20',
@@ -209,8 +209,8 @@ export const option = (p) => {
         data: calculateMA(20),
         smooth: true,
         lineStyle: {
-          normal: {opacity: 0.5},
-        },
+          normal: { opacity: 0.5 }
+        }
       },
       {
         name: 'MA30',
@@ -218,15 +218,12 @@ export const option = (p) => {
         data: calculateMA(30),
         smooth: true,
         lineStyle: {
-          normal: {opacity: 0.5},
-        },
-      },
-
-    ],
+          normal: { opacity: 0.5 }
+        }
+      }
+    ]
   };
 };
-
-
 
 /*
 

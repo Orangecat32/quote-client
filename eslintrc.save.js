@@ -26,8 +26,8 @@ module.exports = {
     ],
     'no-unused-vars': 1,
     'no-console': 'off',
-    semi: 2,
-    'max-len': 0
+    semi: [2, 'always'],
+    'max-len': ['error', { code: 60 }]
   },
   settings: {
     react: {

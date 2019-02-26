@@ -1,7 +1,5 @@
-
 .ag-theme-balham-dark .ag-header-cell-label {
-    /*Force the width corresponding at how much widht
+  /*Force the width corresponding at how much widht
     we need once the text is layed out vertically*/
-    float:right;
+  float: right;
 }
-

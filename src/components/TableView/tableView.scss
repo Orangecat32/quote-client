@@ -1,4 +1,3 @@
-
 .container {
   display: flex;
   justify-content: center;
@@ -9,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-direction: column;  
+  flex-direction: column;
   height: calc(100vh - 100px);
 }
 
@@ -24,27 +23,24 @@
 .filters {
   height: 50px;
   display: flex;
-  width: 100%; 
-  background-color:dimgray; 
+  width: 100%;
+  background-color: dimgray;
   align-content: center;
 }
 
-
-
 .spinner {
-  display:flex;
+  display: flex;
   min-height: 100vh;
   color: white;
-  justify-content: center
+  justify-content: center;
 }
 
 .header {
-  display: flex; 
+  display: flex;
   background-color: lightslategray;
   width: calc(100%);
   height: 1.5em;
 }
-
 
 .tickerList {
   display: flex;
@@ -62,7 +58,6 @@
   justify-content: center;
 }
 
-
 // .ticker-container {
 //   display: flex;
 //   flex: 1 1;
@@ -71,14 +66,12 @@
 //   justify-content: center;
 // }
 
-
 .rowData {
   display: flex;
   flex: 1 1;
   flex-direction: row;
   width: 100%;
 }
-
 
 // .data {
 //   display: flex;
@@ -103,7 +96,6 @@
   text-align: right;
 }
 
-
 .colData:last-child {
   margin-right: 2px;
 }
@@ -112,13 +104,10 @@
   background: lightblue;
 }
 
-.tickerRow:nth-of-type(odd) { background: lightcyan; }
-
-.details{
-  margin-left: 5em;
+.tickerRow:nth-of-type(odd) {
+  background: lightcyan;
 }
 
-
-
-
-
+.details {
+  margin-left: 5em;
+}

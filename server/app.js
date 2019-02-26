@@ -21,10 +21,18 @@ app.use(morgan('tiny'));
 app.use(cors());
 app.options('*', cors()); // For internal production use, whitelist local domain
 app.use(express.static(path.join(__dirname, '/public/')));
-app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));
-app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js')));
-app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist')));
-
+app.use(
+  '/css',
+  express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css'))
+);
+app.use(
+  '/js',
+  express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js'))
+);
+app.use(
+  '/js',
+  express.static(path.join(__dirname, '/node_modules/jquery/dist'))
+);
 
 // socket.io related  ----------------------------------------------------------------------
 
@@ -40,17 +48,17 @@ socketioServer.on('connection', (client) => {
 
   let timerId;
   client.on('subscribe', (m) => {
-    console.log('got subscribe',m);
+    console.log('got subscribe', m);
 
-    if(timerId) {
+    if (timerId) {
       clearInterval(timerId);
     }
 
     const msg = JSON.parse(m);
     const interval = msg && msg.interval > 0 ? msg.interval : 1000;
-    const {sector} = msg;
-    console.log('updating subscribe with:',interval, sector);
-    
+    const { sector } = msg;
+    console.log('updating subscribe with:', interval, sector);
+
     let tickData = utils.buildTickUpdate(sector);
     tickData = utils.buildTickUpdate(sector, tickData);
     client.emit('tickers', JSON.stringify(tickData));
@@ -62,7 +70,7 @@ socketioServer.on('connection', (client) => {
   });
 
   client.on('unsubscribe', () => {
-    if(timerId) {
+    if (timerId) {
       clearInterval(timerId);
     }
   });
@@ -72,11 +80,11 @@ socketioServer.on('connection', (client) => {
 
 const websocketServer = new websocket.Server({ server });
 
-server.listen(wsport, () => { // note that the http server is used here, unlike socketio
+server.listen(wsport, () => {
+  // note that the http server is used here, unlike socketio
   debug(`websocket listening on port ${chalk.green(wsport)}`);
   console.log(`Websocket server started on port ${wsport}`);
 });
-
 
 // when a websocket connection is established
 websocketServer.on('connection', (webSocketClient) => {
@@ -117,7 +125,9 @@ const sectors = portfolio.reduce((acc, p) => {
   return acc;
 }, []);
 
-app.listen(port, () => { debug(`express listening on port ${chalk.green(port)}`); });
+app.listen(port, () => {
+  debug(`express listening on port ${chalk.green(port)}`);
+});
 
 app.get('/spx', (req, res) => {
   res.sendFile(path.join(__dirname, './public/mock/', '/spx-2019-01-02.json'));
@@ -136,11 +146,9 @@ app.get('/portfolio/:id', (req, res) => {
   res.send(JSON.stringify(names));
 });
 
-
 app.get('/portfolio', (req, res) => {
   res.send(JSON.stringify(portfolio));
 });
-
 
 app.get('/sectors', (req, res) => {
   res.send(JSON.stringify(sectors));
@@ -150,4 +158,3 @@ app.get('/sectors', (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/', '/index.html'));
 });
-

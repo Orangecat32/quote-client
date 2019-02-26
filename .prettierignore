@@ -2,5 +2,7 @@
 *.json
 /config
 /build
+/public
+/scripts
 
 
