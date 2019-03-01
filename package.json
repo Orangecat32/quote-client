@@ -4,7 +4,11 @@
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "1.16.4",
+    "prettier-eslint": "8.8.2"
+  },
   "dependencies": {
     "@babel/core": "7.1.6",
     "@blueprintjs/core": "^3.9.0",
@@ -31,16 +35,13 @@
     "echarts": "^4.0.0",
     "echarts-for-react": "^2.0.15-beta.0",
     "eslint": "5.6.0",
-    "eslint-config-fbjs": "^2.1.0",
-    "eslint-config-google": "^0.12.0",
     "eslint-config-react-app": "^3.0.6",
     "eslint-loader": "2.1.1",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-flowtype": "2.50.1",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "7.12.3",
-    "eslint-plugin-relay": "^1.0.0",
     "express": "4.15.2",
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
@@ -63,6 +64,7 @@
     "postcss-safe-parser": "4.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
+    "react-ally": "^0.0.1-beta.1",
     "react-app-polyfill": "^0.1.3",
     "react-dev-utils": "^6.0.5",
     "react-dom": "^16.6.0",
@@ -90,9 +92,6 @@
     "serverd": "set DEBUG=app & nodemon --inspect ./server/app.js",
     "serverx": "DEBUG=app nodemon app.js",
     "test": "node scripts/test.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",

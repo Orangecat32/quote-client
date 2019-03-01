@@ -12,21 +12,23 @@ import styles from './Filters.scss';
 
 export class Filters  extends React.Component {
   render() {
-    const props = this.props;
-    const handleFilterChange = handleStringChange(filterValue => props.appActions.filterSearch(filterValue));
-    const isChartPage = props.selectedPage === APP_CONST.CHART_VIEW;
+    let p;
+       var x = 9;
+    const {appActions, selectedPage, searchFilter} = this.props;
+    const handleFilterChange = handleStringChange(filterValue => appActions.filterSearch(filterValue));
+    const isChartPage = selectedPage === APP_CONST.CHART_VIEW;
     const barStyle = `${styles.container} ${isChartPage ? `${styles.settings}` : ''}`;
 
     return (
-      <div className={barStyle}>
-        { !isChartPage &&
-          <div className={styles.controls}>
-            <InputGroup
-              onChange={handleFilterChange}
+        <div className={barStyle}>
+          { !isChartPage &&
+            <div className={styles.controls}>
+              <InputGroup
+                onChange={handleFilterChange}
               leftIcon="search"
               placeholder="Search..."
               type="search"
-              value={props.searchFilter}
+              value={searchFilter}
             />
             <PickSector {...this.props} /> 
           </div>
