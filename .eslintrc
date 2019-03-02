@@ -9,7 +9,6 @@
   "extends": [
     "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended",
-    "eslint:recommended",
     "react-app",
     "plugin:react/recommended"
   ],  
@@ -27,15 +26,14 @@
       "node": true,
       "jest": true
   },   
-    
   "rules": {
+    "prettier/prettier": 1,
     "jsx-a11y/click-events-have-key-events": 1,
-    "jsx-a11y/jsx-a11y": 1,
-    "strict": 2,
+    "prettier/print-width": 120,
     "no-unused-vars": 1,
-    "no-console": "off",
-    "semi": 2,
+    "no-console": 1,
     "max-len": 0
+
   },
   "settings": {
     "react": {
