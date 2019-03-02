@@ -30,7 +30,7 @@
     "ag-grid-community": "^20.0.0",
     "ag-grid-react": "^20.0.0",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "9.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
     "babel-plugin-named-asset-import": "^0.2.2",
@@ -94,8 +94,10 @@
     "serverd": "set DEBUG=app & nodemon --inspect ./server/app.js",
     "serverx": "DEBUG=app nodemon app.js",
     "test": "node scripts/test.js",
+    "lintFix": "eslint --fix ./src/**/*.{js,jsx,ts,tsx}",
     "prettierCheck": "prettier --check ./src/**/*.{js,jsx,json,css,scss,ts,tsx}",
     "prettierWrite": "prettier --write ./src/**/*.{js,jsx,json,css,scss,ts,tsx}"
+
   },
   "browserslist": [
     ">0.2%",

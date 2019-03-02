@@ -1,19 +1,17 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types'; 
-import {Select, Input} from '@material-ui/core/';
+import PropTypes from 'prop-types';
+import { Select, Input } from '@material-ui/core/';
 
 import styles from './pickSector.scss';
-import {buildSectorMenu} from './utils';
+import { buildSectorMenu } from './utils';
 
 export class PickSector extends PureComponent {
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.title}>
-          Sector:
-        </div>
+        <div className={styles.title}>Sector:</div>
         <Select
-          style={{width: '220px'}}
+          style={{ width: '220px' }}
           value={this.props.selectedSector}
           onChange={(event) => this.props.appActions.filterSector(event.target.value)}
           input={<Input name="age" id="age-auto-width" />}
@@ -29,9 +27,7 @@ export class PickSector extends PureComponent {
 PickSector.propTypes = {
   appActions: PropTypes.object,
   sectors: PropTypes.array,
-  selectedSector: PropTypes.string,
+  selectedSector: PropTypes.string
 };
 
-
 export default PickSector;
-

@@ -1,119 +1,119 @@
-import {fmtPercent, fmtPrice, fmtShares, fmtMktCap, fmtVolume} from '../../../shared/utils';
+import { fmtPercent, fmtPrice, fmtShares, fmtMktCap, fmtVolume } from '../../../shared/utils';
 
 export const columnDef = [
   {
-    headerName: 'Symbol', 
+    headerName: 'Symbol',
     field: 'symbol',
     width: 90,
     pinned: 'left',
-    sortable: true,
+    sortable: true
   },
   {
-    headerName: 'Last', 
+    headerName: 'Last',
     cellRenderer: (params) => fmtPrice(params.value),
     width: 80,
-    cellStyle: {'text-align': 'right'},
+    cellStyle: { 'text-align': 'right' },
     sortable: true,
-    field: 'last',
+    field: 'last'
   },
   {
-    headerName: 'Chng', 
+    headerName: 'Chng',
     cellRenderer: (params) => fmtPercent(params.value),
     width: 90,
-    cellStyle: {'text-align': 'right'},
+    cellStyle: { 'text-align': 'right' },
     sortable: true,
-    field: 'pc',
+    field: 'pc'
   },
   {
-    headerName: 'Bid', 
+    headerName: 'Bid',
     field: 'bid',
     width: 80,
-    cellStyle: {'text-align': 'right'},
+    cellStyle: { 'text-align': 'right' },
     sortable: true,
-    cellRenderer: (params) => fmtPrice(params.value),
+    cellRenderer: (params) => fmtPrice(params.value)
   },
-  { 
-    headerName: 'Ask', 
+  {
+    headerName: 'Ask',
     cellRenderer: (params) => fmtPrice(params.value),
     width: 80,
     sortable: true,
-    cellStyle: {'text-align': 'right'},
-    field: 'ask',
+    cellStyle: { 'text-align': 'right' },
+    field: 'ask'
   },
   {
-    headerName: 'Shares', 
+    headerName: 'Shares',
     sortable: true,
     width: 90,
-    cellStyle: {'text-align': 'right'},
+    cellStyle: { 'text-align': 'right' },
     cellRenderer: (params) => fmtShares(params.value),
-    field: 'sharesOut',
-  }, 
+    field: 'sharesOut'
+  },
   {
-    headerName: 'MktCap', 
+    headerName: 'MktCap',
     headerTooltip: 'Market capitalization in billions',
     sortable: true,
     width: 90,
-    cellStyle: {'text-align': 'right'},
+    cellStyle: { 'text-align': 'right' },
     cellRenderer: (params) => fmtMktCap(params.value),
-    field: 'mktCap',
-  }, 
-  {
-    headerName: 'Location', 
-    sortable: true,
-    field: 'Location',
+    field: 'mktCap'
   },
   {
-    headerName: 'Sector', 
+    headerName: 'Location',
     sortable: true,
-    field: 'sector',
+    field: 'Location'
   },
   {
-    headerName: 'Sub-Industry', 
+    headerName: 'Sector',
     sortable: true,
-    field: 'subIndustry',
-  }, 
-  {
-    headerName: 'Company', 
-    sortable: true,
-    field: 'company',
+    field: 'sector'
   },
-  { 
-    headerName: 'Avg. Vol', 
+  {
+    headerName: 'Sub-Industry',
+    sortable: true,
+    field: 'subIndustry'
+  },
+  {
+    headerName: 'Company',
+    sortable: true,
+    field: 'company'
+  },
+  {
+    headerName: 'Avg. Vol',
     headerTooltip: 'Average daily trade volume over last 50 days in millions',
     cellRenderer: (params) => fmtVolume(params.value),
     width: 100,
     sortable: true,
-    cellStyle: {'text-align': 'right'},
-    field: 'avgVol50d',
+    cellStyle: { 'text-align': 'right' },
+    field: 'avgVol50d'
   },
- 
-  { 
-    headerName: 'Volatility', 
+
+  {
+    headerName: 'Volatility',
     headerTooltip: 'Last 50 days average volatility',
     //  cellRenderer: (params) => params.value,
     width: 100,
     sortable: true,
-    cellStyle: {'text-align': 'right'},
-    field: 'volPct50d',
+    cellStyle: { 'text-align': 'right' },
+    field: 'volPct50d'
   },
-  { 
-    headerName: 'PE TTM', 
+  {
+    headerName: 'PE TTM',
     headerTooltip: 'Trailing 12 month PE',
     //  cellRenderer: (params) => params.value,
     width: 100,
     sortable: true,
-    cellStyle: {'text-align': 'right'},
-    field: 'PEttm',
+    cellStyle: { 'text-align': 'right' },
+    field: 'PEttm'
   },
-  { 
-    headerName: 'Avg $Vol', 
+  {
+    headerName: 'Avg $Vol',
     headerTooltip: 'close * avgVol50d / 1000',
     cellRenderer: (params) => fmtPrice(params.value),
     width: 100,
     sortable: true,
-    cellStyle: {'text-align': 'right'},
-    field: 'dollarVol',
-  },
+    cellStyle: { 'text-align': 'right' },
+    field: 'dollarVol'
+  }
 ];
 
 /*

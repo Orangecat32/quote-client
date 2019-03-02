@@ -13,11 +13,10 @@ export const DATA_PORTFOLIO_REQUEST = 'DATA_PORTFOLIO_REQUEST';
 export const DATA_PORTFOLIO_SUCCESS = 'DATA_PORTFOLIO_SUCCESS';
 export const DATA_PORTFOLIO_FAILED = 'DATA_PORTFOLIO_FAILED';
 
-export const refreshPortfolio = () => ({type: DATA_REFRESH});
-export const connect = () => ({type: DATA_CONNECT});
-export const disconnect = () => ({type: DATA_END});
-export const update = (data) => ({type: DATA_UPDATE, payload: data});
-export const getPortfolio = () => ({type: DATA_PORTFOLIO_REQUEST});
-export const login = () => ({type: DATA_LOGIN});
-export const errorOccured = (message) => ({type: DATA_ERROR, payload: message});
-
+export const refreshPortfolio = () => ({ type: DATA_REFRESH });
+export const connect = () => ({ type: DATA_CONNECT });
+export const disconnect = () => ({ type: DATA_END });
+export const update = (data) => ({ type: DATA_UPDATE, payload: data });
+export const getPortfolio = () => ({ type: DATA_PORTFOLIO_REQUEST });
+export const login = () => ({ type: DATA_LOGIN });
+export const errorOccured = (message) => ({ type: DATA_ERROR, payload: message });

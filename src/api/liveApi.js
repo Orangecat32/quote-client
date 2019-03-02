@@ -1,8 +1,7 @@
 import sio from 'socket.io-client';
 
-const wsParams = {protocol: 'ws', hostname: 'localhost', port: 3002};
-const sioParams = {protocol: 'http', hostname: 'localhost', port: 8005};
-
+const wsParams = { protocol: 'ws', hostname: 'localhost', port: 3002 };
+const sioParams = { protocol: 'http', hostname: 'localhost', port: 8005 };
 
 export const ioConnect = () => {
   const url = `${sioParams.protocol}://${sioParams.hostname}:${sioParams.port}`;
@@ -16,7 +15,7 @@ export const ioConnect = () => {
   }
 };
 
-export const  openWSConnection = () => {
+export const openWSConnection = () => {
   try {
     const url = `${wsParams.protocol}://${wsParams.hostname}:${wsParams.port}`;
     return new WebSocket(url);

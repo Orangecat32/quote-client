@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
 
 import styles from './sectorPie.scss';
-import {graphOptions} from './utils';
+import { graphOptions } from './utils';
 import * as CONST from './constants';
 
 export class SectorPie extends PureComponent {
@@ -43,8 +43,8 @@ export class SectorPie extends PureComponent {
 
   render() {
     const onEvents = {
-      'click': this.onChartClick,
-      'legendselectchanged': this.onChartLegendselectchanged,
+      click: this.onChartClick,
+      legendselectchanged: this.onChartLegendselectchanged
     };
 
     console.log('SectorPie render: ', this.props.selectedSector, this.props.selectedSubIndustry);
@@ -55,7 +55,7 @@ export class SectorPie extends PureComponent {
           option={graphOptions(this.props)}
           notMerge={true}
           onChartReady={this.onChartReady}
-          onEvents={onEvents} 
+          onEvents={onEvents}
         />
       </div>
     );
@@ -67,10 +67,7 @@ SectorPie.propTypes = {
   sectors: PropTypes.array,
   selectedSector: PropTypes.string,
   selectedSubIndustry: PropTypes.string,
-  appActions: PropTypes.object,
+  appActions: PropTypes.object
 };
 
-
 export default SectorPie;
-
-

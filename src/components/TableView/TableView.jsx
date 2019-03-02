@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 
 import * as CONST from './constants';
 import styles from './tableView.scss';
@@ -16,17 +16,16 @@ export class TableView extends Component {
   }
 
   render() {
-    const view = this.props.viewMode === CONST.VIEW_TABLE 
-      ? (<LiveTable {...this.props}/>) 
-      : this.props.viewMode === CONST.VIEW_STATIC 
-        ? (<ViewTable {...this.props}/>) 
-        : (<GridView {...this.props}/>);
+    const view =
+      this.props.viewMode === CONST.VIEW_TABLE ? (
+        <LiveTable {...this.props} />
+      ) : this.props.viewMode === CONST.VIEW_STATIC ? (
+        <ViewTable {...this.props} />
+      ) : (
+        <GridView {...this.props} />
+      );
 
-    return (
-      <div className={styles.dataArea}>
-        {view}
-      </div>
-    );
+    return <div className={styles.dataArea}>{view}</div>;
   }
 }
 
@@ -37,10 +36,7 @@ TableView.propTypes = {
   timer: PropTypes.number,
   viewMode: PropTypes.string,
   appActions: PropTypes.object,
-  filteredTickers: PropTypes.array,
+  filteredTickers: PropTypes.array
 };
 
-
-
 export default TableView;
-

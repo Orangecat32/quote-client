@@ -1,8 +1,6 @@
-
-export const init = () => (
-  { 
-    selectedFirm: '',
-    selectedSubIndustry: '',
-    searchFilter: '',
-    selectedSector: '',
-  });
+export const init = () => ({
+  selectedFirm: '',
+  selectedSubIndustry: '',
+  searchFilter: '',
+  selectedSector: ''
+});

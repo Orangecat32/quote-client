@@ -1,10 +1,15 @@
-
-import {ONE_MILLION, ONE_THOUSAND, fmtMktCap, isNullOrWhitespace, sectorSubIndustries} from '../../../shared/utils';
+import {
+  ONE_MILLION,
+  ONE_THOUSAND,
+  fmtMktCap,
+  isNullOrWhitespace,
+  sectorSubIndustries
+} from '../../../shared/utils';
 
 export const option = (p) => {
-  const  data = buildSeries(p.sectors, p.portfolio, p.selectedSector, p.selectedSubIndustry);
+  const data = buildSeries(p.sectors, p.portfolio, p.selectedSector, p.selectedSubIndustry);
   return {
-    tooltip : {
+    tooltip: {
       trigger: 'item',
       formatter: function(params) {
         if (params && params.data && params.data[5]) {
@@ -13,18 +18,18 @@ export const option = (p) => {
         } else {
           // console.log('fp',params);
           return '';
-        }      
-      },
+        }
+      }
     },
     xAxis: {
       splitLine: {
         lineStyle: {
-          type: 'dashed',
-        },
+          type: 'dashed'
+        }
       },
       name: 'Avg $ Volume (millions)',
       nameLocation: 'middle',
-      nameGap: 30,
+      nameGap: 30
     },
     yAxis: {
       name: 'PE TTM',
@@ -32,39 +37,59 @@ export const option = (p) => {
       nameGap: 50,
       splitLine: {
         lineStyle: {
-          type: 'dashed',
-        },
+          type: 'dashed'
+        }
       },
-      scale: true,
+      scale: true
     },
-    series: data,
+    series: data
   };
 };
 
 const buildSeries = (sectors, portfolio, selectedSector, selectedSubIndustry) => {
- 
   if (isNullOrWhitespace(selectedSector) && isNullOrWhitespace(selectedSubIndustry)) {
-    const items = portfolio.map(f => [f.avgVol50d * f.close / ONE_MILLION, f.PEttm, f.mktCap / ONE_THOUSAND, f.symbol, f.sector, f]);
-    return sectors.map(s => fillSeries(s, items.filter(i => i[4] === s)));
+    const items = portfolio.map((f) => [
+      (f.avgVol50d * f.close) / ONE_MILLION,
+      f.PEttm,
+      f.mktCap / ONE_THOUSAND,
+      f.symbol,
+      f.sector,
+      f
+    ]);
+    return sectors.map((s) => fillSeries(s, items.filter((i) => i[4] === s)));
   }
 
   if (isNullOrWhitespace(selectedSubIndustry)) {
-    const items = portfolio.filter(p => p.sector === selectedSector)
-      .map(f => [f.avgVol50d * f.close / ONE_MILLION, f.PEttm, f.mktCap / ONE_THOUSAND, f.symbol, f.subIndustry, f]);
+    const items = portfolio
+      .filter((p) => p.sector === selectedSector)
+      .map((f) => [
+        (f.avgVol50d * f.close) / ONE_MILLION,
+        f.PEttm,
+        f.mktCap / ONE_THOUSAND,
+        f.symbol,
+        f.subIndustry,
+        f
+      ]);
 
     const subs = sectorSubIndustries(portfolio, selectedSector);
-    return subs.map(sub => fillSeries(sub, items.filter(f => f[5].subIndustry === sub)));
+    return subs.map((sub) => fillSeries(sub, items.filter((f) => f[5].subIndustry === sub)));
   }
 
-  const items = portfolio.filter(p => p.subIndustry === selectedSubIndustry)
-    .map(f => [f.avgVol50d * f.close / ONE_MILLION, f.PEttm, f.mktCap / ONE_THOUSAND, f.symbol, f.symbol, f]);
+  const items = portfolio
+    .filter((p) => p.subIndustry === selectedSubIndustry)
+    .map((f) => [
+      (f.avgVol50d * f.close) / ONE_MILLION,
+      f.PEttm,
+      f.mktCap / ONE_THOUSAND,
+      f.symbol,
+      f.symbol,
+      f
+    ]);
 
-  return items.map(i => fillSeries(i.symbol, [i]));
+  return items.map((i) => fillSeries(i.symbol, [i]));
 };
 
-
 const fillSeries = (seriesName, data) => {
-
   return {
     name: seriesName,
     data: data,
@@ -85,9 +110,8 @@ const fillSeries = (seriesName, data) => {
       normal: {
         shadowBlur: 10,
         shadowColor: 'rgba(25, 100, 150, 0.5)',
-        shadowOffsetY: 5,
-      },
-    },
+        shadowOffsetY: 5
+      }
+    }
   };
 };
-
