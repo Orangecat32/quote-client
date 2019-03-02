@@ -7,6 +7,7 @@
     "react" 
   ],
   "extends": [
+    "eslint:recommended",
     "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended",
     "react-app",
@@ -27,13 +28,10 @@
       "jest": true
   },   
   "rules": {
-    "prettier/prettier": 1,
     "jsx-a11y/click-events-have-key-events": 1,
-    "prettier/print-width": 120,
     "no-unused-vars": 1,
     "no-console": 1,
     "max-len": 0
-
   },
   "settings": {
     "react": {
