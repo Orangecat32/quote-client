@@ -1,5 +1,4 @@
 *.md
-*.json
 /config
 /build
 /public
