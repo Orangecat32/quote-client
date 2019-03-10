@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'; 
 import { Breadcrumbs} from '@blueprintjs/core';
 
-import styles from './sectorPath.scss';
+import {Container} from './styles';
 
 export const buildPath = (p) => {
   let path = [{text: 'All SPX', onClick: () => p.appActions.filterClearPath()}];
@@ -24,9 +24,9 @@ export const buildPath = (p) => {
 export class SectorPath extends PureComponent {
   render() {
     return (
-      <div className={styles.container}>
+      <Container>
         <Breadcrumbs items={ buildPath(this.props)} />
-      </div>
+      </Container>
     );
   }
 }

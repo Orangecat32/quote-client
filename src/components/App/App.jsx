@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import { Alignment, Classes, Spinner, Navbar, NavbarDivider, NavbarGroup,  NavbarHeading, Button} from '@blueprintjs/core';
 
 import * as myActions from '../../actions/index';
-import styles from './App.scss';
+import {Container, FilterContainer, PanelContainer} from './styles.js';
 import * as constants from './constants.js';
 
-import ChartContainer from '../../containers/chart';
-import TableViewContainer from '../../containers/tableView';
+import ChartPanel from '../../containers/chart';
+import TableViewPanel from '../../containers/tableView';
 import Filters from '../../containers/filters';
 
 import * as util from '../../shared/utils';
@@ -34,7 +34,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className={styles.app}>
+      <Container>
         <Navbar style={{color: 'whitesmoke', backgroundColor: 'darkGray'}}>
           <NavbarGroup align={Alignment.LEFT}>
             <NavbarHeading>{`Market Viewer`}</NavbarHeading>
@@ -43,31 +43,31 @@ class App extends Component {
           </NavbarGroup>
         </Navbar>
         { this.props.isLoading && 
-          <div className={styles.spinner}> 
+          <div> 
             <Spinner intent="primary" size={Spinner.SIZE_LARGE}/>
           </div>
         }
         { !this.props.isLoading &&
-          <div className={styles.content}>
-            <div className={styles.filters}>
+          <div>
+            <FilterContainer>
               <Filters {...this.props}/>
-            </div>
-            <div className={styles.gameContainer}>
+            </FilterContainer>
+            <PanelContainer>
               {this.props.selectedPage === constants.CHART_VIEW &&
-                <ChartContainer />
+                <ChartPanel />
               }
               {this.props.selectedPage === constants.TABLE_VIEW &&
-                <TableViewContainer />
+                <TableViewPanel />
               } 
-            </div>   
+            </PanelContainer>   
           </div>
         }
         { !util.isNullOrWhitespace(this.props.error) && !this.props.isLoading &&
-          <div className={styles.error}>
+          <div>
             {`Error loading data: ${this.props.error}`}
           </div>
         }
-      </div>
+      </Container>
     );
   }
 }
