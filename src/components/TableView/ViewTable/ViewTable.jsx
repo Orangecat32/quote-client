@@ -31,8 +31,8 @@ export class ViewTable extends React.Component {
               p.filteredTickers.map(a => (
                 <tr key={a.symbol}>
                   <td className={styles.name}>{a.symbol}</td>
-                  <td className={styles.numeric}>{fmtVolume(a)}</td>
-                  <td className={styles.numeric}>{fmtMktCap(a)}</td>
+                  <td className={styles.numeric}>{fmtVolume(a.avgVol50d)}</td>
+                  <td className={styles.numeric}>{fmtMktCap(a.mktCap)}</td>
                   <td className={styles.numeric}>{`${a.volPct50d}`}</td>
                   <td className={styles.name}>{`${a.sector}`}</td>
                   <td className={styles.name}>{`${a.subIndustry}`}</td>
