@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 
-import { Button, Popover} from '@blueprintjs/core';
-
+import { Button, Popover } from '@blueprintjs/core';
 
 // import styles from './settingsMenu.scss';
-import {buildMenu} from './utils';
+import { buildMenu } from './utils';
 
 export class SettingsMenu extends PureComponent {
   render() {
@@ -21,9 +20,7 @@ export class SettingsMenu extends PureComponent {
 SettingsMenu.propTypes = {
   appActions: PropTypes.object,
   sectors: PropTypes.array,
-  selectedSector: PropTypes.string,
+  selectedSector: PropTypes.string
 };
 
-
 export default SettingsMenu;
-

@@ -1,15 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import styles from './ViewTable.scss';
-import {fmtMktCap, fmtVolume} from '../../../shared/utils';
-
-
+import { fmtMktCap, fmtVolume } from '../../../shared/utils';
 
 export class ViewTable extends React.Component {
-
   render() {
     const p = this.props;
-  
+
     return (
       <div className={styles.container}>
         <table className={styles.fixed_header}>
@@ -18,7 +15,7 @@ export class ViewTable extends React.Component {
               <th>Firm</th>
               <th>Avg Volume</th>
               <th>MktCap</th>
-              <th>Volatility</th>           
+              <th>Volatility</th>
               <th>Sector</th>
               <th>Sub Industry</th>
               <th>PE</th>
@@ -27,21 +24,19 @@ export class ViewTable extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {
-              p.filteredTickers.map(a => (
-                <tr key={a.symbol}>
-                  <td className={styles.name}>{a.symbol}</td>
-                  <td className={styles.numeric}>{fmtVolume(a)}</td>
-                  <td className={styles.numeric}>{fmtMktCap(a)}</td>
-                  <td className={styles.numeric}>{`${a.volPct50d}`}</td>
-                  <td className={styles.name}>{`${a.sector}`}</td>
-                  <td className={styles.name}>{`${a.subIndustry}`}</td>
-                  <td className={styles.numeric}>{`${a.PEttm}`}</td>
-                  <td className={styles.name}>{`${a.Location}`}</td>
-                  <td className={styles.name}>{`${a.company}`}</td> 
-                </tr>
-              ))
-            }
+            {p.filteredTickers.map((a) => (
+              <tr key={a.symbol}>
+                <td className={styles.name}>{a.symbol}</td>
+                <td className={styles.numeric}>{fmtVolume(a)}</td>
+                <td className={styles.numeric}>{fmtMktCap(a)}</td>
+                <td className={styles.numeric}>{`${a.volPct50d}`}</td>
+                <td className={styles.name}>{`${a.sector}`}</td>
+                <td className={styles.name}>{`${a.subIndustry}`}</td>
+                <td className={styles.numeric}>{`${a.PEttm}`}</td>
+                <td className={styles.name}>{`${a.Location}`}</td>
+                <td className={styles.name}>{`${a.company}`}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -50,7 +45,7 @@ export class ViewTable extends React.Component {
 }
 
 ViewTable.propTypes = {
-  filteredTickers: PropTypes.array,
+  filteredTickers: PropTypes.array
 };
 
 export default ViewTable;

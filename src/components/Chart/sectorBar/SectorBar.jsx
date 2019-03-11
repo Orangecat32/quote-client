@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
 
 import styles from './sectorBar.scss';
-import {option} from './utils';
+import { option } from './utils';
 
 export class SectorBar extends PureComponent {
   constructor(props) {
@@ -29,23 +29,24 @@ export class SectorBar extends PureComponent {
 
   render() {
     const onEvents = {
-      'click': this.onChartClick,
-      'legendselectchanged': this.onChartLegendselectchanged
+      click: this.onChartClick,
+      legendselectchanged: this.onChartLegendselectchanged
     };
 
-    const count = this.props.portfolio.filter(f => f.sector === this.props.selectedSector).length;
+    const count = this.props.portfolio.filter((f) => f.sector === this.props.selectedSector).length;
 
     return (
-      <div className={styles.container} >
+      <div className={styles.container}>
         <div className={styles.title}>
-        {`${count} ${this.props.selectedSector} Firms by Mkt Cap`}
+          {`${count} ${this.props.selectedSector} Firms by Mkt Cap`}
         </div>
-        <div className={styles.graph} >
-            <ReactEcharts
-              style={{height: `${count * 25}px`, marginTop: '-40px'}}
-              option={option(this.props)}
-              onChartReady={this.onChartReady}
-              onEvents={onEvents} />
+        <div className={styles.graph}>
+          <ReactEcharts
+            style={{ height: `${count * 25}px`, marginTop: '-40px' }}
+            option={option(this.props)}
+            onChartReady={this.onChartReady}
+            onEvents={onEvents}
+          />
         </div>
       </div>
     );
@@ -60,7 +61,6 @@ SectorBar.propTypes = {
   appActions: PropTypes.any
 };
 
-
 export default SectorBar;
 
-//   
+//

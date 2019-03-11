@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
 
 import styles from './sectorSunburst.scss';
-import {option} from './utils';
+import { option } from './utils';
 
 export class SectorSunburst extends PureComponent {
   constructor(props) {
@@ -28,8 +28,8 @@ export class SectorSunburst extends PureComponent {
 
   render() {
     const onEvents = {
-      'click': this.onChartClick,
-      'legendselectchanged': this.onChartLegendselectchanged
+      click: this.onChartClick,
+      legendselectchanged: this.onChartLegendselectchanged
     };
 
     return (
@@ -37,7 +37,7 @@ export class SectorSunburst extends PureComponent {
         <ReactEcharts
           option={option(this.props)}
           onChartReady={this.onChartReady}
-          // onEvents={onEvents} 
+          // onEvents={onEvents}
         />
       </div>
     );
@@ -50,7 +50,4 @@ SectorSunburst.propTypes = {
   appActions: PropTypes.any
 };
 
-
 export default SectorSunburst;
-
-

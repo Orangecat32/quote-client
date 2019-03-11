@@ -5,7 +5,7 @@ export class LiveTableRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDetails: false,
+      showDetails: false
     };
   }
 
@@ -16,10 +16,13 @@ export class LiveTableRow extends Component {
 
     return (
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-      <div 
-        className={styles.rowItem} 
+      <div
+        className={styles.rowItem}
         // click sets state on the row to control details visibility
-        onClick={() => {this.setState({showDetails: !this.state.showDetails}); }} >
+        onClick={() => {
+          this.setState({ showDetails: !this.state.showDetails });
+        }}
+      >
         <div className={styles.rowData}>
           <div className={styles.colSym}>{t.symbol}</div>
           <div className={styles.colData}>{t.last ? t.last.toFixed(2) : ''}</div>
@@ -27,17 +30,15 @@ export class LiveTableRow extends Component {
           <div className={styles.colData}>{t.bid ? t.bid.toFixed(2) : ''}</div>
           <div className={styles.colData}>{t.ask ? t.ask.toFixed(2) : ''}</div>
         </div>
-        { this.state.showDetails &&
+        {this.state.showDetails && (
           <>
-          <div className={styles.details}>{`${t.company} / ${t.subIndustry}`}</div> 
-          <div className={styles.details}>{`HQ: ${t.Location}`}</div> 
+            <div className={styles.details}>{`${t.company} / ${t.subIndustry}`}</div>
+            <div className={styles.details}>{`HQ: ${t.Location}`}</div>
           </>
-        }
+        )}
       </div>
     );
   }
 }
 
-
 export default LiveTableRow;
-

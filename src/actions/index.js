@@ -4,5 +4,3 @@ export * from './filterActions';
 export * from './dataActions';
 export * from './tableViewActions';
 export * from './iexHistActions';
-
-

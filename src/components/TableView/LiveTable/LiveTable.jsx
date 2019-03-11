@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import styles from './liveTable.scss';
 import TableRow from './LiveTableRow';
 
@@ -20,8 +20,12 @@ export class LiveTable extends Component {
             <div className={styles.colHdr}>Bid</div>
             <div className={styles.colHdr}>Ask</div>
           </header>
-          <div className={styles.dataArea}>  
-            { (this.props.filteredTickers || []).map(t => (<div className={styles.tickerRow} key={t.symbol}><TableRow {...t}/></div>)) }
+          <div className={styles.dataArea}>
+            {(this.props.filteredTickers || []).map((t) => (
+              <div className={styles.tickerRow} key={t.symbol}>
+                <TableRow {...t} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -29,13 +33,9 @@ export class LiveTable extends Component {
   }
 }
 
-
 LiveTable.propTypes = {
   appActions: PropTypes.object,
-  filteredTickers: PropTypes.array,
+  filteredTickers: PropTypes.array
 };
 
-
-
 export default LiveTable;
-

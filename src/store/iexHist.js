@@ -1,8 +1,7 @@
-export const init = () => (
-  { 
-    chart: [],
-    quote: [],
-    isLoading: false,
-    symbol: '',
-    error: null,
-  });
+export const init = () => ({
+  chart: [],
+  quote: [],
+  isLoading: false,
+  symbol: '',
+  error: null
+});
