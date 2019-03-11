@@ -32,11 +32,6 @@
     "no-unused-vars": 1,
     "no-console": 1
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  },
   "settings": {
     "react": {
         "createClass": "createReactClass", 
