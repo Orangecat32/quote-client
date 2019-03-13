@@ -9,6 +9,7 @@ import {
   IEX_HIST_FAIL
 } from '../actions';
 
+// eslint-disable-next-line import/prefer-default-export
 export function* iexHistSagas() {
   yield getIexHistory();
 }
@@ -41,6 +42,7 @@ function* getFirmHistory(action) {
     }
   }
 }
+
 
 /*
 

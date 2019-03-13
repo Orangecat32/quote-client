@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ViewTable.scss';
 import { fmtMktCap, fmtVolume } from '../../../shared/utils';
-import { Container, Table, Thead, Tbody, Tr, Tdn, Td } from './styles';
+import {
+  Container, Table, Thead, Tbody, Tr, Tdn, Td
+} from './styles';
 
+// eslint-disable-next-line react/prefer-stateless-function
 export class ViewTable extends React.Component {
   render() {
     const p = this.props;
@@ -25,7 +28,7 @@ export class ViewTable extends React.Component {
             </Tr>
           </Thead>
           <Tbody>
-            {p.filteredTickers.map((a) => (
+            {p.filteredTickers.map(a => (
               <Tr key={a.symbol}>
                 <Td>{a.symbol}</Td>
                 <Tdn>{fmtVolume(a.avgVol50d)}</Tdn>
@@ -46,7 +49,7 @@ export class ViewTable extends React.Component {
 }
 
 ViewTable.propTypes = {
-  filteredTickers: PropTypes.array
+  filteredTickers: PropTypes.array,
 };
 
 export default ViewTable;

@@ -4,12 +4,12 @@ import { Breadcrumbs } from '@blueprintjs/core';
 
 import { Container } from './styles';
 
-export const buildPath = (p) => {
-  let path = [{ text: 'All SPX', onClick: () => p.appActions.filterClearPath() }];
-  if (p.selectedSector) {
+export const buildPath = (props) => {
+  const path = [{ text: 'All SPX', onClick: () => props.appActions.filterClearPath() }];
+  if (props.selectedSector) {
     path.push({
-      text: p.selectedSector,
-      onClick: () => p.appActions.filterSector(p.selectedSector)
+      text: props.selectedSector,
+      onClick: () => props.appActions.filterSector(props.selectedSector)
     });
   }
 
@@ -39,9 +39,8 @@ export class SectorPath extends PureComponent {
 
 SectorPath.propTypes = {
   selectedSector: PropTypes.string,
-  selectedSubIndustry: PropTypes.string,
   selectedFirm: PropTypes.string,
-  appActions: PropTypes.any
+  appActions: PropTypes.object
 };
 
 export default SectorPath;

@@ -23,21 +23,18 @@ export const initialState = {
 
 export const buildStore = () => {
   const sagaMiddleware = createSagaMiddleware();
-  let middlewares = [sagaMiddleware];
 
   //  add filter on logging so we don't see all the updates coming from the server
-  const reduxLogger = createLogger({
-    diff: false, //  shows diff between states.  Can be very long
-    predicate: (state, action) => {
-      return !action.type.startsWith('DATA_UPDATE');
-    }
-  });
+  const middlewares = process.env.NODE_ENV !== 'production'
+    ? [sagaMiddleware]
+    : [
+      sagaMiddleware,
+      createLogger({
+        diff: false, //  shows diff between states.  Can be very long
+        predicate: (state, action) => !action.type.startsWith('DATA_UPDATE')
+      })];
 
-  // turn off the logging here
-  if (process.env.NODE_ENV !== 'production') {
-    middlewares.push(reduxLogger);
-  }
-
+  // eslint-disable-next-line no-underscore-dangle
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const s = createStore(reducer, composeEnhancers(applyMiddleware(...middlewares)));
